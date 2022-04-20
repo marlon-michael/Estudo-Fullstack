@@ -5,6 +5,7 @@ Welcome to my introducing to Github.
 
 ***commands learned today***
 git clone [link to repository] : bring repository and files to my local repository
+
 git branch : list all branches in repository
 git checkout -b [branch/name]: create a new branch
 git status : list changes in local repository
