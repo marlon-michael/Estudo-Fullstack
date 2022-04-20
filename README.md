@@ -1,4 +1,4 @@
-# git-test
+# git-commands
 
 Welcome to my introducing to Github.
 ------------------------------------
@@ -21,6 +21,8 @@ git add . : add all changed files to commit
 git commit -m "[message]" : comment changes
 
 git push : send changes to setted branch in repository
+
+git pull : download update to local repository
 
 
 >by ***Marlon Michael***
