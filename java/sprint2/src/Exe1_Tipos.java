@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ExeI {
+public class Exe1_Tipos {
     /*
     int - numero inteiro
     double - numero decimal
@@ -12,7 +12,7 @@ public class ExeI {
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
 
-        System.out.print("Digite o número do exercicio: ");
+        System.out.print("EXE I: Digite o número do exercicio: ");
         int exe = read.nextInt();
 
         if(exe ==1) {
@@ -125,7 +125,20 @@ public class ExeI {
             System.out.print("Digite a temperatura em Fahrenheit: ");
             double fah = read.nextDouble();
 
+            System.out.println();
             System.out.println("A temperatura digitade em celsius é de: "+ ((fah-32)/9 * 5));
+        }
+
+        else if (exe == 10){
+            System.out.print("Digite a primeira nota do aluno: ");
+            double nota1 = read.nextDouble();
+            System.out.print("Digite a segunda nota do aluno: ");
+            double nota2 = read.nextDouble();
+            System.out.print("Digite a terceira nota do aluno: ");
+            double nota3 = read.nextDouble();
+
+            System.out.println();
+            System.out.printf("A média final do aluno é %.1f\n", (nota1*2 + nota2*3 + nota3 * 5)/10 );
         }
     }
 }

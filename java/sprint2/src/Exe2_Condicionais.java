@@ -1,10 +1,27 @@
 import java.util.Scanner;
 
-public class ExeII {
+public class Exe2_Condicionais {
+    /*
+
+    ----------------
+    if (expression){
+    code
+    } else if (expression){
+    code
+    } else {code}
+
+    --------------------------
+    switch (expression / var){
+    case 1:code;break;
+    case 2:code;break;
+    default: code;break;
+    }
+
+     */
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
 
-        System.out.print("Digite o numéro do exercicio: ");
+        System.out.print("EXE II: Digite o numéro do exercicio: ");
         int exe = read.nextInt();
         System.out.println();
 
@@ -151,23 +168,21 @@ public class ExeII {
         }
         else if (exe == 8){
             System.out.print("Digite o número de horas trabalhadas: ");
-            int horas = read.nextInt();
-            int horas_semanais = horas/4;
+            int horas_trabalhadas = read.nextInt();
+            int horas_exped = 0;
             int horas_extra = 0;
             System.out.print("Digite o valor do valor por hora trabalhada:");
-            double salario = read.nextDouble();
-            double total = salario * horas_semanais * 4;
+            double valor_hora = read.nextDouble();
+            double salario = horas_trabalhadas * valor_hora;
+
+            if (horas_trabalhadas > 160){
+                horas_extra = horas_trabalhadas - 160;
+                horas_exped = horas_trabalhadas - horas_extra;
+                salario = horas_exped * valor_hora + horas_extra * (valor_hora * 1.5);
+            }
 
             System.out.println();
-            if (horas_semanais > 40){
-                horas_extra = horas_semanais - 40;
-                horas_semanais = 40;
-                total = salario * horas_semanais * 4 + (salario * 1.5) * horas_extra;
-            }
-            else{
-                total = salario * horas_semanais * 4;
-            }
-            System.out.printf("O salário por número de horas trabalhadas é de: R$%.2f\n", total);
+            System.out.printf("O salário por número de horas trabalhadas é de: R$%.2f\n", salario);
         }
         else if (exe == 9){
             System.out.print("Digite seu nome: ");
