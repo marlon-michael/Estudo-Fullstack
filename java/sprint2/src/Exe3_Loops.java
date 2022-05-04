@@ -40,13 +40,10 @@ public class Exe3_Loops {
             }
             System.out.println();
             System.out.print("As palavras digitadas foram: ");
-            for (int i = 0; i < num_palavras; i++){
-                System.out.printf(palavras[i]);
-                if (i+1 < palavras.length){
-                    System.out.printf(", ");
-                }
+            for (int i = 0; i < num_palavras-1; i++){
+                System.out.printf(palavras[i]+", ");
             }
-            System.out.println(".");
+            System.out.println(palavras[num_palavras-1]+".");
         }
         
         else if (exe == 3){
