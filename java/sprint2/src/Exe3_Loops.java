@@ -12,14 +12,14 @@ public class Exe3_Loops {
 
         System.out.print("EX III: Digite o número do exercicio: ");
         int exe = read.nextInt();
+        System.out.println();
 
         if (exe == 1){
-            int tabuada = 0;
+            int tabuada = 1;
 
-            while(tabuada < 1){
+            while(tabuada != 0){
                 System.out.print("Digite a tabuada que deseja: ");
                 tabuada = read.nextInt();
-                if (tabuada < 1) continue;
 
                 System.out.println();
                 System.out.println("Tabuada de "+tabuada);
@@ -28,6 +28,25 @@ public class Exe3_Loops {
                     System.out.printf("%d x %d = %d\n", tabuada, i, tabuada * i);
                 }
             }
+        }
+
+        else if (exe == 2){
+            System.out.print("Digite o número de palavras que deseja escrever: ");
+            int num_palavras = read.nextInt();
+            String[] palavras = new String [num_palavras];
+            for (int i = 0; i < num_palavras; i++){
+                System.out.printf("Digite a %dª paravra: ", i+1);
+                palavras[i] = read.next();
+            }
+            System.out.println();
+            System.out.print("As palavras digitadas foram: ");
+            for (int i = 0; i < num_palavras; i++){
+                System.out.printf(palavras[i]);
+                if (i+1 < palavras.length){
+                    System.out.printf(", ");
+                }
+            }
+            System.out.println(".");
         }
         
         else if (exe == 3){

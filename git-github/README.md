@@ -1,6 +1,6 @@
-# git-commands
+# git commands
 
-Welcome to my introducing to Github.
+introducing to Github.
 ------------------------------------
 
 ***commands to Git and Github***

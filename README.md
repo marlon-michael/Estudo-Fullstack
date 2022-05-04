@@ -1,7 +1,4 @@
-# git-commands
-
-Entra 21 - 2022
-Java Course
+# Java Class - Entra21 / 2022
 
 Learnings: Git, Java
 
