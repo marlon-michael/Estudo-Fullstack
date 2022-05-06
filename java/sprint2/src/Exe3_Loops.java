@@ -2,10 +2,13 @@ import java.util.Scanner;
 
 public class Exe3_Loops {
     /*
-    loops
+    # Loops
     -----------------------
     for (i=0;i<n;i++){code}
-
+    ----------------
+    while(expression){code}
+    ------------------
+    do{code}while(expression)
      */
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
@@ -47,13 +50,16 @@ public class Exe3_Loops {
         }
         
         else if (exe == 3){
+            //encontrar letras proibidas em array de palavras
             String[] palavras = {"abc", "def", "ghi"};
             char letraProibida = 'a';
             boolean encontrouLetra = false;
             for (String palavra: palavras){
                 for (int i = 0; i < palavra.length(); i++){
-                    if (palavra.charAt(i) == letraProibida) encontrouLetra = true;
-                    if (encontrouLetra) break;
+                    if (palavra.charAt(i) == letraProibida) {
+                        encontrouLetra = true;
+                        break;
+                    }
                 }if (encontrouLetra) break;
             }
             if (encontrouLetra) System.out.println("Letra proibida entre as palavras");

@@ -2,21 +2,29 @@ import java.util.Scanner;
 
 public class Exe2_Condicionais {
     /*
+    # Operadores relacionais
+    || or
+    && and
+    ^ xor - só funciona se as entradas forem diferentes
 
-    ----------------
+    # if else
     if (expression){
     code
     } else if (expression){
     code
     } else {code}
 
-    --------------------------
+    # switch
     switch (expression / var){
     case 1:code;break;
     case 2:code;break;
     default: code;break;
     }
 
+    # switch
+    switch (var){
+    case 'A','B','C': code;break;
+    }
      */
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
@@ -56,9 +64,6 @@ public class Exe2_Condicionais {
             if (num_apple < 12){
                 apple_price = 1.3;
             }
-            else {
-                apple_price = 1.0;
-            }
 
             System.out.println();
             System.out.printf("%d maçãs custam R$%.2f cada, valor total de R$%.2f\n", num_apple, apple_price, num_apple*apple_price);
@@ -96,9 +101,8 @@ public class Exe2_Condicionais {
             double num1 = read.nextDouble();
             System.out.println("Digite o segundo número: ");
             double num2 = read.nextDouble();
-            System.out.println("Digite o segundo número: ");
+            System.out.println("Digite o terceiro número: ");
             double num3 = read.nextDouble();
-
 
             System.out.println();
             System.out.print("Os ordem dos numeros digitados é de: ");
@@ -144,7 +148,7 @@ public class Exe2_Condicionais {
             int hora_inicio = read.nextInt();
             System.out.print("Digite o horario de fim do jogo: ");
             int hora_fim = read.nextInt();
-            int tempo = 0;
+            int tempo;
 
             System.out.println();
             if (hora_inicio > 24 || hora_fim > 24){
@@ -169,15 +173,13 @@ public class Exe2_Condicionais {
         else if (exe == 8){
             System.out.print("Digite o número de horas trabalhadas: ");
             int horas_trabalhadas = read.nextInt();
-            int horas_exped = 0;
-            int horas_extra = 0;
             System.out.print("Digite o valor do valor por hora trabalhada:");
             double valor_hora = read.nextDouble();
             double salario = horas_trabalhadas * valor_hora;
 
             if (horas_trabalhadas > 160){
-                horas_extra = horas_trabalhadas - 160;
-                horas_exped = horas_trabalhadas - horas_extra;
+                int horas_extra = horas_trabalhadas - 160;
+                int horas_exped = horas_trabalhadas - horas_extra;
                 salario = horas_exped * valor_hora + horas_extra * (valor_hora * 1.5);
             }
 
@@ -213,7 +215,7 @@ public class Exe2_Condicionais {
             double salario_fixo = read.nextDouble();
             System.out.print("Digite o valor total de vendas: ");
             double valor_vendas = read.nextDouble();
-            double salario = 0.0;
+            double salario;
 
             System.out.println();
             if (valor_vendas > 1500){
@@ -225,8 +227,8 @@ public class Exe2_Condicionais {
             System.out.printf("O salário final do funcionário é de: R$%.2f\n", salario);
         }
         else if (exe == 11){
-            System.out.print("Digite o numero da conta: ");
-            String num_conta = read.next();
+            //System.out.print("Digite o numero da conta: ");
+            //String num_conta = read.next();
             System.out.print("Digite o saldo: ");
             double saldo = read.nextDouble();
             System.out.print("Digite o debito: ");
@@ -259,6 +261,23 @@ public class Exe2_Condicionais {
             else{
                 System.out.println("Não é necessário efetuar compra");
             }
+        }
+        else if (exe == 13){
+            String abreviacao = "X";
+            String classe = "Indefinida";
+
+            while(abreviacao.length() != 3){
+                System.out.print("Digite a abreviação da classe (3 LETRAS): ");
+                abreviacao = read.next();
+            }
+
+            switch (abreviacao.toUpperCase()) {
+                case "SCH", "AST", "WHM", "SAG" -> classe = "Healer";
+                case "PLD", "WAR", "DKN", "GNB" -> classe = "Tank";
+                case "MNR", "BFM", "DRG", "RDM", "SMN", "BLM", "DNC", "RPR", "SMR", "NJA" -> classe = "DPS";
+            }
+            System.out.println();
+            System.out.println("A classe é: "+classe);
         }
     }
 }

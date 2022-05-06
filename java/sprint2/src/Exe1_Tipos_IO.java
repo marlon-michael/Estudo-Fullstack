@@ -1,12 +1,31 @@
 import java.util.Scanner;
 
-public class Exe1_Tipos {
+public class Exe1_Tipos_IO {
     /*
-    int - numero inteiro
-    double - numero decimal
-    String - literal, texto ""
-    char - caraactere único ''
-    boolean - lógico, true / false
+    # Tipos de variaveis e declaração
+    int numero = 1; numero inteiro
+    double numero2 = 1.5; numero decimal
+    String texto = "text"; literal, texto "DPS"
+    char letra = 'a'; caraactere único ''
+    boolean ativo = true/false; - lógico
+    String[] lista = {"l","i","s","t","a"}; new String[5];
+
+    # String methods
+    texto.charAt(0); primeira letra
+    texto.length(); / texto.length; tamanho da string
+    texto.equals("texto"); compara em igualdade
+    texto.toUpperCase(); torna string caixa alta
+    texto.substring(1,3); "texto" -> "ext"
+
+    # Saida de texto via console
+    System.out.print("texto"+numero); Escreve
+    System.out.println("texto"+numero); Escreve e pula linha
+    System.out.prinf("texto %d, %.2f, %s", numero, numero2, texto); Escreve e formata variaveis sem quebrar linha
+
+    # Entrada de texto via console
+    import java.util.Scanner;
+    Scanner read = new Scanner(System.in);
+    read.next(String); / read.nextDouble(double);
      */
 
     public static void main(String[] args) {
@@ -75,8 +94,8 @@ public class Exe1_Tipos {
 
             System.out.println();
             System.out.println("Dos " + num_eleitor + " eleitores");
-            double percem_nulo = num_nulo * 100 / num_eleitor;
-            double percem_branco = num_branco * 100 / num_eleitor;
+            double percem_nulo = num_nulo * 100.0 / num_eleitor;
+            double percem_branco = num_branco * 100.0 / num_eleitor;
 
             System.out.println(percem_nulo + "% dos votos são nulos");
             System.out.println(percem_branco + "% dos votos são brancos");
@@ -139,6 +158,17 @@ public class Exe1_Tipos {
 
             System.out.println();
             System.out.printf("A média final do aluno é %.1f\n", (nota1*2 + nota2*3 + nota3 * 5)/10 );
+        }
+        else if (exe == 11){
+            String texto = "Did you know about the aclaimed MMO FFIXV?";
+            int ocurrances = 0;
+
+            for(int i = 0; i < texto.length(); i++){
+                if (texto.toUpperCase().charAt(i) == 'A'){
+                    ocurrances++;
+                }
+            }
+            System.out.println(ocurrances+" foram encontradas da letra A");
         }
     }
 }
