@@ -70,13 +70,11 @@ public class Exe3_Loops {
         else if (exe == 4){
             System.out.print("Digite a quantiade de numeros que quer somar: ");
             int len = read.nextInt();
-            int[] numeros = new int[len];
             int soma = 0;
 
             for (int i = 0; i < len; i++){
                 System.out.print("Digite os numeros inteiros a serem somados: ");
-                numeros[i] = read.nextInt();
-                soma+= numeros[i];
+                soma+= read.nextInt();
             }
             System.out.println();
             System.out.println("O valor total dos numeros somados é: "+soma);
