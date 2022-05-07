@@ -48,8 +48,41 @@ public class Exe3_Loops {
             }
             System.out.println(palavras[num_palavras-1]+".");
         }
-        
+
         else if (exe == 3){
+            System.out.print("Digite o numero de colunas da matriz: ");
+            int num_coluna = read.nextInt();
+            System.out.print("Digite o numero de linhas da matriz: ");
+            int num_linha = read.nextInt();
+            String[][] matriz = new String[num_linha][num_coluna];
+
+            System.out.println();
+            for (String[] linha: matriz){
+                for (String celula: linha){
+                    celula = "#";
+                    System.out.print(celula);
+                }
+                System.out.println();
+            }
+
+        }
+
+        else if (exe == 4){
+            System.out.print("Digite a quantiade de numeros que quer somar: ");
+            int len = read.nextInt();
+            int[] numeros = new int[len];
+            int soma = 0;
+
+            for (int i = 0; i < len; i++){
+                System.out.print("Digite os numeros inteiros a serem somados: ");
+                numeros[i] = read.nextInt();
+                soma+= numeros[i];
+            }
+            System.out.println();
+            System.out.println("O valor total dos numeros somados é: "+soma);
+        }
+        
+        else if (exe == 0){
             //encontrar letras proibidas em array de palavras
             String[] palavras = {"abc", "def", "ghi"};
             char letraProibida = 'a';
@@ -80,9 +113,7 @@ public class Exe3_Loops {
     public static boolean forbidenLetter(String[] palavras, char letraProibida){
         for (String palavra: palavras){
             for (int i = 0; i < palavra.length(); i++){
-                if (palavra.charAt(i) == letraProibida){
-                    return true;
-                }
+                if (palavra.charAt(i) == letraProibida) return true;
             }
         }
         return false;

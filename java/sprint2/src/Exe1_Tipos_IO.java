@@ -5,14 +5,15 @@ public class Exe1_Tipos_IO {
     # Tipos de variaveis e declaração
     int numero = 1; numero inteiro
     double numero2 = 1.5; numero decimal
-    String texto = "text"; literal, texto "DPS"
-    char letra = 'a'; caraactere único ''
+    String texto = "text"; literal, texto
+    char letra = 'a'; caraactere único
     boolean ativo = true/false; - lógico
     String[] lista = {"l","i","s","t","a"}; new String[5];
+    int [][] vetor = {{0,1},{2,3},{4,5}}; new int[3][2];
 
     # String methods
     texto.charAt(0); primeira letra
-    texto.length(); / texto.length; tamanho da string
+    texto.length(); tamanho da string
     texto.equals("texto"); compara em igualdade
     texto.toUpperCase(); torna string caixa alta
     texto.substring(1,3); "texto" -> "ext"
@@ -159,6 +160,7 @@ public class Exe1_Tipos_IO {
             System.out.println();
             System.out.printf("A média final do aluno é %.1f\n", (nota1*2 + nota2*3 + nota3 * 5)/10 );
         }
+
         else if (exe == 11){
             String texto = "Did you know about the aclaimed MMO FFIXV?";
             int ocurrances = 0;
@@ -169,6 +171,18 @@ public class Exe1_Tipos_IO {
                 }
             }
             System.out.println(ocurrances+" foram encontradas da letra A");
+        }
+
+        else if (exe == 12){
+            int quantidade = 0;
+            System.out.print("Digite uma frase: ");
+            read.nextLine(); // cleaning buffer
+            String frase = read.nextLine();
+            for(int i = 0; i < frase.length(); i++){
+                if (frase.charAt(i) == ' ') quantidade++;
+            }
+            System.out.println();
+            System.out.println("A quantidade de espaços em branco na frase digitade é de: "+quantidade);
         }
     }
 }
