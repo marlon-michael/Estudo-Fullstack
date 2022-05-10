@@ -18,6 +18,7 @@ public class Exe3_Loops {
         System.out.println();
 
         if (exe == 1){
+            System.out.println("TABUADA");
             int tabuada = 1;
 
             while(tabuada != 0){
@@ -34,6 +35,7 @@ public class Exe3_Loops {
         }
 
         else if (exe == 2){
+            System.out.println("CONTADOR DE ESPAÇOS EM BRANCO");
             System.out.print("Digite o número de palavras que deseja escrever: ");
             int num_palavras = read.nextInt();
             String[] palavras = new String [num_palavras];
@@ -50,17 +52,16 @@ public class Exe3_Loops {
         }
 
         else if (exe == 3){
+            System.out.println("DESENHADOR DE MATRIZ");
             System.out.print("Digite o numero de colunas da matriz: ");
             int num_coluna = read.nextInt();
             System.out.print("Digite o numero de linhas da matriz: ");
             int num_linha = read.nextInt();
-            String[][] matriz = new String[num_linha][num_coluna];
 
             System.out.println();
-            for (String[] linha: matriz){
-                for (String celula: linha){
-                    celula = "#";
-                    System.out.print(celula);
+            for (int lin = 0; lin < num_linha; lin++){
+                for (int col = 0; col < num_coluna; col++){
+                    System.out.print("#");
                 }
                 System.out.println();
             }
@@ -68,6 +69,7 @@ public class Exe3_Loops {
         }
 
         else if (exe == 4){
+            System.out.println("SOMADOR DE NÚMEROS");
             System.out.print("Digite a quantiade de numeros que quer somar: ");
             int len = read.nextInt();
             int soma = 0;
@@ -79,19 +81,64 @@ public class Exe3_Loops {
             System.out.println();
             System.out.println("O valor total dos numeros somados é: "+soma);
         }
+
+        else if (exe == 5){
+            System.out.println("FATORIAL");
+            System.out.print("Digite um numero: ");
+            int num = read.nextInt();
+            int fatorial = 1;
+
+            for (int i = num; i > 1; i--){
+                fatorial *= i;
+            }
+
+            System.out.println();
+            System.out.printf("O fatorial de %d é %d\n", num, fatorial);
+
+        }
+
+        else if (exe == 6){
+            boolean logado = false;
+            String pin_correto = "91352";
+            System.out.println("O pin deve ter 5 digitos. Você tem 3 tentativas");
+            for (int chances = 2; chances > -1; chances--){
+                System.out.print("Digite o pin: ");
+                String pin = read.next();
+                if(pin.length() != 5) System.out.printf("O pin deve ter 5 digitos. %d tentativas restantes\n", chances);
+                else if(pin.equals(pin_correto)){
+                    logado = true;
+                    break;
+                }
+                else System.out.printf("Senha incorreta. %d tentativas restantes\n", chances);
+            }
+            if (logado) System.out.println("Senha correta. Logando");
+            else System.out.println("Número de tentativas excedido, tente novamente mais tarde.");
+        }
+
+        else if (exe == 7){
+            System.out.print("Digite um numero: ");
+            int num = read.nextInt();
+            int soma = 0;
+
+            for (int i = 0; i < num+1; i++){
+                soma+=i;
+            }
+            System.out.println();
+            System.out.println("A soma de todos os antecessores de "+num+" é "+soma);
+        }
         
         else if (exe == 0){
             //encontrar letras proibidas em array de palavras
             String[] palavras = {"abc", "def", "ghi"};
             char letraProibida = 'a';
             boolean encontrouLetra = false;
-            for (String palavra: palavras){
+            palavra_loop: for (String palavra: palavras){
                 for (int i = 0; i < palavra.length(); i++){
                     if (palavra.charAt(i) == letraProibida) {
                         encontrouLetra = true;
-                        break;
+                        break palavra_loop;
                     }
-                }if (encontrouLetra) break;
+                }
             }
             if (encontrouLetra) System.out.println("Letra proibida entre as palavras");
             else System.out.println("Nenhuma letra proibida entre as palavras");
