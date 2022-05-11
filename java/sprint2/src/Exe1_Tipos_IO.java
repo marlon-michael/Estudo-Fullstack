@@ -1,3 +1,4 @@
+import java.text.Normalizer;
 import java.util.Scanner;
 
 public class Exe1_Tipos_IO {
@@ -184,5 +185,38 @@ public class Exe1_Tipos_IO {
             System.out.println();
             System.out.println("A quantidade de espaços em branco na frase digitade é de: "+quantidade);
         }
+
+        else if (exe == 13){
+            System.out.print("Digite seu nome completo: ");
+            read.nextLine();
+            String nome = read.nextLine();
+            String[] splitted_nome = nome.strip().split(" ");
+
+            System.out.println();
+            System.out.print("As inicias do nome digitado são: ");
+            for (String index : splitted_nome) {
+                System.out.print(index.toUpperCase().charAt(0) + ". ");
+            }
+            System.out.println();
+        }
+
+        else if (exe == 14){
+            System.out.print("Digite uma frase ou palavra: ");
+            read.nextLine();
+            String palavra = normalizer(read.nextLine().toLowerCase().replace(" ", ""));
+            StringBuilder reverse_palavra = new StringBuilder();
+
+            for(int i = palavra.length()-1; i > -1 ; i--){
+                reverse_palavra.append(palavra.charAt(i));
+            }
+            System.out.println();
+            System.out.println(palavra+" <|> "+reverse_palavra);
+            if(palavra.equals(reverse_palavra.toString())) System.out.println("O texto digitado é um palindromo!");
+            else System.out.println("O texto digitado não é um palindromo");
+        }
+    }
+
+    public static String normalizer(String str) {
+        return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
     }
 }

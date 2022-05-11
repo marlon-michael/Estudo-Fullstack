@@ -5,6 +5,7 @@ public class Game {
         Scanner read = new Scanner(System.in);
         String[] grid = {"1","2","3","4","5","6","7","8","9"};
         String player = "X";
+        String notification = "";
         boolean playing = true;
         boolean win = false;
         int time = 1;
@@ -22,15 +23,20 @@ public class Game {
                 System.out.println();
             }
 
-            System.out.println();
-            System.out.println("Vez do jogador "+player);
-            System.out.print("Digite a posição: ");
+            System.out.println("\n"+notification);
+            notification = "";
+            System.out.println(" Vez do jogador "+player);
+            System.out.print(" Digite a posição: ");
+
             int pos = read.nextInt();
             if(pos < 1 || pos > 9){
-                System.out.println(" Posição alta/baixa demais.");
+                notification = " * Posição alta/baixa demais * ";
                 continue;
             }
-
+            if(grid[pos-1].equals("X") || grid[pos-1].equals("O")){
+                notification = " * Posição "+pos+" ja utilizada * ";
+                continue;
+            }
             grid[pos-1] = player;
 
             int line_ptr = 0;
@@ -56,20 +62,21 @@ public class Game {
             }
 
             if (win){
-                System.out.printf("\nJogador %s ganhou o jogo\n", player);
+                System.out.printf("\n Jogador %s ganhou o jogo \n", player);
                 playing = false;
             }
 
             time++;
-            if(time > 9){
-                System.out.println(" Velha. Ninguem ganhou! ");
+            if(time > 9 && !win){
+                System.out.println("\n Velha. Ninguem ganhou! ");
                 playing = false;
             }
 
             if (player.equals("X")) player = "O";
             else player = "X";
 
-            System.out.println("\n\n");
+            System.out.println("--------------------------");
         }
+        System.out.println(" Obrigado por jogar! ");
     }
 }
