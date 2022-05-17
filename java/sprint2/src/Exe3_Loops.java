@@ -130,7 +130,7 @@ public class Exe3_Loops {
         else if (exe == 0){
             //encontrar letras proibidas em array de palavras
             String[] palavras = {"abc", "def", "ghi"};
-            char letraProibida = 'a';
+            char letraProibida = 'e';
             boolean encontrouLetra = false;
             palavra_loop: for (String palavra: palavras){
                 for (int i = 0; i < palavra.length(); i++){
@@ -145,7 +145,7 @@ public class Exe3_Loops {
 
 
             //external function forbidenLetter used
-            if (forbidenLetter(new String[]{"abc", "def", "ghi"}, 'a')){
+            if (forbidenLetter(new String[]{"abc", "def", "ghi"}, 'e')){
                 System.out.println("Letra proibida entre as palavras");
             }
             else {

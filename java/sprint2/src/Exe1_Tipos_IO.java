@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Exe1_Tipos_IO {
     /*
     # Tipos de variaveis e declaração
-    int numero = 1; numero inteiro
+    int numero, numero2 = 1; numero inteiro
     double numero2 = 1.5; numero decimal
     String texto = "text"; literal, texto
     char letra = 'a'; caraactere único
@@ -18,6 +18,10 @@ public class Exe1_Tipos_IO {
     texto.equals("texto"); compara em igualdade
     texto.toUpperCase(); torna string caixa alta
     texto.substring(1,3); "texto" -> "ext"
+
+    # Conversion
+    String texto = String.valueOf(9); / Integer.toString(9); // transforma int em String
+    int num = Integer.valueOf("9"); // transforma String em int
 
     # Saida de texto via console
     System.out.print("texto"+numero); Escreve
@@ -201,6 +205,14 @@ public class Exe1_Tipos_IO {
         }
 
         else if (exe == 14){
+            System.out.print("Digite um numero: ");
+            String num = String.valueOf(read.nextInt());
+            StringBuilder reversed_num = new StringBuilder(num).reverse();
+            System.out.println();
+            System.out.println("O valor digitado, ao contrário fica: "+reversed_num);
+        }
+
+        else if (exe == 0){
             System.out.print("Digite uma frase ou palavra: ");
             read.nextLine();
             String palavra = normalizer(read.nextLine().toLowerCase().replace(" ", ""));

@@ -79,7 +79,7 @@ public class Game {
                 "A palavra que você buscava era: "+palavra;
                 saindo = true;
             }
-            System.out.println("\n\n");
+            System.out.println("--------------------------");
         }
     }
 }
