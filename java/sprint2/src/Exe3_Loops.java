@@ -5,9 +5,11 @@ public class Exe3_Loops {
     # Loops
     -----------------------
     for (i=0;i<n;i++){code}
-    ----------------
+    -------------------------
+    for (int num: nums){code}
+    -----------------------
     while(expression){code}
-    ------------------
+    -------------------------
     do{code}while(expression)
      */
     public static void main(String[] args) {
@@ -125,6 +127,32 @@ public class Exe3_Loops {
             }
             System.out.println();
             System.out.println("A soma de todos os antecessores de "+num+" é "+soma);
+        }
+
+        else if (exe == 8){
+            System.out.print("Digite a quantidade de valores na lista: ");
+            int len_lista = read.nextInt();
+            int[] lista = new int[len_lista];
+            for (int i = 0; i < len_lista; i++){
+                System.out.print("Digite "+(i+1)+"º valor: ");
+                lista[i] = read.nextInt();
+            }
+            len_lista = read.nextInt();
+            int[] lista_remover = new int[len_lista];
+            for (int i = 0; i < len_lista; i++){
+                System.out.print("Digite "+(i+1)+"º valor a remover: ");
+                lista_remover[i] = read.nextInt();
+            }
+            System.out.println();
+            System.out.println("Os números que sobraram na lista foram: ");
+            check_loop: for(int i = 0; i < len_lista; i++){
+                for (int j = 0; j < len_lista; j++){
+                    if (lista[i] == lista_remover[j]) {
+                        continue check_loop;
+                    }
+                }
+                System.out.print(lista[i] + " ");
+            }
         }
         
         else if (exe == 0){
