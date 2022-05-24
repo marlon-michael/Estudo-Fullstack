@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BatalhaNaval/BatalhaNaval.iml" filepath="$PROJECT_DIR$/BatalhaNaval/BatalhaNaval.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HangmanGame/HangmanGame.iml" filepath="$PROJECT_DIR$/HangmanGame/HangmanGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaLearn_Basic/JavaLearn_Basic.iml" filepath="$PROJECT_DIR$/JavaLearn_Basic/JavaLearn_Basic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaLearn_OOP/JavaLearn_OOP.iml" filepath="$PROJECT_DIR$/JavaLearn_OOP/JavaLearn_OOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TicTacToe/TicTacToe.iml" filepath="$PROJECT_DIR$/TicTacToe/TicTacToe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/java.iml" filepath="$PROJECT_DIR$/.idea/java.iml" />
+    </modules>
+  </component>
+</project>
