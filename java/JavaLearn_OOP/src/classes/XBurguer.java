@@ -11,6 +11,7 @@ public class XBurguer extends Lanche {
         this.adicionar_ingrediente("pão brioche");
     }
 
+    @Override
     public void mostrar(){
         if (this.aberto) System.out.println("Lanche Aberto");
         else System.out.println("Lanche Fechado");

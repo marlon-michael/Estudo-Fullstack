@@ -18,11 +18,21 @@ public class Main {
         else if (pedido == 2) lanche = new XBurguer();
         else if (pedido == 3) lanche = new HotDog();
         else if (pedido == 4) lanche = new MistoQuente();
-        else if (pedido == 5) lanche = new MiniPizza();
+        else if (pedido == 5){
+            lanche = new MiniPizza();
+            ((MiniPizza) lanche).borda_recheada = true;
+
+            if (((MiniPizza) lanche).borda_recheada){
+                System.out.print("Escreva o sabor da borda: ");
+                read.nextLine();
+                ((MiniPizza) lanche).sabor_borda = read.nextLine();
+            }
+        }
         else {
             System.err.println(" 🔺 Escolha uma opção válida! 🔺 ");
             return;
         }
+        System.out.println();
 
         if (pedido == 1 || pedido == 2){
             System.out.println("digite S para aberto");
