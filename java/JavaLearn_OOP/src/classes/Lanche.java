@@ -1,9 +1,10 @@
 package classes;
 
-public class Lanche {
-    public String nome_lanche = "Lanche";
-    public String[] ingredientes = new String[10];
-    public double valor = 20.0;
+public abstract class Lanche {
+    private String nome_lanche = "Lanche";
+    private String[] ingredientes = new String[10];
+    private double valor = 20.0;
+
     public void adicionar_ingrediente(String ingrediente){
         for (int i = 0; i < this.ingredientes.length; i++) {
             if (this.ingredientes[i] == null){
@@ -15,13 +16,30 @@ public class Lanche {
     }
 
     public void mostrar(){
-        System.out.println(" - - - "+this.nome_lanche+" - - -");
+        if (this instanceof MiniPizza) System.out.println(" - - - "+this.getNomeLanche()+" - "+((MiniPizza) this).getSabor()+" - - -");
+        else System.out.println(" - - - "+this.getNomeLanche()+" - - -");
         System.out.print("Ingredientes: ");
-        for (String ingrediente : this.ingredientes) {
+        for (String ingrediente : this.getIngredientes()) {
             if (ingrediente != null) System.out.print(ingrediente + "  ");
         }
         System.out.println();
-        System.out.println("Valor: RS"+this.valor);
-        System.out.println();
+        System.out.println("Valor: RS"+this.getValor());
+    }
+
+    //GETTERS AND SETTERS
+    public String getNomeLanche(){
+        return this.nome_lanche;
+    }
+    public void setNomeLanche(String nome_lanche){
+        this.nome_lanche = nome_lanche;
+    }
+    public double getValor(){
+        return this.valor;
+    }
+    public void setValor(double valor){
+        this.valor = valor;
+    }
+    public String[] getIngredientes(){
+        return this.ingredientes;
     }
 }

@@ -1,11 +1,11 @@
 package classes;
 
 public abstract class Sanduiche extends Lanche {
-    public String[] adicionais = new String[10];
+    private String[] adicionais = new String[10];
 
-    public void add_adicional(String adicional){
+    public void setAdicionais(String adicional){
         for (int i = 0; i < this.adicionais.length; i++) {
-            if (this.adicionais[i] != null){
+            if (this.adicionais[i] == null){
                 this.adicionais[i] = adicional;
                 return;
             }
@@ -16,12 +16,18 @@ public abstract class Sanduiche extends Lanche {
     public void mostrar(){
         super.mostrar();
         if (this.adicionais[0] != null) {
-            System.out.println("ADICIONAIS: ");
+            System.out.print("ADICIONAIS: ");
             for (String adicional : this.adicionais) {
                 if (adicional != null) {
                     System.out.print(adicional + "  ");
                 }
             }
+            System.out.println();
         }
+    }
+
+    //GETTERS AND SETTERS
+    public String[] getAdicionais(){
+        return this.adicionais;
     }
 }
