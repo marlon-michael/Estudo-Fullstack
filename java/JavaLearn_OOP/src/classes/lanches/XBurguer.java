@@ -1,4 +1,4 @@
-package classes;
+package classes.lanches;
 
 public class XBurguer extends Sanduiche {
     private boolean aberto = false;
@@ -13,9 +13,9 @@ public class XBurguer extends Sanduiche {
 
     @Override
     public void mostrar(){
+        super.mostrar();
         if (this.isAberto()) System.out.println("Lanche Aberto");
         else System.out.println("Lanche Fechado");
-        super.mostrar();
     }
 
     //GETTERS AND SETTERS

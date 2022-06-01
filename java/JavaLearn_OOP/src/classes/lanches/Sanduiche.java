@@ -1,4 +1,4 @@
-package classes;
+package classes.lanches;
 
 public abstract class Sanduiche extends Lanche {
     private String[] adicionais = new String[10];
@@ -10,6 +10,7 @@ public abstract class Sanduiche extends Lanche {
                 return;
             }
         }
+        System.out.println("Lista de adicionais cheia: max 10");
     }
 
     @Override

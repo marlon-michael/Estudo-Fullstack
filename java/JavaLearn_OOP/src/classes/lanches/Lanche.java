@@ -1,9 +1,9 @@
-package classes;
+package classes.lanches;
 
 public abstract class Lanche {
     private String nome_lanche = "Lanche";
     private String[] ingredientes = new String[10];
-    private double valor = 20.0;
+    private double valor;
 
     public void adicionar_ingrediente(String ingrediente){
         for (int i = 0; i < this.ingredientes.length; i++) {

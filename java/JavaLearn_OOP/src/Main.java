@@ -1,10 +1,15 @@
-import classes.*;
+import classes.lanches.*;
 
 import java.util.Scanner;
 
 public class Main {
+    public static Scanner read = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner read = new Scanner(System.in);
+        montarLanche();
+    }
+
+    private static void montarLanche(){
         Lanche lanche;
 
         System.out.println("digite 1 para pedir um x-salada");
@@ -74,16 +79,13 @@ public class Main {
             }
             System.out.println();
 
-            System.out.print("Digite o sabor da borda recheada ou digite \"N\" para sem borda: ");
-            read.nextLine();
-            String sabor_borda = read.nextLine();
+            System.out.print("Digite \"S\" para borda recheada ou \"N\" para sem borda: ");
+            String sabor_borda = read.next();
             if (!sabor_borda.equalsIgnoreCase("n")){
                 ((MiniPizza) lanche).setBordaRecheada(true);
-                if (((MiniPizza) lanche).isBordaRecheada()){
-                    System.out.print("Escreva o sabor da borda: ");
-                    read.nextLine();
-                    ((MiniPizza) lanche).setSaborBorda(read.nextLine());
-                }
+                System.out.print("Escreva o sabor da borda: ");
+                read.nextLine();
+                ((MiniPizza) lanche).setSaborBorda(read.nextLine());
             }
             System.out.println();
         }

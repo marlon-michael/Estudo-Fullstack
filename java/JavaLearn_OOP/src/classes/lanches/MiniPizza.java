@@ -1,4 +1,4 @@
-package classes;
+package classes.lanches;
 
 public class MiniPizza extends Lanche{
     private boolean borda_recheada = false;
@@ -12,7 +12,7 @@ public class MiniPizza extends Lanche{
     }
 
     public void setSabor(String sabor){
-        this.setSabor(sabor);
+        this.sabor = sabor;
         switch(sabor.toUpperCase()){
             case "4 QUEIJOS":
                 this.adicionar_ingrediente("mussarela");
@@ -40,11 +40,11 @@ public class MiniPizza extends Lanche{
 
     @Override
     public void mostrar(){
+        super.mostrar();
         if (this.isBordaRecheada()){
             System.out.println("Borda Recheada Sabor: " + this.getSaborBorda());
         }
         else System.out.println("Borda Fina");
-        super.mostrar();
     }
 
     //GETTERS AND SETTERS
