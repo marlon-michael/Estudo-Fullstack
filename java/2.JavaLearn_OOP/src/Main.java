@@ -1,3 +1,4 @@
+import classes.cliente.Cliente;
 import classes.lanches.*;
 import classes.pedidos.Pedido;
 
@@ -5,15 +6,33 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner read = new Scanner(System.in);
-    public static Pedido pedido = new Pedido();
     public static Lanche lanche;
 
     public static void main(String[] args) {
-        montarLanche();
+        Cliente cliente = new Cliente();
+        System.out.println("Bem vindo a Lanchonete da serragem");
+        System.out.print("Escreva seu nome/apelido: ");
+        cliente.setNome(read.nextLine());
+        System.out.println();
+
+        for (int i =0; i < 10; i++){
+            cliente.getPedido().addLanche(montarLanche());
+
+            if (i == 9) break;
+
+            System.out.println("-----------------------------------");
+            System.out.println("Digite \"MAIS\" para pedir mais um");
+            System.out.println("Digite \"SATISFEITO\" para finalizar pedido");
+            System.out.print("Opção: ");
+            if (read.next().equalsIgnoreCase("SATISFEITO")) break;
+        }
+        System.out.println("-----------------------------------\n");
+        System.out.println("Comanda de "+cliente.getNome());
+        System.out.println();
+        cliente.getPedido().mostrarComanda();
     }
 
-    private static void montarLanche(){
-
+    private static Lanche montarLanche(){
         System.out.println("digite 1 para pedir um x-salada");
         System.out.println("digite 2 para pedir um x-burguer");
         System.out.println("digite 3 para pedir um hot dog");
@@ -31,7 +50,7 @@ public class Main {
         else if (pedidoLanche == 6) lanche = new Pizza();
         else {
             System.err.println(" 🔺 Escolha uma opção válida! 🔺 ");
-            return;
+            return null;
         }
         System.out.println();
 
@@ -96,9 +115,6 @@ public class Main {
         lanche.setValor(read.nextDouble());
         System.out.println();
 
-        pedido.addLanche(lanche);
-        pedido.addLanche(lanche);
-        pedido.mostrar();
-
+        return lanche;
     }
 }
