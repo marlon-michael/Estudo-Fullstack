@@ -13,7 +13,7 @@ public class Main {
         System.out.println("Bem vindo a Lanchonete da serragem");
         System.out.print("Escreva seu nome/apelido: ");
         cliente.setNome(read.nextLine());
-        System.out.println();
+        System.out.println("asdasd");
 
         for (int i =0; i < 10; i++){
             cliente.getPedido().addLanche(montarLanche());
