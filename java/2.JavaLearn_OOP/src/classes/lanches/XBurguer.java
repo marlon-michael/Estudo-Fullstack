@@ -5,18 +5,12 @@ public class XBurguer extends Sanduiche {
 
     public XBurguer(){
         this.setNomeLanche("X-Burguer");
-        this.adicionar_ingrediente("queijo");
-        this.adicionar_ingrediente("presunto");
-        this.adicionar_ingrediente("hamburguer");
-        this.adicionar_ingrediente("pão brioche");
+        this.addIngrediente("queijo");
+        this.addIngrediente("presunto");
+        this.addIngrediente("hamburguer");
+        this.addIngrediente("pão brioche");
     }
 
-    @Override
-    public void mostrar(){
-        super.mostrar();
-        if (this.isAberto()) System.out.println("Lanche Aberto");
-        else System.out.println("Lanche Fechado");
-    }
 
     //GETTERS AND SETTERS
     public boolean isAberto(){

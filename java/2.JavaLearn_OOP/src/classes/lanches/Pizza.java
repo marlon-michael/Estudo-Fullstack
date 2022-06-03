@@ -7,10 +7,6 @@ public class Pizza extends MiniPizza{
         this.setNomeLanche("Pizza");
     }
 
-    public void mostrar(){
-        super.mostrar();
-        System.out.println("Tamanho: "+this.getTamanho());
-    }
 
     //GETTERS AND SETTERS
     public String getTamanho(){

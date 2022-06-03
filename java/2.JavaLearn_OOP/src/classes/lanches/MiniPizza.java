@@ -7,45 +7,37 @@ public class MiniPizza extends Lanche{
 
     public MiniPizza(){
         this.setNomeLanche("Mini Pizza");
-        this.adicionar_ingrediente("molho de tomate");
-        this.adicionar_ingrediente("massa de pizza");
+        this.addIngrediente("molho de tomate");
+        this.addIngrediente("massa de pizza");
     }
 
     public void setSabor(String sabor){
         this.sabor = sabor;
         switch(sabor.toUpperCase()){
             case "4 QUEIJOS":
-                this.adicionar_ingrediente("mussarela");
-                this.adicionar_ingrediente("catupiry");
-                this.adicionar_ingrediente("provolone");
+                this.addIngrediente("mussarela");
+                this.addIngrediente("catupiry");
+                this.addIngrediente("provolone");
                 break;
             case "CALABRESA":
-                this.adicionar_ingrediente("calabresa");
+                this.addIngrediente("calabresa");
                 break;
             case "FRANGO COM CATUPIRY":
-                this.adicionar_ingrediente("frango");
-                this.adicionar_ingrediente("catupiry");
+                this.addIngrediente("frango");
+                this.addIngrediente("catupiry");
                 break;
             case "MARGUERITA":
-                this.adicionar_ingrediente("manjericão");
-                this.adicionar_ingrediente("tomate");
+                this.addIngrediente("manjericão");
+                this.addIngrediente("tomate");
                 break;
             case "PORTUGUESA":
-                this.adicionar_ingrediente("presunto");
-                this.adicionar_ingrediente("cebola");
-                this.adicionar_ingrediente("ovo");
+                this.addIngrediente("presunto");
+                this.addIngrediente("cebola");
+                this.addIngrediente("ovo");
                 break;
         }
     }
 
-    @Override
-    public void mostrar(){
-        super.mostrar();
-        if (this.isBordaRecheada()){
-            System.out.println("Borda Recheada Sabor: " + this.getSaborBorda());
-        }
-        else System.out.println("Borda Fina");
-    }
 
     //GETTERS AND SETTERS
     public String getSaborBorda(){

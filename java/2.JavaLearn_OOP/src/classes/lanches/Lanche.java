@@ -5,7 +5,7 @@ public abstract class Lanche {
     private String[] ingredientes = new String[10];
     private double valor;
 
-    public void adicionar_ingrediente(String ingrediente){
+    public void addIngrediente(String ingrediente){
         for (int i = 0; i < this.ingredientes.length; i++) {
             if (this.ingredientes[i] == null){
                 this.ingredientes[i] = ingrediente;
@@ -15,16 +15,6 @@ public abstract class Lanche {
         System.out.println("Lista de ingredientes cheia: max 10");
     }
 
-    public void mostrar(){
-        if (this instanceof MiniPizza) System.out.println(" - - - "+this.getNomeLanche()+" - "+((MiniPizza) this).getSabor()+" - - -");
-        else System.out.println(" - - - "+this.getNomeLanche()+" - - -");
-        System.out.print("Ingredientes: ");
-        for (String ingrediente : this.getIngredientes()) {
-            if (ingrediente != null) System.out.print(ingrediente + "  ");
-        }
-        System.out.println();
-        System.out.println("Valor: RS"+this.getValor());
-    }
 
     //GETTERS AND SETTERS
     public String getNomeLanche(){

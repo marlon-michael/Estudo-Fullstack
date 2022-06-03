@@ -1,15 +1,79 @@
 package classes.pedidos;
 
-import classes.lanches.Lanche;
+import classes.lanches.*;
 
 public class Pedido {
     private Lanche[] lanches = new Lanche[10];
 
     public void mostrar(){
+        for (Lanche lanche: this.lanches){
+            if (lanche == null) continue;
 
+            //Apresenta Lanche
+            if (lanche instanceof MiniPizza) {
+                MiniPizza lancheEspecial = (MiniPizza)lanche;
+                System.out.println(" - - - " + lancheEspecial.getNomeLanche() + " - " + lancheEspecial.getSabor() + " - - -");
+            }else {
+                System.out.println(" - - - " + lanche.getNomeLanche() + " - - -");
+            }
+
+            //sanduiche
+            if (lanche instanceof Sanduiche) {
+                //xburguer / xsalada
+                if (lanche instanceof XBurguer) {
+                    XBurguer lancheEspecial = (XBurguer) lanche;
+                    if (lancheEspecial.isAberto()) System.out.println("Lanche Aberto");
+                    else System.out.println("Lanche Fechado");
+                }
+
+                Sanduiche lancheEspecial = (Sanduiche)lanche;
+                System.out.print("ADICIONAIS: ");
+                for (String adicional : lancheEspecial.getAdicionais()) {
+                    if (adicional != null) {
+                        System.out.print(adicional + "  ");
+                    }
+                }
+                System.out.println();
+            }
+
+            //minipizza / pizza
+            if (lanche instanceof MiniPizza) {
+                //pizza
+                if (lanche instanceof Pizza) {
+                    Pizza lancheEspecial = (Pizza) lanche;
+                    System.out.println("Tamanho: " + lancheEspecial.getTamanho());
+                    System.out.println();
+                }
+
+
+                MiniPizza lancheEspecial = (MiniPizza) lanche;
+                if (lancheEspecial.isBordaRecheada()) {
+                    System.out.println("Borda Recheada Sabor: " + lancheEspecial.getSaborBorda());
+                } else System.out.println("Borda Fina");
+                System.out.println();
+
+            }
+
+            //mostra ingredientes
+            System.out.print("Ingredientes: ");
+            for (String ingrediente : lanche.getIngredientes()) {
+                if (ingrediente != null) System.out.print(ingrediente + "  ");
+            }
+            System.out.println();
+
+            System.out.printf("Valor: R$ %.2f\n", lanche.getValor());
+            System.out.println("-----------------------------------------");
+        }
+        System.out.printf("Valor total da comanda é de R$ %.2f\n", this.calcularValorTotal());
     }
+
     public double calcularValorTotal(){
-        return 0;
+        double valor = 0;
+        for (Lanche lanche: this.lanches){
+            if (lanche == null) continue;
+            valor += lanche.getValor();
+        }
+        return valor;
     }
 
     //GETTERS AND SETTERS
@@ -18,7 +82,10 @@ public class Pedido {
     }
     public void addLanche(Lanche lanche) {
         for (int i = 0; i < this.lanches.length; i++) {
-            if (this.lanches[i] != null) this.lanches[i] = lanche;
+            if (this.lanches[i] == null) {
+                this.lanches[i] = lanche;
+                return;
+            }
         }
     }
 }
