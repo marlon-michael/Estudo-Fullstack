@@ -8,7 +8,6 @@ public class CheckListItem {
     private String descricao;
     private boolean completa;
     private int ordem;
-    private CheckListItem[] checklist;
 
     public CheckListItem(){
         this.setUUID(UUID.randomUUID().toString());
@@ -49,15 +48,5 @@ public class CheckListItem {
     public void setOrdem(int ordem){
         this.ordem = ordem;
     }
-    public CheckListItem[] getChecklist() {
-        return checklist;
-    }
-    public void addChecklist(CheckListItem checklist) {
-        for (int i = 0; i < this.checklist.length; i++) {
-            if (this.checklist[i] == null) {
-                this.checklist[i] = checklist;
-                return;
-            }
-        }
-    }
+
 }

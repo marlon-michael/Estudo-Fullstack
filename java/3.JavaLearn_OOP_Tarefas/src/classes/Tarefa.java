@@ -8,6 +8,7 @@ public class Tarefa {
     private String descricao;
     private boolean completa;
     private int ordem;
+    private CheckListItem[] checklistItem;
 
     public Tarefa(){
         this.setUUID(UUID.randomUUID().toString());
@@ -15,6 +16,24 @@ public class Tarefa {
 
     public void completar(){
         this.setCompleta(true);
+    }
+
+    public boolean temCheckList(){
+        return this.getChecklistItem() != null;
+    }
+
+    public void criarCheckList(int tamanho){
+        this.setChecklistItem(new CheckListItem[tamanho]);
+    }
+
+    public boolean addCheckListItem(CheckListItem item){
+        for (int i = 0; i < this.getChecklistItem().length; i++) {
+            if (this.getChecklistItem()[i] == null) {
+                this.getChecklistItem()[i] = item;
+                return true;
+            }
+        }
+        return false;
     }
 
     //GETTERS AND SETTERS
@@ -48,4 +67,18 @@ public class Tarefa {
     public void setOrdem(int ordem){
         this.ordem = ordem;
     }
+    public CheckListItem[] getChecklistItem() {
+        return checklistItem;
+    }
+    public void setChecklistItem(CheckListItem[] checklistItem) {
+        this.checklistItem = checklistItem;
+    }
+//    public void addChecklist(CheckListItem checklist) {
+//        for (int i = 0; i < this.checklist.length; i++) {
+//            if (this.checklist[i] == null) {
+//                this.checklist[i] = checklist;
+//                return;
+//            }
+//        }
+//    }
 }
