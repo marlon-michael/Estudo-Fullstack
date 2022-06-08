@@ -1,0 +1,46 @@
+#Regular verbs
+
+  Base form | past form | past participle (HAD)
+  arrive, arrived, arrived
+  jump, jumped, jumped
+  look, looked, looked
+
+*Verbs ending  with "E": add "D" : like -> liked
+*Verbs ending with "Y": remove "Y" and add "IED": cry -> cried
+
+-positie: subject + verb + complement.
+  I watched tv last night.
+  They ran yesterday.
+  John deleted the picture.
+-negative: subject + didn't + verb (base form) + complement.
+  I didn't watch tv last night.
+  They didn't run yesterday.
+  John didn't delete the picture.
+-interrogative: did + subject + verb (base form) + complement.
+  Did you watch tv last night?
+  Did they run yesterday?
+  Did john delete the picture?
+
+#Irregular Verbs
+*all three verb forms are the same(group1)
+*same past and past participle(group2)
+*same base form and past participle(group3)
+*all three verb forms are different(group4)
+
+-group 1
+put / put / put
+cut / cut / cut
+hurt / hurt / hurt
+
+-group 2
+buy / bought / bought
+feel / felt / felt
+win / won / won
+
+-group 3
+come / came / come
+become / became / become
+run / ran / run
+
+-group 4
+break / broke / broken
