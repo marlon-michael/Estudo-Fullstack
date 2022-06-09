@@ -48,6 +48,7 @@ run / ran / run
 break / broke / broken
 go / went / gone
 
+-exercise
 -affirmative
   I bought a new car
   You found my keys
@@ -66,5 +67,6 @@ go / went / gone
   Did he write a book?
   Did you hide my cellphone?
   Did they speak about programming?
+  Did you run today?
 
   
