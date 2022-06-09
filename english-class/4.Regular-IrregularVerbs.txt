@@ -50,7 +50,7 @@ go / went / gone
 
 -exercise
 -affirmative
-  I bought a new car
+  I bought a house
   You found my keys
   He wrote a book
   She hid my cellphone
@@ -67,6 +67,4 @@ go / went / gone
   Did he write a book?
   Did you hide my cellphone?
   Did they speak about programming?
-  Did you run today?
-
-  
+  Did you win?
