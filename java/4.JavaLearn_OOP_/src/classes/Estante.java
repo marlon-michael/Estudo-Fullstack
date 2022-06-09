@@ -46,8 +46,9 @@ public class Estante{
             System.err.println("Index out of range");
             return null;
         }
+        Item item = this.getItens()[posição];
         this.getItens()[posição] = null;
-        return null;
+        return item;
     }
 
     //GETTERS AND SETTERS
