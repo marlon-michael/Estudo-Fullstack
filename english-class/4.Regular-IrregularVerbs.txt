@@ -27,20 +27,44 @@
 *same base form and past participle(group3)
 *all three verb forms are different(group4)
 
--group 1
-put / put / put
+i-a-u (begin / began / begun)
+o-e-o n (low / blew / blown)
+ea-o e-o en (come / came / come)
+a e-oo-a en (mistake / mistook / mostaken)
+
+-group 1:
 cut / cut / cut
 hurt / hurt / hurt
 
--group 2
+-group 2:
 buy / bought / bought
-feel / felt / felt
 win / won / won
 
--group 3
-come / came / come
+-group 3:
 become / became / become
 run / ran / run
 
--group 4
+-group 4:
 break / broke / broken
+go / went / gone
+
+-affirmative
+  I bought a new car
+  You found my keys
+  He wrote a book
+  She hid my cellphone
+  They spoke about programming
+-negative
+  I didn't buy a new car
+  He didn't find my keys
+  He didn't write a book
+  She didn't hide my cellphone
+  They didn't speak about programming
+-interrogative
+  Did she buy a new car?
+  Did you find my keys?
+  Did he write a book?
+  Did you hide my cellphone?
+  Did they speak about programming?
+
+  
