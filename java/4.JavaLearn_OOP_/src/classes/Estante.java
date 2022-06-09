@@ -2,6 +2,8 @@ package classes;
 
 import classes.itens.Item;
 
+import java.util.Locale;
+
 public class Estante{
     private int capacidadeMax;
     private Item[] itens;
@@ -12,8 +14,7 @@ public class Estante{
     }
 
     public boolean estanteCheia(){
-        if (quantidadeItens() == this.getCapacidadeMax()) return true;
-        return false;
+        return this.quantidadeItens() == this.getCapacidadeMax();
     }
 
     public int quantidadeItens(){
@@ -26,7 +27,10 @@ public class Estante{
 
     public Item buscarItem(String titulo){
         for (Item item: this.getItens()){
-            if (item.getTitulo().equalsIgnoreCase(titulo)) return item;
+            //check if item != null is necessary
+            if (item != null) {
+                if (item.getTitulo().toLowerCase().contains(titulo.toLowerCase())) return item;
+            }
         }
         return null;
     }
