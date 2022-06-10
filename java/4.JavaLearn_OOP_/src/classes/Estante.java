@@ -2,8 +2,6 @@ package classes;
 
 import classes.itens.Item;
 
-import java.util.Locale;
-
 public class Estante{
     private int capacidadeMax;
     private Item[] itens;
@@ -13,11 +11,11 @@ public class Estante{
         this.setItens(new Item[capacidadeMax]);
     }
 
-    public boolean estanteCheia(){
-        return this.quantidadeItens() == this.getCapacidadeMax();
+    public boolean isEstanteCheia(){
+        return this.getQuantidadeItens() == this.getCapacidadeMax();
     }
 
-    public int quantidadeItens(){
+    public int getQuantidadeItens(){
         int contador = 0;
         for (Item item: this.getItens()){
             if (item != null) contador++;
