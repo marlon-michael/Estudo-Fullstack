@@ -13,6 +13,7 @@ public abstract class Item {
         Scanner read = new Scanner(System.in);
         Avaliação avaliação = new Avaliação();
 
+        System.out.println("--------------------------");
         System.out.print("Digite seu nome: ");
         avaliação.setNome(read.nextLine());
         System.out.println();
@@ -24,7 +25,7 @@ public abstract class Item {
         System.out.print("Comente sobre a obra: ");
         read.nextLine();
         avaliação.setFeedback(read.nextLine());
-        System.out.println();
+        System.out.println("--------------------------");
 
         for (int i = 0; i < this.getAvaliações().length; i++){
             if (this.getAvaliações()[i] == null){

@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        while (true){
+        running: while (true){
             System.out.println("=============");
             System.out.println("MENU Locadora");
             System.out.println("=============");
@@ -21,6 +21,8 @@ public class Main {
             System.out.println("3 - Perquisar obra");
             System.out.println("4 - Excluir obra");
             System.out.println("5 - Avaliar obra");
+            System.out.println("0 - FECHAR MENU");
+            System.out.print(" Digite sua opção>");
             int option = read.nextInt();
             System.out.println("================================");
 
@@ -38,11 +40,16 @@ public class Main {
                     break;
                 case 4:
                     System.out.print("Escluir por posição: ");
-                    apresentaItem(estante.removerItem(read.nextInt()));
+                    estante.removerItem(read.nextInt());
+                    System.out.println();
+                    break;
+                case 5:
+                    System.out.print("Digite a posição da obra que deseja avaliar");
+                    estante.getItens()[read.nextInt()].avaliar();
+                    break;
                 default:
-                    System.out.println("------------------------------------------------");
-                    System.err.println("Opção inválida. Escolha uma das opções da lista!");
-                    System.out.println("------------------------------------------------");
+                    System.out.println("Finalizando Aplicação");
+                    break running;
             }
         }
 
@@ -64,6 +71,7 @@ public class Main {
             System.out.println("Ano de publicação: "+livro.getAnoPublicado());
             System.out.println("Autor: "+livro.getAutor());
         }
+        System.out.printf("Nota: %.1f\n",item.getAvaliaçãoTotal());
         System.out.println("Valor: R$ "+item.getValor());
         System.out.println("---------------------------");
     }
@@ -110,6 +118,7 @@ public class Main {
                 return null;
         }
 
+        read.nextLine();
         System.out.print("Digite o nome da obra");
         item.setTitulo(read.nextLine());
         System.out.println();
