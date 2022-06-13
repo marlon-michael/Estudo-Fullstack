@@ -5,6 +5,7 @@ alias gogit='cd ~ && cd Documents/git/entra21-java-2022'
 function push() {
   git add .;
   read $comm;
+  echo "ASD";
   echo $comm;
   if [ "$1" == "" ]
   then
