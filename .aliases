@@ -7,6 +7,7 @@ function push() {
   read comm
   if [ "$comm" == "" ]
   then
+    echo git commit -m "Entra21-2022";
     git commit -m "Entra21-2022";
   else
     echo git commit -m \"$comm\";
