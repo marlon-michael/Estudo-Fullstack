@@ -1,0 +1,17 @@
+alias pushd='git add . && git commit -m "Entra21" && git push entra21-java-2022'
+alias gogit='cd ~ && cd Documents/git/entra21-java-2022'
+
+
+function push() {
+  git add .;
+  read $comm;
+  echo $comm;
+  if [ "$1" == "" ]
+  then
+    git commit -m "Entra21-2022";
+  else
+    echo git commit -m \"$1\";
+    git commit -m \"$1\";
+  fi
+  git push entra21-java-2022;
+}
