@@ -13,5 +13,5 @@ function push() {
     echo commit: $comm;
     git commit -m "$comm";
   fi
-  git push entra21-java-2022;
+  git push entra21;
 }
