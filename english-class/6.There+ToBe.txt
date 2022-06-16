@@ -1,0 +1,41 @@
+*positive
+-singular: there is + conplement
+-plural: there are + complement
+  there is a snake next to my house
+  there are -- running all over
+
+*negative
+-singular: there is not / isn't / is no + complement
+-plural: there are not / aren't / are no+ complement
+  there is not a man in the house
+  there are not koalas in Brazil
+
+*interrogative
+-singular: is there + complement
+-plural: are there + complement
+  is there anything to drink?
+  are there cookies in the kitchen?
+
+*past form
+there was a fire --
+there were so --
+
+exercise
+
+there is a rat in my shoe
+there is bug in my script
+there are dogs in the street
+there are water in my glass
+there are lava in the volcano
+
+there isn't food in my dish
+there is not salad in the table
+there is no seats in this car
+there are no milk in the fridge
+there aren't correct sentences here
+
+is there any olive in the pizza?
+is there any ant in the anthill?
+is there any computer in the class?
+are there any juice to drink?
+are there monkeys in the jungle?
