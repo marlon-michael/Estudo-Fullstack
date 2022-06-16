@@ -20,22 +20,30 @@
 there was a fire --
 there were so --
 
+*future
+there will be + complement
+
 exercise
 
-there is a rat in my shoe
-there is bug in my script
-there are dogs in the street
+there is a rat in my shoe-
+there is a bug in my script
+there are dogs in the street-
 there are water in my glass
 there are lava in the volcano
 
 there isn't food in my dish
-there is not salad in the table
+there is no salad in the table-
 there is no seats in this car
-there are no milk in the fridge
+there is no milk in the fridge-
 there aren't correct sentences here
 
-is there any olive in the pizza?
+is there any olive on the pizza?
 is there any ant in the anthill?
 is there any computer in the class?
 are there any juice to drink?
 are there monkeys in the jungle?
+
+there was water in my glass
+there were cats in that house
+
+there will be money in my wallet
