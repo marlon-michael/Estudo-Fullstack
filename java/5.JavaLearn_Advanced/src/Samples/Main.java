@@ -150,7 +150,6 @@ public class Main {
                     read.nextLine();
                     String marca = read.nextLine().toLowerCase();
                     System.out.print("Digite o modelo do veiculo: ");
-                    read.nextLine();
                     String modelo = read.nextLine().toLowerCase();
 
                     if (carros.containsKey(marca)){
