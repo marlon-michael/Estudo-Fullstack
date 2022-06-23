@@ -1,21 +1,24 @@
 package classes.lanches;
 
-public abstract class Sanduiche extends Lanche {
-    private String[] adicionais = new String[10];
+import java.util.HashMap;
 
-    public void addAdicionais(String adicional){
-        for (int i = 0; i < this.adicionais.length; i++) {
-            if (this.adicionais[i] == null){
-                this.adicionais[i] = adicional;
-                return;
-            }
+public abstract class Sanduiche extends Lanche {
+    private HashMap<String, Double> adicionais = new HashMap<>();
+
+    @Override
+    public double getValor(){
+        double valorTotal = super.getValor();
+        for (String adicional: getAdicionais().keySet()){
+            valorTotal += getAdicionais().get(adicional);
         }
-        System.out.println("Lista de adicionais cheia: max 10");
+        return valorTotal;
     }
 
-
     //GETTERS AND SETTERS
-    public String[] getAdicionais(){
+    public void addAdicionais(String adicional, double valor){
+        this.adicionais.put(adicional, valor) ;
+    }
+    public HashMap<String, Double> getAdicionais(){
         return this.adicionais;
     }
 }

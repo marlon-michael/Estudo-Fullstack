@@ -68,10 +68,12 @@ public class Main {
             System.out.println("gostaria de algum adicional?");
             System.out.println("digite o adicional ou \"N\" para pular esta etapa: ");
             while (!adicional.equalsIgnoreCase("n")) {
-                System.out.print("adicional / \"N\": ");
-                adicional = read.next();
+                System.out.print("Informe o adicional / \"N\": ");
+                read.nextLine();
+                adicional = read.nextLine();
                 if (!adicional.equalsIgnoreCase("n")) {
-                    ((Sanduiche) lanche).addAdicionais(adicional);
+                    System.out.print("Informe o valor: ");
+                    ((Sanduiche) lanche).addAdicionais(adicional, read.nextDouble());
                 }
             }
             System.out.println();

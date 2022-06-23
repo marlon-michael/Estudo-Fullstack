@@ -2,6 +2,8 @@ package classes.pedidos;
 
 import classes.lanches.*;
 
+import java.util.HashMap;
+
 public class Pedido {
     private Lanche[] lanches = new Lanche[10];
 
@@ -27,10 +29,8 @@ public class Pedido {
 
                 Sanduiche lancheEspecial = (Sanduiche)lanche;
                 System.out.print("ADICIONAIS: ");
-                for (String adicional: lancheEspecial.getAdicionais()) {
-                    if (adicional != null) {
-                        System.out.print(adicional + "  ");
-                    }
+                for (String adicional: lancheEspecial.getAdicionais().keySet()) {
+                    System.out.print(adicional.toUpperCase() + "   ");
                 }
                 System.out.println();
             }

@@ -10,6 +10,9 @@ public class Main {
     public static Scanner read = new Scanner(System.in);
 
     public static void main(String[] args) {
+        //exe 1 - ArrayList
+        //exe 2 - HashMap
+        //exe 3 - Carro: HashMap + ArrayList
 
         //add integer numbers into arraylist until read num be zero, then print array
         //ArrayList array = new ArrayList(); // valor generico não primitivos
@@ -29,6 +32,7 @@ public class Main {
 
         System.out.print("Digite o indice do programa: ");
         int exe = read.nextInt();
+        System.out.println();
 
         if (exe == 1){
             ArrayList<Integer> array = new ArrayList<>();
@@ -109,25 +113,23 @@ public class Main {
 
                 if (escolha == 1){
                     if (carros.size()<1){
-                        System.out.println("Inventário de veículos vázio");
+                        System.out.println("Inventário de veículos vázio\n");
                         continue;
                     }
                     for (String marca: carros.keySet()){
                         System.out.println("Marca: "+marca);
-                        System.out.println("\nModelos disponíveis");
+                        System.out.println("Modelos disponíveis");
                         for (Carro carro: carros.get(marca)){
-                            System.out.println(carro.getModelo());
+                            System.out.printf("Modelo: %s  |  Valor: R$ %.2f\n",carro.getModelo(), carro.getValor());
                         }
                         System.out.println();
                     }
-                    System.out.println(carros);
                 }
                 else if (escolha == 2){
                     System.out.print("Digite a marca do veiculo: ");
                     read.nextLine();
                     String marca = read.nextLine().toLowerCase();
                     System.out.print("Digite o modelo do veiculo: ");
-                    read.nextLine();
                     String modelo = read.nextLine().toLowerCase();
                     System.out.print("Digite o valor do veiculo: ");
                     double valor = read.nextDouble();
@@ -136,14 +138,11 @@ public class Main {
                     carro.setModelo(modelo);
                     carro.setValor(valor);
 
-                    if (carros.containsKey(marca)){
-                        carros.get(marca).add(carro);
+                    if (!carros.containsKey(marca)){
+                        carros.put(marca , new ArrayList<>());
                     }
-                    else{
-                        ArrayList<Carro> modelos = new ArrayList<>(15);
-                        modelos.add(carro);
-                        carros.put(marca , modelos);
-                    }
+                    carros.get(marca).add(carro);
+                    System.out.println();
                 }
                 else if (escolha == 3){
                     System.out.print("Digite a marca do veiculo: ");
@@ -153,18 +152,21 @@ public class Main {
                     String modelo = read.nextLine().toLowerCase();
 
                     if (carros.containsKey(marca)){
-                        boolean has = false;
+                        boolean find = false;
                         for (int i = 0; i < carros.get(marca).size(); i++) {
                             if (carros.get(marca).get(i).getModelo().equals(modelo)){
+                                System.out.println("Modelo: "+carros.get(marca).get(i).getModelo()+"Vendido por R$ "+carros.get(marca).get(i).getValor());
                                 carros.get(marca).remove(i);
-                                has = true;
+                                if (carros.get(marca).isEmpty()) carros.remove(marca);
+                                find = true;
+                                break;
                             }
                         }
-                        if (!has) System.out.println("Modelo não existe no inventário");
+                        if (!find) System.out.println("Modelo não existe no inventário");
                     }
-                    else {
-                        System.out.println("Marca não existe no inventário");
-                    }
+                    else System.out.println("Marca não existe no inventário");
+
+                    System.out.println();
                 }
 
                 else break;
