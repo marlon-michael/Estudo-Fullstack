@@ -22,7 +22,10 @@ public class Aviao implements MeioDeTransporte {
     public int quantidadeLivre() {
         int count = 0;
         for (ArrayList<AssentoVoo> assento_i: this.getAssentos()){
-            count += assento_i.size();
+            for (AssentoVoo assento_j: assento_i){
+                if (!assento_j.isOcupado()) count += assento_i.size();
+
+            }
         }
         return count;
     }
@@ -46,7 +49,7 @@ public class Aviao implements MeioDeTransporte {
                 }
             }
         }
-        
+
         return null;
     }
 
