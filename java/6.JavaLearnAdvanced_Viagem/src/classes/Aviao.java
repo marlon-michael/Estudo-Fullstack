@@ -3,60 +3,75 @@ package classes;
 import java.util.ArrayList;
 
 public class Aviao implements MeioDeTransporte {
-    private ArrayList<ArrayList<AssentoVoo>> assentos;
+    private ArrayList<AssentoVoo> assentos = new ArrayList<>();
 
-    @Override
+    public Aviao(int linhasCadeiraLuxo, int linhasCadeiraEconomica){
+        for (int i = 0; i < linhasCadeiraLuxo*4; i++){
+            AssentoVoo assento = new AssentoVoo();
+            assento.setClasse("Luxo");
+            assento.setCodigo(""+(i+1));
+            assentos.add(assento);
+        }
+        for (int i = 0; i < linhasCadeiraLuxo*6; i++){
+            AssentoVoo assento = new AssentoVoo();
+            assento.setClasse("Economico");
+            assento.setCodigo(""+(i+1));
+            assentos.add(assento);
+        }
+    }
+
     public boolean verificaOcupacao(String assento) {
-        for (ArrayList<AssentoVoo> assento_i: this.getAssentos()){
-            for (AssentoVoo assento_j: assento_i){
-                if (assento_j.getCodigo().equalsIgnoreCase(assento)){
-                    return assento_j.isOcupado();
-                }
-
+        for (AssentoVoo assento_i: this.getAssentos()){
+            if (assento_i.getCodigo().equalsIgnoreCase(assento)){
+                return assento_i.isOcupado();
             }
         }
         System.out.println("\nAssento não existe\n");
         return false;
     }
-    @Override
+
     public int quantidadeLivre() {
         int count = 0;
-        for (ArrayList<AssentoVoo> assento_i: this.getAssentos()){
-            for (AssentoVoo assento_j: assento_i){
-                if (!assento_j.isOcupado()) count += assento_i.size();
-
-            }
+        for (AssentoVoo assento_i: this.getAssentos()){
+            if (!assento_i.isOcupado()) count += 1;
         }
         return count;
     }
-    @Override
+
     public void mostrarAssentos() {
         System.out.println("ASSENTOS:");
-        for (ArrayList<AssentoVoo> assento_i: this.getAssentos()){
-            for (AssentoVoo assento_j: assento_i){
-                System.out.println("Classe: "+assento_j.getClasse()+" | Codigo: "+assento_j.getCodigo()+" | Ocupado: "+assento_j.isOcupado()+"  ");
-            }
-            System.out.println();
+        for (AssentoVoo assento_i: this.getAssentos()){
+            System.out.println("Classe: "+assento_i.getClasse()+" | Codigo: "+assento_i.getCodigo()+" | Ocupado: "+assento_i.isOcupado()+"  ");
         }
     }
-    @Override
-    public Assento getAssento(String assento) {
-        for (ArrayList<AssentoVoo> assento_i: this.getAssentos()){
-            for (AssentoVoo assento_j: assento_i){
-                if (assento_j.getCodigo().equalsIgnoreCase(assento)){
-                    assento_j.ocupar();
-                    return assento_j;
-                }
+
+    public AssentoVoo getAssento(String assento, String classe) {
+        for (AssentoVoo assento_i: this.getAssentos()){
+            if (assento_i.getCodigo().equalsIgnoreCase(assento) && assento_i.getClasse().equalsIgnoreCase(classe)){
+                assento_i.ocupar();
+                return assento_i;
             }
         }
-
+        System.out.println("\nAssento não existe\n");
         return null;
     }
 
-    public ArrayList<ArrayList<AssentoVoo>> getAssentos() {
+    public AssentoVoo getAssento(String assento) {
+        for (AssentoVoo assento_i: this.getAssentos()){
+            if (assento_i.getCodigo().equalsIgnoreCase(assento)){
+                assento_i.ocupar();
+                return assento_i;
+            }
+        }
+        System.out.println("\nAssento não existe\n");
+        return null;
+    }
+
+    //GETTERS AND SETTERS
+    public ArrayList<AssentoVoo> getAssentos() {
         return assentos;
     }
-    public void setAssentos(ArrayList<ArrayList<AssentoVoo>> assentos) {
+    public void setAssentos(ArrayList<AssentoVoo> assentos) {
         this.assentos = assentos;
     }
 }
