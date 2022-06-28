@@ -41,7 +41,7 @@ public class Onibus implements MeioDeTransporte {
             System.out.println("Lugar: "+assento_i.getLugar()+" | Ocupado: "+assento_i.isOcupado()+"  ");
         }*/
 
-        int i = 1;
+        int i = 0;
         for (AssentoOnibus assento: this.getAssentos()){
             i++;
             if (assento.isOcupado()) System.out.print("[XX] ");

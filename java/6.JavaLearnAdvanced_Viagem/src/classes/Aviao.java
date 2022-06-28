@@ -40,8 +40,29 @@ public class Aviao implements MeioDeTransporte {
 
     public void mostrarAssentos() {
         System.out.println("ASSENTOS:");
-        for (AssentoVoo assento_i: this.getAssentos()){
-            System.out.println("Classe: "+assento_i.getClasse()+" | Codigo: "+assento_i.getCodigo()+" | Ocupado: "+assento_i.isOcupado()+"  ");
+        int i = 0;
+        for (AssentoVoo assento: this.getAssentos()){
+            i++;
+            if (assento.isOcupado()) System.out.print("[XX] ");
+            else {
+                if (assento.getCodigo().length()<2) System.out.print("[0"+assento.getCodigo()+"] ");
+                else System.out.print("["+assento.getCodigo()+"] ");
+            }
+
+            if (assento.getClasse().equalsIgnoreCase("Luxo")) {
+                if (i == 2) System.out.print("     ||      ");
+                else if (i == 4){
+                    System.out.println();
+                    i = 0;
+                }
+            }
+            else if (assento.getClasse().equalsIgnoreCase("Economico")){
+                if (i == 3) System.out.print("|| ");
+                else if (i == 6) {
+                    System.out.println();
+                    i = 0;
+                }
+            }
         }
     }
 

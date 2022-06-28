@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/1.JavaLearn_Basic/1.JavaLearn_Basic.iml" filepath="$PROJECT_DIR$/1.JavaLearn_Basic/1.JavaLearn_Basic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2.JavaLearn_OOP_Lanches/2.JavaLearn_OOP_Lanches.iml" filepath="$PROJECT_DIR$/2.JavaLearn_OOP_Lanches/2.JavaLearn_OOP_Lanches.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3.JavaLearn_OOP_Tarefas/3.JavaLearn_OOP_Tarefas.iml" filepath="$PROJECT_DIR$/3.JavaLearn_OOP_Tarefas/3.JavaLearn_OOP_Tarefas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/4.JavaLearn_OOP_Locadora/4.JavaLearn_OOP_Locadora.iml" filepath="$PROJECT_DIR$/4.JavaLearn_OOP_Locadora/4.JavaLearn_OOP_Locadora.iml" />
+      <module fileurl="file://$PROJECT_DIR$/5.JavaLearnAdvanced/5.JavaLearnAdvanced.iml" filepath="$PROJECT_DIR$/5.JavaLearnAdvanced/5.JavaLearnAdvanced.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6.JavaLearnAdvanced_Viagem/6.JavaLearnAdvanced_Viagem.iml" filepath="$PROJECT_DIR$/6.JavaLearnAdvanced_Viagem/6.JavaLearnAdvanced_Viagem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BatalhaNaval/BatalhaNaval.iml" filepath="$PROJECT_DIR$/BatalhaNaval/BatalhaNaval.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HangmanGame/HangmanGame.iml" filepath="$PROJECT_DIR$/HangmanGame/HangmanGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/POO2/POO2.iml" filepath="$PROJECT_DIR$/POO2/POO2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TicTacToe/TicTacToe.iml" filepath="$PROJECT_DIR$/TicTacToe/TicTacToe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/java.iml" filepath="$PROJECT_DIR$/.idea/java.iml" />
+    </modules>
+  </component>
+</project>
