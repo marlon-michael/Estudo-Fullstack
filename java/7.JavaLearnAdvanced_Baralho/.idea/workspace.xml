@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60b50482-6ecc-4944-9751-f00024f4f37e" name="Changes" comment="" />
+    <list default="true" id="207c6300-c75c-4310-9021-b467211b5dbf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,13 +11,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2B00RJt7utoPnJA4K117ESrHShI" />
+  <component name="ProjectId" id="2BE8fMTWOips8dTK0i6QIb46BPs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,14 +27,13 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/marlonp/Documents/git/entra21-java-2022/java/6.JavaLearnAdvanced_Viagem",
-    "settings.editor.selected.configurable": "inlay.hints"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="6.JavaLearnAdvanced_Viagem" />
+      <module name="7.JavaLearnAdvanced_Baralho" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -47,16 +47,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="60b50482-6ecc-4944-9751-f00024f4f37e" name="Changes" comment="" />
-      <created>1656027690833</created>
+      <changelist id="207c6300-c75c-4310-9021-b467211b5dbf" name="Changes" comment="" />
+      <created>1656459988551</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1656027690833</updated>
+      <updated>1656459988551</updated>
     </task>
     <servers />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
