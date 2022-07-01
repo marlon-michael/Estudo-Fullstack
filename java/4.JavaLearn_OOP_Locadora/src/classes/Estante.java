@@ -2,13 +2,14 @@ package classes;
 
 import classes.itens.Item;
 
+import java.util.ArrayList;
+
 public class Estante{
     private int capacidadeMax;
-    private Item[] itens;
+    private ArrayList<Item> itens = new ArrayList<>();
 
     public Estante(int capacidadeMax){
         this.setCapacidadeMax(capacidadeMax);
-        this.setItens(new Item[capacidadeMax]);
     }
 
     public boolean isEstanteCheia(){
@@ -16,41 +17,28 @@ public class Estante{
     }
 
     public int getQuantidadeItens(){
-        int contador = 0;
-        for (Item item: this.getItens()){
-            if (item != null) contador++;
-        }
-        return contador;
+        return this.itens.size();
     }
 
     public Item buscarItem(String titulo){
-        for (Item item: this.getItens()){
-            //check if item != null is necessary
-            if (item != null) {
-                if (item.getTitulo().toLowerCase().contains(titulo.toLowerCase())) return item;
-            }
+        return this.getItens().stream().filter(
+                i->i.getTitulo().toLowerCase().contains(titulo.toLowerCase())
+        ).findFirst().orElse(null);
+
+        /*for (Item item: this.getItens()){
+            if (item.getTitulo().toLowerCase().contains(titulo.toLowerCase())) return item;
         }
-        return null;
+        return null;*/
     }
 
     public boolean addItem(Item item){
-        for (int i = 0; i < this.getCapacidadeMax(); i++){
-            if (this.getItens()[i] == null) {
-                this.getItens()[i] = item;
-                return true;
-            }
-        }
-        return false;
+        if (isEstanteCheia()) return false;
+        this.itens.add(item);
+        return true;
     }
 
     public Item removerItem(int posição) {
-        if (posição > this.getCapacidadeMax()-1 || posição < 0) {
-            System.err.println("Index out of range");
-            return null;
-        }
-        Item item = this.getItens()[posição];
-        this.getItens()[posição] = null;
-        return item;
+        return this.getItens().remove(posição);
     }
 
     //GETTERS AND SETTERS
@@ -60,10 +48,10 @@ public class Estante{
     public void setCapacidadeMax(int capacidadeMax) {
         this.capacidadeMax = capacidadeMax;
     }
-    public Item[] getItens() {
+    public ArrayList<Item> getItens() {
         return itens;
     }
-    public void setItens(Item[] itens) {
+    public void setItens(ArrayList<Item> itens) {
         this.itens = itens;
     }
 }

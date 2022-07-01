@@ -1,4 +1,4 @@
-package Exercise;
+package Collections;
 
 import java.util.HashMap;
 

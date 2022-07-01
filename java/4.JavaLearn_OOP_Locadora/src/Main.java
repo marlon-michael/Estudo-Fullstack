@@ -1,4 +1,4 @@
-import classes.Avaliacao.Avaliação;
+import classes.avaliacao.Avaliação;
 import classes.Estante;
 import classes.itens.Item;
 import classes.itens.DVD;
@@ -72,7 +72,7 @@ public class Main {
 
     public static void apresentaItem(Item item){
         for (int i = 0; i < estante.getCapacidadeMax(); i++){
-            if (item == estante.getItens()[i]){
+            if (item == estante.getItens().get(i)){
                 System.out.println("Id da obra: "+ i+1);
             }
         }
@@ -102,7 +102,7 @@ public class Main {
         System.out.println("- - - - - - - - - - - - - - - - - - - - -");
         for (int i = 0; i < estante.getCapacidadeMax(); i++){
             System.out.println("Posição da obra na lista: " + i+1);
-            apresentaItem(estante.getItens()[i]);
+            apresentaItem(estante.getItens().get(i));
         }
     }
 

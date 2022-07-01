@@ -1,6 +1,4 @@
-package Samples;
-
-import Exercise.Carro;
+import Collections.Carro;
 
 import java.util.ArrayList;
 import java.util.HashMap;

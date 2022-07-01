@@ -1,4 +1,4 @@
-package classes.Avaliacao;
+package classes.avaliacao;
 
 public class Avaliação {
     private double avaliação;
