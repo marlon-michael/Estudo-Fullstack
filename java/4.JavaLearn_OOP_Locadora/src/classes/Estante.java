@@ -5,16 +5,7 @@ import classes.itens.Item;
 import java.util.ArrayList;
 
 public class Estante{
-    private int capacidadeMax;
     private ArrayList<Item> itens = new ArrayList<>();
-
-    public Estante(int capacidadeMax){
-        this.setCapacidadeMax(capacidadeMax);
-    }
-
-    public boolean isEstanteCheia(){
-        return this.getQuantidadeItens() == this.getCapacidadeMax();
-    }
 
     public int getQuantidadeItens(){
         return this.itens.size();
@@ -32,7 +23,6 @@ public class Estante{
     }
 
     public boolean addItem(Item item){
-        if (isEstanteCheia()) return false;
         this.itens.add(item);
         return true;
     }
@@ -42,12 +32,6 @@ public class Estante{
     }
 
     //GETTERS AND SETTERS
-    public int getCapacidadeMax() {
-        return capacidadeMax;
-    }
-    public void setCapacidadeMax(int capacidadeMax) {
-        this.capacidadeMax = capacidadeMax;
-    }
     public ArrayList<Item> getItens() {
         return itens;
     }

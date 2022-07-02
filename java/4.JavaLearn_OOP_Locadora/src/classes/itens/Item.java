@@ -43,6 +43,9 @@ public abstract class Item {
          */
     }
 
+    public abstract void montarDetalhes(Scanner read);
+    public abstract void mostrarDetalhes();
+
     //GETTERS AND SETTERS
     public String getTitulo() {
         return titulo;
