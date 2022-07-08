@@ -28,6 +28,9 @@ public abstract class Item {
         avaliação.setFeedback(read.nextLine());
         System.out.println("--------------------------");
 
+        System.out.println("Avaliação feita em: "+avaliação.setTimeToNow());
+        System.out.println("--------------------------");
+
         this.getAvaliações().add(avaliação);
     }
 

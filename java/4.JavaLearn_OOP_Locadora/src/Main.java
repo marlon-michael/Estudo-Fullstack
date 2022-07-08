@@ -7,20 +7,16 @@ import classes.itens.Item;
 import classes.itens.DVD;
 import classes.itens.Livro;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Main {
     public static Scanner read = new Scanner(System.in);
     public static Loja loja = new Loja();
-    public static Estante estante = new Estante();
 
     public static void main(String[] args) {
-        //todo Adicionar estante
-        //todo Perguntar em que estante adicionar o item cirado
-        //todo Procurar item em cada uma das estantes
-        //todo Perguntar de qual estante remover
-        //todo Mostrar de todas as estantes
 
         running: while (true){
             System.out.println("=============");
@@ -29,47 +25,70 @@ public class Main {
             for (EMenu menu: EMenu.values()){
                 System.out.println(menu.getOpcao() +" - "+ menu.getDescricao());
             }
+            System.out.println();
+            System.out.print("Digite o indice: ");
             EMenu option = EMenu.getByOpcao(read.nextInt());
             System.out.println("================================");
 
             switch (option){
+                case ADICIONAR_ESTANTE:
+                    System.out.print("Digite o nome da estante: ");
+                    read.nextLine();
+                    adicionarEstante(read.nextLine());
+                    break;
                 case ADICIONAR_ITEM:
-                    adicionaNaEstante();
+                    System.out.println("Informe o indice da estante em que deseja adicionar o item");
+                    System.out.print("Digite o indice: ");
+                    read.nextLine();
+                    adicionaNaEstante(read.nextLine());
                     break;
                 case MOSTRAR_ITEM:
                     listarObras();
                     break;
                 case BUSCAR_ITEM:
                     System.out.print("Pesquisar por título: ");
-                    Item item = estante.buscarItem(read.nextLine());
-                    apresentaItem(item);
-                    System.out.println();
-                    for (EMenuItem menu: EMenuItem.values()){
-                        System.out.println(menu.getOpcao()+" - "+menu.getDescricao());
-                    }
-                    System.out.print("Digite a opção: ");
-                    EMenuItem option2 = EMenuItem.getByOpcao(read.nextInt());
+                    read.nextLine();
+                    String titulo = read.nextLine();
+                    for (Estante estante: loja.getEstantes().values()){
+                        Item item = estante.buscarItem(titulo);
+                        if (item == null) continue;
+                        apresentaItem(item);
+                        System.out.println();
+                        for (EMenuItem menu: EMenuItem.values()){
+                            System.out.println(menu.getOpcao()+" - "+menu.getDescricao());
+                        }
+                        System.out.print("Digite a opção: ");
+                        EMenuItem option2 = EMenuItem.getByOpcao(read.nextInt());
 
-                    switch (option2){
-                        case BUSCAR_ITEM:
-                            item.avaliar();
-                            break;
-                        case ADICIONAR_ITEM:
-                            for (Avaliação avaliação: item.getAvaliações()){
-                                if (avaliação != null){
-                                    System.out.println("Nome/Apelido: "+avaliação.getNome());
-                                    System.out.println("Nota: "+avaliação.getAvaliação());
-                                    System.out.println("Feedback: "+avaliação.getFeedback());
-                                    System.out.println("----------------------------------");
+                        switch (option2){
+                            case BUSCAR_ITEM:
+                                item.avaliar();
+                                break;
+                            case ADICIONAR_ITEM:
+                                for (Avaliação avaliação: item.getAvaliações()){
+                                    if (avaliação != null){
+                                        System.out.println("Nome/Apelido: "+avaliação.getNome());
+                                        System.out.println("Nota: "+avaliação.getAvaliação());
+                                        System.out.println("Feedback: "+avaliação.getFeedback());
+
+                                        System.out.println("Avaliação feita em: "+avaliação.getTime());
+                                        System.out.println("----------------------------------");
+                                    }
                                 }
-                            }
-                            break;
-                        case VOLTAR: break;
+                                break;
+                            case VOLTAR: break;
+                        }
+                        break;
                     }
                     break;
                 case REMOVER_ITEM:
-                    System.out.print("Excluir por posição: ");
-                    estante.removerItem(read.nextInt());
+                    System.out.println("Excluir por posição: ");
+                    System.out.print("Digite o nome da estante: ");
+                    read.nextLine();
+                    String ind = read.nextLine();
+                    System.out.println();
+                    System.out.print("Digite o indice da obra na estante: ");
+                    loja.getEstantes().get(ind).removerItem(read.nextInt());
                     System.out.println();
                     break;
                 case SAIR:
@@ -81,9 +100,11 @@ public class Main {
     }
 
     public static void apresentaItem(Item item){
-        for (int i = 0; i < estante.getItens().size(); i++){
-            if (item == estante.getItens().get(i)){
-                System.out.println("Id da obra: "+ i+1);
+        for (Estante estante: loja.getEstantes().values()){
+            for (int i = 0; i < estante.getItens().size(); i++){
+                if (item == estante.getItens().get(i)){
+                    System.out.println("Id da obra: "+ i);
+                }
             }
         }
         System.out.println("Titulo: "+item.getTitulo());
@@ -95,19 +116,31 @@ public class Main {
     }
 
     public static void listarObras(){
-        System.out.println("- - - - - - - - - - - - - - - - - - - - -");
-        System.out.println("Quantidade de itens na estante: "+estante.getQuantidadeItens());
-        System.out.println("- - - - - - - - - - - - - - - - - - - - -");
-        for (int i = 0; i < estante.getItens().size(); i++){
-            System.out.println("Posição da obra na lista: " + i+1);
-            apresentaItem(estante.getItens().get(i));
+        for (Estante estante: loja.getEstantes().values()) {
+            System.out.println("- - - - - - - - - - - - - - - - - - - - -");
+            System.out.println("Quantidade de itens na estante: "+estante.getQuantidadeItens());
+            System.out.println("- - - - - - - - - - - - - - - - - - - - -");
+            for (int i = 0; i < estante.getItens().size(); i++) {
+                System.out.println("Posição da obra na lista: " + i);
+                apresentaItem(estante.getItens().get(i));
+            }
+            System.out.println();
         }
     }
 
-    public static void adicionaNaEstante(){
+    public static void adicionarEstante(String nome){
+        for (String estante: loja.getEstantes().keySet()) {
+            if (nome == estante)
+                loja.getEstantes().put(nome, new Estante());
+                return;
+        }
+        System.out.println("Nenhuma estante encontrada");
+    }
+
+    public static void adicionaNaEstante(String ind){
         Item createdItem = criaItem();
         if (createdItem == null) return;
-        estante.addItem(createdItem);
+        loja.getEstantes().get(ind).addItem(createdItem);
 
         listarObras();
     }
@@ -135,12 +168,11 @@ public class Main {
         }
 
         read.nextLine();
-        System.out.print("Digite o nome da obra");
+        System.out.print("Digite o nome da obra: ");
         item.setTitulo(read.nextLine());
         System.out.println();
 
         System.out.print("Digite o gênero: ");
-        read.nextLine();
         item.setGenero(read.nextLine());
         System.out.println();
 
