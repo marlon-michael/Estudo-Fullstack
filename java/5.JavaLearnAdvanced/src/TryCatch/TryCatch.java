@@ -24,6 +24,10 @@ public class TryCatch {
             finally{
                 if (num != null) System.out.println("Número digitado: "+num);
             }
+
+            //testes
+            assert (num != null): "variavel num precisa ter um valor";//precisa ser diferente de null
+
         }
     }
 }

@@ -1,3 +1,4 @@
+import classes.EMneu;
 import classes.cliente.Cliente;
 import classes.lanches.*;
 import classes.pedidos.Pedido;
@@ -33,24 +34,20 @@ public class Main {
     }
 
     private static Lanche montarLanche(){
-        System.out.println("digite 1 para pedir um x-salada");
-        System.out.println("digite 2 para pedir um x-burguer");
-        System.out.println("digite 3 para pedir um hot dog");
-        System.out.println("digite 4 para pedir um misto quente");
-        System.out.println("digite 5 para pedir uma minipizza");
-        System.out.println("digite 6 para pedir uma pizza");
+        for (EMneu item: EMneu.values()){
+            System.out.println("("+item.getNum()+") - "+item.getNome());
+        }
         System.out.print("Faça o pedido: ");
-        int pedidoLanche = read.nextInt();
+        EMneu pedidoLanche = (EMneu) read.nextInt();
 
-        if (pedidoLanche == 1) lanche = new XSalada();
-        else if (pedidoLanche == 2) lanche = new XBurguer();
-        else if (pedidoLanche == 3) lanche = new HotDog();
-        else if (pedidoLanche == 4) lanche = new MistoQuente();
-        else if (pedidoLanche == 5) lanche = new MiniPizza();
-        else if (pedidoLanche == 6) lanche = new Pizza();
-        else {
-            System.err.println(" 🔺 Escolha uma opção válida! 🔺 ");
-            return null;
+        switch(pedidoLanche){
+            case XSALADA -> lanche = new XSalada();
+            case XBURGUER -> lanche = new XBurguer();
+            case MISTOQUENTE -> lanche = new MistoQuente();
+            case HOTDOG -> lanche = new HotDog();
+            case MINIPIZZA -> lanche = new MiniPizza();
+            case PIZZA -> lanche = new Pizza();
+            default -> System.err.println(" 🔺 Escolha uma opção válida! 🔺 ");
         }
         System.out.println();
 
