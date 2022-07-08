@@ -25,5 +25,6 @@ function push() {
     echo commit: $comm;
     git commit -m "$comm";
   fi
+  git push;
   git push entra21;
 }
