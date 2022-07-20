@@ -31,7 +31,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.MainTwo">
     <configuration name="Lambda.Lambda" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lambda.Lambda" />
       <module name="5.JavaLearn_Advanced" />
@@ -48,6 +48,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTwo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainTwo" />
+      <module name="5.JavaLearn_Advanced" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -80,6 +87,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainTwo" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TryCatch" />
         <item itemvalue="Application.TimeDate" />
