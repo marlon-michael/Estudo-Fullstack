@@ -62,18 +62,22 @@ alter table tarefa add column id_lista bigint not null;
   ### manipulation ####
   ####################
 
-  # insert, update, search/select
+  # insert, update, search/select, delete
 
 
-insert into lista(nome, cap_max)
-values ('jogatina', 10);
+insert into lista(nome, cap_max) values ('jogatina', 10);
+insert into tarefa(titulo, descricao, id_lista) values ('cyberpunk 2077', 'all afternoon', 1);
 
-insert into tarefa(titulo, descricao, id_lista)
-values ('cyberpunk 2077', 'all afternoon', 2);
 
 update tarefa set completa = 1 where id = 2;
+update tarefa set titulo = 'ytube The Quarry',descricao = 'MaxMRM' where id = 3;
+
+
+delete from tarefa where id_lista = 2;
+delete from lista where id = 2;
+
 
 select * from tarefa t;
-select * from tarefa where id_lista = 2;
 select * from tarefa where id_lista = 1 and completa = 0;
+select titulo,descricao from tarefa where id_lista = 2;
 select * from tarefa where id_lista in (1,2);
