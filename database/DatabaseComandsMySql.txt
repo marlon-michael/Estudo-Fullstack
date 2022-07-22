@@ -5,6 +5,8 @@
 
   # create, alter, delete
 
+ # data types
+ # int, big int, decimal /double / decimal(6,2)#numeric precision, varchar(50)#text and length, bit(1), time
 
 create database appdata;
 
@@ -34,15 +36,6 @@ create table checklist_item(
 	id bigint not null primary key auto_increment,
 	titulo varchar(50) not null,
 	descricao varchar(150)
-);
-
-create table checklist(
-	id_tarefa bigint not null,
-	id_checklist_item bigint not null,
-	completa bit(1) not null default(b'0'),
-	foreign key (id_tarefa) references tarefa(id),
-	foreign key (id_checklist_item) references checklist_item(id),
-	primary key (id_tarefa, id_checklist_item)
 );
 
 create table checklist(
