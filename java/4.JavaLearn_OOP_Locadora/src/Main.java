@@ -7,8 +7,6 @@ import classes.itens.Item;
 import classes.itens.DVD;
 import classes.itens.Livro;
 
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 

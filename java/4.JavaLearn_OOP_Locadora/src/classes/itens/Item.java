@@ -35,11 +35,10 @@ public abstract class Item {
     }
 
     public double getAvaliaçãoTotal(){
-        double total = 0;
-
         return this.avaliações.stream().mapToDouble(Avaliação::getAvaliação).sum()/getAvaliações().size();
 
-        /*for (Avaliação avaliação: this.getAvaliações()){
+        /*int total = 0;
+        for (Avaliação avaliação: this.getAvaliações()){
             total += avaliação.getAvaliação();
         }
         return total/this.getAvaliações().size();

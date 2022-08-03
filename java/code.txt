@@ -1,8 +1,0 @@
-public int makeChocolate(int small, int big, int goal) {
-  int r = 0;
-  if (big*5 + small < goal || goal%5 > small) return -1;
-  //goal < big*5 
-  if (goal > big*5 && goal-big*5 <= small) return goal-big*5;
-  if (big*5 + small >= goal && goal%5 <= small) return goal%5;
-  return -9;
-}
