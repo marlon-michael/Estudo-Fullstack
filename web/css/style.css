@@ -1,0 +1,38 @@
+*{font-family: 'Poppins';font-size: 22px;}
+/* almarai-regular - arabic */
+body {
+    margin: 50px;
+    background-color: #404b6f;
+}
+a{
+    border-radius: 10px;
+    color: #1f1f1f;
+    transition: 0.5s;
+}
+a:hover{
+    /* !important tem prioridade sobre outras modificações */
+    color: springgreen!important;
+    transition: 0.5s;
+    margin-left: 10px;;
+}
+a[id=menu]{
+    color: rgb(226, 145, 38); 
+}
+#temas{
+    display: flexbox;
+}
+.green-text{
+    color: springgreen;
+}
+
+
+/* table */
+table{
+    width: 100%;
+    border: 3px solid black;
+    text-align: left;
+    border-spacing: 0;
+}
+th{
+    background-color: #3a3a8d;
+}
