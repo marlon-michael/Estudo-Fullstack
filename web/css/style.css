@@ -1,10 +1,14 @@
 *{font-family: 'Poppins';font-size: 22px;}
 /* almarai-regular - arabic */
 body {
-    margin: 50px;
+    margin: 7%;
     background-color: #404b6f;
 }
+li{
+    list-style-type: circle;
+}
 a{
+    text-decoration: none;
     border-radius: 10px;
     color: #1f1f1f;
     transition: 0.5s;
@@ -15,24 +19,41 @@ a:hover{
     transition: 0.5s;
     margin-left: 10px;;
 }
-a[id=menu]{
-    color: rgb(226, 145, 38); 
-}
-#temas{
-    display: flexbox;
-}
-.green-text{
-    color: springgreen;
-}
-
+a[id=menu]{color: rgb(226, 145, 38);}
+#temas{display: flexbox;}
+.green-text{color: springgreen;}
 
 /* table */
 table{
     width: 100%;
-    border: 3px solid black;
+    /* border: 3px solid rgb(39, 39, 39); */
     text-align: left;
     border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 25%;
 }
-th{
-    background-color: #3a3a8d;
+thead tr{
+    border-radius: 25%;
+    background-color: #3b3b7e;
+}
+tr{border-bottom: 1px solid #292929;}
+td,th{padding: 8px;}
+tfoot tr{border-bottom: 0;}
+tfoot tr.sum td{text-align: right;}
+
+/* selecionar item por ordem (1º, 2º e ultimo td) */
+td:first-child{width: 25%;}
+td:nth-child(2){width: 25%;}
+td:last-child{width: 50%;}
+
+/* keyframes */
+.txt-color_rotate{
+    animation: colorRotate 2s infinite;
+}
+@keyframes colorRotate{
+    0%{color: #DFFF00;}
+    25%{color: #9FE2BF;}
+    50%{color: #40E0D0;}
+    75%{color: #6495ED;}
+    100%{color: #CCCCFF;}
 }
