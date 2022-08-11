@@ -24,7 +24,8 @@ a:hover{
 a[id=menu]{color: rgb(226, 145, 38);}
 #temas{display: flexbox;}
 .green-text{color: springgreen;}
-
+/* tudo exceto definido, terá está formatação */
+:not(a, h1, h3){color: whitesmoke;}
 
 /* table */
 table{
