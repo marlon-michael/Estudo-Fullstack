@@ -1,8 +1,11 @@
 html,body{margin: 0; height: 100%;background-color: rgb(248,249,250);}
 div{height: 100%;}
 
-div.footer{
+footer.footer{
     height: 200px;
     padding: 20px;
     background-color: gainsboro;
 }
+
+/* tudo exceto definido, terá está formatação */
+:not(div, header, nav, div, a, p, img){background-color: whitesmoke;}
