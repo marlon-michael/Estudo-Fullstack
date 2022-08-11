@@ -6,6 +6,3 @@ footer.footer{
     padding: 20px;
     background-color: gainsboro;
 }
-
-/* tudo exceto definido, terá está formatação */
-:not(div, header, nav, div, a, p, img){background-color: whitesmoke;}
