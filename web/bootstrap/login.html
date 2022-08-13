@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="source/box2.svg" alt="box" width="32" height="32"> GoInPacked</a>
             <div>
-                <a href="login.html" class="btn btn-outline-light ms-auto">login</a>
+                <button class="btn btn-outline-light ms-auto">login</button>
             </div>
         </div>
     </nav>
@@ -27,9 +27,20 @@
 <!-- =================================================== -->
 
 <body>
-    <div class="body d-flex justify-content-center align-items-center">
-        <h1>Hello World</h1>
+<div class="body d-flex justify-content-center align-items-center">
+    <div class="form-group d-flex justify-content-center align-items-center flex-column">
+        <form class="form d-flex justify-content-center align-items-center flex-column">
+            <legend>Login</legend>
+            <div class="d-flex justify-content-center align-items-center my-2">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="d-flex justify-content-center align-items-center my-2">
+                <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <button type="button" class="btn btn-primary btn-md">Login</button>
+        </form>
     </div>
+</div>
 </body>
 
 <!-- =================================================== -->
