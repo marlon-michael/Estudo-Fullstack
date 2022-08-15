@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="../css/style.css" rel="stylesheet">
+    <title>Chopee</title>
+
+    <script type="text/javascript">
+        var lanches = [];
+        function onAdd(){
+            //add item to array lanches
+            let nome = prompt("Digite o nome do lanche");
+            let valor = Number(prompt(`Digite o valor do ${nome}`).replace(",","."));
+            let lanche = {"nome":nome,"valor":valor}
+            lanches.push(lanche);
+            tableLoad();
+        }
+        function tableLoad(){
+            //read lanches and render on table
+            let table = document.getElementById("tbody");
+            table.innerHTML = lanches.map((lanche)=>{
+                return `
+                <tr>
+                    <td>${lanche.nome}</td>
+                    <td>${lanche.valor}</td>
+                </tr>`;
+            }).join("");
+        }
+    </script>
+
+</head>
+<body>
+    <div id="body">
+        <table id="table">
+            <thead>
+                <tr>
+                    <td>Lanche</td>
+                    <td>Valor</td>
+                    <td>options</td>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">
+                        <button class="btn" onclick="onAdd()">add item</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
