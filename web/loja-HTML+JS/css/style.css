@@ -12,10 +12,10 @@ html, body{
     border-radius: 8px;
 }
 .btn:hover{
-    background-color: #2a2a3a;
+    background-color: #383864;
 }
 .btn:active{
-    background-color: #383864;
+    background-color: #2a2a3a;
 }
 
 /* table */
@@ -36,3 +36,5 @@ tr{border-bottom: 1px solid #292929;}
 td,th{padding: 8px;}
 tfoot tr{border-bottom: 0;}
 tfoot tr.sum td{text-align: right;}
+
+td:last-child{width: 180px;}

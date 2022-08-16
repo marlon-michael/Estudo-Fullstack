@@ -26,8 +26,20 @@
                 <tr>
                     <td>${lanche.nome}</td>
                     <td>${lanche.valor}</td>
+                    <td class="edit-cell">
+                        <button class="btn" onclick="editRow()">editar</button>
+                        <button class="btn" onclick="deleteRow()">delete</button>
+                    </td>
                 </tr>`;
             }).join("");
+        }
+        function editRow(){
+            //edit table row
+            alert("edt");
+        }
+        function deleteRow(){
+            //edit table row
+            alert("del");
         }
     </script>
 
@@ -43,14 +55,9 @@
                 </tr>
             </thead>
             <tbody id="tbody">
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
             </tbody>
             <tfoot>
-                <tr>
+                <tr class="sum">
                     <td colspan="3">
                         <button class="btn" onclick="onAdd()">add item</button>
                     </td>
