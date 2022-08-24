@@ -46,13 +46,26 @@
             pElement.id = "deletable";
             document.getElementById("divToChange").appendChild(pElement);
         }
-        //exec on state change
+        //async script
+        async function asyncMsg(){
+            document.getElementById("async").innerHTML = "Loading Async Script...";
+            document.getElementById("async").innerHTML = await getAsyncMsg();
+            document.getElementById("async").style = "color: black;";
+        }
+        function getAsyncMsg(){
+            return new Promise((resolve)=>{
+                setTimeout(()=>{
+                    resolve("Async Script");
+                }, 2000);
+            });
+        }
+        //exec on state change to complete
         document.onreadystatechange = function(){
             if (document.readyState === "complete"){
                 alert("pagina carregada");
                 document.addEventListener("keydown", function(e){
                     console.log(e.key);
-                })
+                });
             }
         }
     </script>
@@ -64,19 +77,21 @@
             <h1>Java Script</h1>
             <br>
             <h3>click counter (console)</h3>
-            <button onclick="onClick()">Tap</button>
+            <button onclick="onClick()">click</button>
             <hr>
             <h3>guess game</h3>
-            <button onclick="randomF()">Tap</button>
+            <button onclick="randomF()">click</button>
             <hr>
             <h3>change element text</h3>
             <p id="pToChange">palce holder</p>
-            <button onclick="changeBTNText()">Tap</button>
+            <button onclick="changeBTNText()">click</button>
             <hr>
             <h3>add element</h3>
             <div id="divToChange"></div>
-            <button onclick="addChild()">Tap</button>
-        </div>
+            <button onclick="addChild()">click</button>
+            <hr>
+            <h3 id="async">click to load async script</h3>
+            <button onclick="asyncMsg()">click</button>
     </main>
 </body>
 

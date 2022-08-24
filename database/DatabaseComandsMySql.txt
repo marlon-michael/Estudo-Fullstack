@@ -1,119 +1,29 @@
+create database entra21;
+use entra21;
 
-  #####################
-  ###### creation #######
-  #####################
-
-  # create, alter, delete
-
- # data types
- # int, big int, decimal /double / decimal(6,2)#numeric precision, varchar(50)#text and length, bit(1), time
-
-create database appdata;
-
-#delete database, table, column...
-drop database appdata;
-drop table tarefa;
-
-#select database to command
-use appdata;
-
-create table tarefa(
-	id bigint not null primary key auto_increment,
-	titulo varchar(50) not null,
-	descricao varchar(150),
-	completa bit(1) not null default(b'0'),
-	id_lista bigint not null
-);
-alter table tarefa add constraint FK_LISTA_TAREFA foreign key (id_lista) references lista(id);
-
-create table lista(
+create table pessoa(
 	id bigint not null primary key auto_increment,
 	nome varchar(50) not null,
-	cap_max int
+	sobrenome varchar(50) not null,
+	telefone varchar(50) not null,
+	cpf char(11) not null,
+	login varchar(100) not null,
+	senha varchar(50) not null,
+	unique(login)
 );
 
-create table checklist_item(
+create table cliente(
+	id bigint not null auto_increment,
+	id_pessoa bigint not null,
+	foreign key (id_pessoa) references pessoa(id)
+);
+
+create table funcionario(
 	id bigint not null primary key auto_increment,
-	titulo varchar(50) not null,
-	descricao varchar(150)
-);
+	id_pessoa bigint not null,
+	id_supervisor bigint not null,
+	
+	#conferir sobre o supervisor como bigint e entregador como bit
+)
 
-create table checklist(
-	id_tarefa bigint not null,
-	id_checklist_item bigint not null,
-	completa bit(1) not null default(b'0'),
-	foreign key (id_tarefa) references tarefa(id),
-	foreign key (id_checklist_item) references checklist_item(id),
-	primary key (id_tarefa, id_checklist_item)
-);
-
-#add column to table
-alter table tarefa add column id_lista bigint not null;
-
-#change column properties
-alter table tarefa modify column id_lista bigint not null;
-
-#add foreign key to an column
-alter table item add foreign key (id_franquia)
-references franquia(id);
-
-  ####################
-  ### manipulation ####
-  ####################
-
-  # insert, update, search/select, delete, inner join
-
-
-insert into lista(nome, cap_max) values ('jogatina', 10);
-insert into tarefa(titulo, descricao, id_lista) values ('cyberpunk 2077', 'all afternoon', 1);
-
-
-update tarefa set completa = 1 where id = 2;
-update tarefa set titulo = 'ytube The Quarry',descricao = 'MaxMRM' where id = 3;
-#where titulo has Shreck someplace
-update item set id_franquia = 1 where titulo like '%Skreck%';
-
-
-delete from tarefa where id_lista = 2;
-delete from lista where id = 2;
-
-
-select * from tarefa t;
-select * from tarefa where id_lista = 1 and completa = 0;
-select titulo,descricao from tarefa where id_lista = 2;
-select * from tarefa where id_lista in (1,2);
-select i.titulo from item i where id_franquia is null;
-
-#order by decrescent order limited by one ocurrance:	desc/asc
-select l.autor, i.titulo from livro l
-inner join item i on i.id = l.id_item
-order by l.ano_publicacao desc limit 1;
-
-#seleciona itens que tem id junto a tabela dvd
-select i.* from item i
-inner join dvd d on d.id_item = i.id;
-
-#all itens in left table
-select i.* from item i
-left join dvd d on d.id_item = i.id;
-
-#all itens that arent in right table
-select i.* from item i
-right outer dvd d on d.id_item = i.id;
-
-#all itens that aren't dvds
-select i.* from item i
-left join dvd d on d.id_item = i.id
-where d.id_item  is null;
-
-#sql functions - max(values), count(values), sum(values)
-#select max value and group by item.titulo
-select i.titulo, max(i.valor_venda) from item i
-join dvd d on d.id_item  = i.id 
-group by i.titulo;
-
-#find common line betwen genero & item / select movies where genero = 'Aventura'
-select i.* from item i
-inner join genero_item gi on gi.id_item = i.id
-inner join genero g on g.id = gi.id_genero 
-where g.nome = 'Aventura';
+-Marlon

@@ -18,11 +18,17 @@ html, body{
     background-color: #2a2a3a;
 }
 
-/* table */
-table{
+body{
     /* border: 3px solid rgb(39, 39, 39); */
     margin: 10%;
     width: 80%;
+}
+
+/* table */
+table{
+    /* border: 3px solid rgb(39, 39, 39); */
+    margin: 0;
+    width: 100%;
     text-align: left;
     border-spacing: 0;
     border-collapse: separate;
