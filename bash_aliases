@@ -1,7 +1,8 @@
-alias status='git status';
+alias stts='git status';
 alias pushd='git add . && git commit -m "Entra21" && git push entra21-java-2022';
 alias goentra21='cd ~ && cd Documents/git/entra21-java-2022';
 alias gotcc='cd ~ && cd Documents/git/TCC-Entra21';
+alias helpme='echo stts - add - push - pushd - goentra21 - gotcc';
 
 function add(){
   read -p "files: " add;
