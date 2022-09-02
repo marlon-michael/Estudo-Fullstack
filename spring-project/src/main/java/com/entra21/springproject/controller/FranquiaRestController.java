@@ -40,6 +40,6 @@ public class FranquiaRestController {
 
     @PutMapping("/{id}")
     public void updateFranquia(@PathVariable(name = "id") Long id, @RequestBody FranquiaEntity entity){
-        franquiaRepository.
+        franquiaRepository.save()
     }
 }
