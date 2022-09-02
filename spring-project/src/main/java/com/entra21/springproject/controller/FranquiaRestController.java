@@ -18,7 +18,7 @@ public class FranquiaRestController {
 
     @GetMapping
     public List<FranquiaEntity> getFranquias(){
-        return franquiaRepository.;
+        return franquiaRepository.findAll();
     }
 
     @PostMapping
@@ -39,7 +39,15 @@ public class FranquiaRestController {
     }
 
     @PutMapping("/{id}")
-    public void updateFranquia(@PathVariable(name = "id") Long id, @RequestBody FranquiaEntity entity){
-        franquiaRepository.save()
+    public ResponseEntity updateFranquia(@PathVariable(name = "id") Long id, @RequestBody String novoNome){
+        Optional<FranquiaEntity> entity = franquiaRepository.findById(id);
+        if (entity.isPresent()){
+            entity.get().setNome((novoNome));
+            return ResponseEntity.ok(franquiaRepository.save(entity.get()));
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 }
