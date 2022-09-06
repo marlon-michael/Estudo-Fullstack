@@ -1,7 +1,9 @@
 package com.entra21.springproject.controller;
 
+import com.entra21.springproject.model.dto.FranquiaListagemDTO;
 import com.entra21.springproject.model.entity.FranquiaEntity;
 import com.entra21.springproject.view.repository.FranquiaRepository;
+import com.entra21.springproject.view.service.FranquiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +16,14 @@ import java.util.Optional;
 @RequestMapping("/franquias")
 public class FranquiaRestController {
     @Autowired // create a singleton of FranquiaRepository
+    private FranquiaService franquiaService;
+
+    @Autowired // create a singleton of FranquiaRepository
     private FranquiaRepository franquiaRepository;
 
     @GetMapping
-    public List<FranquiaEntity> getFranquias(){
-        return franquiaRepository.findAll();
+    public List<FranquiaListagemDTO> getFranquias(){
+        return franquiaService.getAll();
     }
 
     @PostMapping

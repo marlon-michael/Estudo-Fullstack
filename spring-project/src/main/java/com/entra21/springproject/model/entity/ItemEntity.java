@@ -3,6 +3,7 @@ package com.entra21.springproject.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -29,4 +30,11 @@ public abstract class ItemEntity {
     @ManyToOne
     @JoinColumn(name = "id_franquia", referencedColumnName = "id")
     private FranquiaEntity franquia;
+
+    @OneToMany(mappedBy = "item")
+    private Set<AvaliacaoEntity> Avaliacoes;
+
+    @ManyToMany
+    @JoinTable(name = "genero_item", joinColumns = @JoinColumn(name = "id_item"), inverseJoinColumns = @JoinColumn(name = "id_genero"))
+    private Set<GeneroEntity> generos;
 }
