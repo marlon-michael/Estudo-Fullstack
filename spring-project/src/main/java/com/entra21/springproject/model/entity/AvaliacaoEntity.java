@@ -1,5 +1,6 @@
 package com.entra21.springproject.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,5 +25,6 @@ public class AvaliacaoEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_item", referencedColumnName = "id")
+    @JsonIgnore
     private ItemEntity item;
 }

@@ -1,6 +1,7 @@
 package com.entra21.springproject.controller;
 
-import com.entra21.springproject.model.dto.FranquiaListagemDTO;
+import com.entra21.springproject.model.dto.FranquiaDTO;
+import com.entra21.springproject.model.dto.FranquiaPayloadDTO;
 import com.entra21.springproject.model.entity.FranquiaEntity;
 import com.entra21.springproject.view.repository.FranquiaRepository;
 import com.entra21.springproject.view.service.FranquiaService;
@@ -8,51 +9,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Entity;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/franquias")
 public class FranquiaRestController {
-    @Autowired // create a singleton of FranquiaRepository
+    @Autowired // create a singleton of franquiaService
     private FranquiaService franquiaService;
 
-    @Autowired // create a singleton of FranquiaRepository
-    private FranquiaRepository franquiaRepository;
-
     @GetMapping
-    public List<FranquiaListagemDTO> getFranquias(){
+    public List<FranquiaDTO> getFranquias(){
         return franquiaService.getAll();
     }
 
-    @PostMapping
-    public void addFranquia(@RequestBody FranquiaEntity entity){
-        franquiaRepository.save(entity);
+    @PostMapping("/new")
+    public void NEWaddFranquia(@RequestBody FranquiaPayloadDTO franquia){
+        franquiaService.save(franquia);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FranquiaEntity> getFranquia(@PathVariable(name = "id") Long id){
-        Optional<FranquiaEntity> franquia = franquiaRepository.findById(id);
-        if (franquia.isPresent()) return ResponseEntity.ok(franquia.get());
-        return ResponseEntity.notFound().build();
+    public FranquiaDTO getFranquia(@PathVariable(name = "id") Long id){
+        return franquiaService.findById(id);
     }
 
     @DeleteMapping("/{id}")
     public void deleteFranquia(@PathVariable(name = "id") Long id){
-        franquiaRepository.deleteById(id);
+        franquiaService.deleteById(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity updateFranquia(@PathVariable(name = "id") Long id, @RequestBody String novoNome){
-        Optional<FranquiaEntity> entity = franquiaRepository.findById(id);
-        if (entity.isPresent()){
-            entity.get().setNome((novoNome));
-            return ResponseEntity.ok(franquiaRepository.save(entity.get()));
-        }
-        else {
-            return ResponseEntity.notFound().build();
-        }
-
+    public FranquiaDTO updateFranquia(@PathVariable(name = "id") Long id, @RequestBody String novoNome){
+        return franquiaService.update(id, novoNome);
     }
 }
