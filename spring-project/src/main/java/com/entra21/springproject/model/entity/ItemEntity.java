@@ -10,10 +10,11 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "item")
 public abstract class ItemEntity {
+
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long itemId;
+    private Long id;
 
     @Column(name = "titulo")
     private String titulo;
@@ -32,9 +33,15 @@ public abstract class ItemEntity {
     private FranquiaEntity franquia;
 
     @OneToMany(mappedBy = "item")
-    private Set<AvaliacaoEntity> Avaliacoes;
+    private Set<AvaliacaoEntity> avaliacoes;
 
     @ManyToMany
-    @JoinTable(name = "genero_item", joinColumns = @JoinColumn(name = "id_item"), inverseJoinColumns = @JoinColumn(name = "id_genero"))
+    @JoinTable(
+            name = "genero_item",
+            joinColumns = @JoinColumn(name = "id_item"),
+            inverseJoinColumns = @JoinColumn(name = "id_genero")
+    )
     private Set<GeneroEntity> generos;
+
+    public abstract String getType();
 }

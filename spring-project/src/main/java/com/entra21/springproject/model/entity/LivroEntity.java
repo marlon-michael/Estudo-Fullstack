@@ -20,4 +20,9 @@ public class LivroEntity extends ItemEntity{
 
     @Column(name = "edicao")
     private Integer edicao;
+
+    @Override
+    public String getType() {
+        return "Livro";
+    }
 }
