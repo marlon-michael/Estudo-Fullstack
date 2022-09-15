@@ -1,0 +1,72 @@
+2.is busier
+3.is hotter
+4.is larger
+5.is bigger
+6.are more exiciting
+7.is better
+8.is healthier
+9.are nicer
+10.is more dangerous
+11.is further
+12.is worst
+13.is faster
+14.is funnier
+15.am more nervous
+
+1.bigger
+2.more careful
+3.more expensive
+4.better
+5.fatter
+6.more famous
+7.newer
+8.more modern
+9.younger
+10.cheaper
+11.more delicious
+12.richer
+13.longer
+14.hungrier
+15.nicer
+16.happier
+17.more dificult
+18.older
+19.more beaultiful
+20.friendlier
+21.hotter
+22.wonderful
+23.badder
+24.smaller
+25.more sad
+-
+1.alaska is colder than spain
+2.steve is hungrier than jane
+3.washington is smaller than new york
+4.mary is happier than mike
+5.i am younger than my brother
+6.film stars are richer than teachers
+7.peter are friendlier than chris
+-
+1.than
+2.more
+3.is
+4.queen anne - king john
+5.expensive
+6.slower
+7.king john - queen anne
+8.longer
+
+2.is the biggest
+3.are the largest
+4.are the most expensive
+5.most dangerous
+6.laziest
+7.best
+8.most difficult
+9.longest
+10.strangest
+11.worst
+12.hottest
+13.funniest
+14.most interesting
+15.most famous
