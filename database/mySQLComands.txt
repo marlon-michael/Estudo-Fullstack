@@ -54,8 +54,7 @@ alter table tarefa add column id_lista bigint not null;
 alter table tarefa modify column id_lista bigint not null;
 
 #add foreign key to an column
-alter table item add foreign key (id_franquia)
-references franquia(id);
+alter table item add foreign key (id_franquia) references franquia(id);
 
   ####################
   ### manipulation ####
