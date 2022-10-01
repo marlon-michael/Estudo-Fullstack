@@ -13,7 +13,7 @@ let number_var = 0; //only number type
 let sum_func = (x:number, y:number):number=>{return x+y}
 
 
-// --creating types
+// --creating types / interfaces
 type Triangle = {
     angle: number,
     type: "isosceles"|"scalene"|"obtuse" // predefined types: isosceles,scalene,obtuse / ENUM like
