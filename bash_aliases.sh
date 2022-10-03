@@ -9,7 +9,12 @@ function add(){
     git add . ;
   elif [ "$1" == "restore" ]
   then
-    git restore --staged . ;
+    if [ "$2" == "" ]
+    then
+      git restore --staged . ;
+    else
+      git restore --staged "$2" ;
+    fi
   else
     git add "$1" ;
   fi
