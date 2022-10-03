@@ -1,5 +1,4 @@
 alias stts='git status';
-alias pushd='git add . && git commit -m "Entra21" && git push entra21-java-2022';
 alias goclass='cd ~ && cd Documents/git/entra21-java-2022';
 alias gotcc='cd ~ && cd Documents/git/TCC-Entra21';
 
