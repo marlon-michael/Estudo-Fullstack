@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HighlightCardComponent } from './highlight-card.component';
+import { HeroesScreenComponent } from './heroes-screen.component';
 
-describe('HighlightCardComponent', () => {
-  let component: HighlightCardComponent;
-  let fixture: ComponentFixture<HighlightCardComponent>;
+describe('HeroesScreenComponent', () => {
+  let component: HeroesScreenComponent;
+  let fixture: ComponentFixture<HeroesScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HighlightCardComponent ]
+      declarations: [ HeroesScreenComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HighlightCardComponent);
+    fixture = TestBed.createComponent(HeroesScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -21,4 +21,3 @@ describe('HighlightCardComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-

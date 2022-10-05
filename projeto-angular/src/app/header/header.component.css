@@ -1,4 +1,3 @@
-
 .toolbar {
     position: absolute;
     top: 0;
@@ -17,8 +16,8 @@
 }
 
 .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
+height: 40px;
+margin: 0 8px;
 }
 
 .toolbar #youtube-logo {
