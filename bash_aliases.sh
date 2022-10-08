@@ -7,7 +7,7 @@ function add(){
   if [ "$1" == "" ]
   then
     git add . ;
-  elif [ "$1" == "restore" ]
+  elif [ "$1" == "-r" ]
   then
     if [ "$2" == "" ]
     then
