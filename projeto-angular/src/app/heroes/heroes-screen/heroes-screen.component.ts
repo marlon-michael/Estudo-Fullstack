@@ -15,6 +15,8 @@ export type Hero = {
 })
 export class HeroesScreenComponent implements OnInit {
 
+  create: boolean = false;
+
   heroes: Hero[] = [{
     id: 1,
     heroName: "Iron man",

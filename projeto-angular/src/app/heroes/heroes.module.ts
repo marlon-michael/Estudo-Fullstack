@@ -2,18 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroesScreenComponent } from './heroes-screen/heroes-screen.component';
 import { HeroListItemComponent } from './hero-list-item/hero-list-item.component';
-
+import { HeroesFormComponent } from './heroes-form/heroes-form.component';
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
     HeroesScreenComponent,
-    HeroListItemComponent
+    HeroListItemComponent,
+    HeroesFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports:[
-    HeroesScreenComponent
+    HeroesScreenComponent,
+    HeroesFormComponent
   ]
 })
 export class HeroesModule { }
