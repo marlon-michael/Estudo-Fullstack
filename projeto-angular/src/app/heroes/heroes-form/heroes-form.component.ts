@@ -1,19 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Hero } from 'src/app/heroes/heroes-screen/heroes-screen.component';
 
 @Component({
   selector: 'app-heroes-form',
   templateUrl: './heroes-form.component.html',
   styleUrls: ['./heroes-form.component.css']
 })
-export class HeroesFormComponent{
+export class HeroesFormComponent implements OnChanges {
+  
+  @Input() editingHero? : Hero | null | undefined;
+  @Output() heroSave = new EventEmitter<Hero>();
 
-  heroForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    secretIdentity: new FormControl('')
+  heroForm = this.formBuilder.group({
+    id: [null],
+    heroName: ['', Validators.required],
+    secretIdentity: [''],
+    alive: [true],
+    universe: ['', Validators.required]
   });
 
-  //PEGAR NO GIT - CORRIGIR
-  // constructor(private formBuilder: FormBuilder);
+  onSubmit(){
+    this.heroSave.emit(this.heroForm.value as unknown as Hero);
+    this.heroForm.reset();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.heroForm.reset();
+    this.heroForm.patchValue(changes["editingHero"].currentValue);
+  }
+
+  constructor(private formBuilder: FormBuilder){}
 
 }

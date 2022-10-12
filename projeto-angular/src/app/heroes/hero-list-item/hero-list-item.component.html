@@ -1,4 +1,4 @@
-<div (click)="showID()">
+<div>
     <h3 style="display: inline; margin-right: 10px;" 
     [ngStyle]="{'font-style': (hero.alive === true) ? 'true' : 'italic' ,'color': (hero.alive === true) ? 'black' : 'grey'}">
         {{hero.heroName}}
@@ -7,4 +7,19 @@
         ({{hero.universe}})
     </small>
     <span style="display: inline; margin-left: 10px;" *ngIf="!hero.alive">F to pay respect</span>
+
+    <small (click)="showID()" 
+    style="cursor: pointer;"
+    title="Show secret identity"
+    > 👁</small>
+
+    <small (click)="onEdit()"
+    style="cursor: pointer;"
+    title="Edit"
+    > ✏</small>
+
+    <small (click)="onDelete()"
+    style="cursor: pointer;"
+    title="Delete"
+    > 🗑</small>
 </div>
