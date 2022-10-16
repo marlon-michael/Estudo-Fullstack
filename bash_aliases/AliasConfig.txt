@@ -1,6 +1,6 @@
 
 find git/bash folder. 
-Ex: C:\Users\user_name\Programs\Git\etc\profile.d
+Ex: M:\Users\developer\Programs\Git\etc\profile.d
 
 
 ###########
