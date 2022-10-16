@@ -2,22 +2,15 @@ package com.entra21.springproject.controller;
 
 import com.entra21.springproject.model.dto.GeneroDTO;
 import com.entra21.springproject.model.dto.GeneroPayloadDTO;
-import com.entra21.springproject.model.entity.GeneroEntity;
-import com.entra21.springproject.view.repository.GeneroRepository;
 import com.entra21.springproject.view.service.GeneroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/generos")
 public class GeneroRestController {
-
-    @Autowired
-    private GeneroRepository generoRepository;
 
     @Autowired
     private GeneroService generoService;
