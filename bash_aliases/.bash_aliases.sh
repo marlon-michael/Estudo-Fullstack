@@ -7,5 +7,5 @@ alias src='source';
 echo " -@ ALIASES HEVE BEEN LOADED";
 
 #LOADING ALIASES
-src TerminalAlias/.git_aliases.sh;
-src TerminalAlias/.path_aliases.sh;
+src bash_aliases/.git_aliases.sh;
+src bash_aliases/.path_aliases.sh;

@@ -7,17 +7,22 @@ alias sts='git status';
 
 
 add() {
-  if [ "$1" = "restore" ]
+  if [ "$1" = "-r" ]
   then
-    echo -e '\n @ RUNNING: git restore --staged .\n'; 
-    git restore --staged .;
-  elif [ "$1" = "." ]
+    echo -e '\n @ RUNNING: git restore --staged '"$2"'\n'; 
+    if [ "$2" = "." ] || [ "$2" = "" ]
+    then
+      git restore --staged . ;
+    else
+      git restore --staged "$2" ; 
+    fi
+  elif [ "$1" = "." ] || [ "$1" = "" ]
   then
-    echo -e '\n @ RUNNING: git add '"$1"'\n';
-    git add .;
+    echo -e '\n @ RUNNING: git add .\n';
+    git add . ;
   else
     echo -e '\n @ RUNNING: git add '"$1"'\n'; 
-    git add "$1";
+    git add "$1" ;
   fi
   git status;
 }
