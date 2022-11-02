@@ -3,7 +3,7 @@
 
 
 
-alias sts='git status';
+alias gt='git status';
 
 
 add() {
