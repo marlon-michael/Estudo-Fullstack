@@ -4,7 +4,6 @@
 
 #ROOT ALIASES
 alias src='source';
-# alias go='cd';
 
 go(){
     cd "$1";
@@ -16,3 +15,4 @@ src bash_aliases/git_aliases.sh;
 src bash_aliases/path_aliases.sh;
 
 echo " -@ ALIASES HEVE BEEN LOADED";
+echo '----------------------------';

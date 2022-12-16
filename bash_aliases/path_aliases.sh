@@ -3,11 +3,8 @@
 
 
 #HOME
-alias godev="cd M:; cd Users/development/git";
-alias godev1="cd M:; cd Users/development/git/entra21-java-2022";
-alias godev2="cd M:; cd Users/development/git/TCC-Entra21";
+alias gog="cd D:; cd Development/git";
+alias god1="cd D:; cd Development/git/entra21-java-2022";
+alias god2="cd D:; cd Development/git/TCC-Entra21";
 
-#ENTRA21
-alias gogit='cd ~ && cd Documents/git/entra21-java-2022';
-alias gostd='cd ~ && cd Documents/git/entra21-java-2022';
-alias gotcc='cd ~ && cd Documents/git/TCC-Entra21';
+cd /d;

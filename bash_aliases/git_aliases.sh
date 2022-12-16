@@ -4,7 +4,7 @@
 
 
 alias gt='git status';
-
+alias push='git push';
 
 add() {
   if [ "$1" = "-r" ]
