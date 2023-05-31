@@ -1,3 +1,0 @@
-
--npx create-react-app [name_of_project]
-ex: npx create-react-app react-project

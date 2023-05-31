@@ -1,7 +1,7 @@
-# Java Class - Entra21 / 2022
+# Curso de Java - Entra21 / 2022
 
-Learnings: Git, Java, Angular, SQL, Springboot
+Conteudos: Git, Java, Angular, SQL, Springboot
 
 
->by ***Marlon Michael***
+>por ***Marlon Michael***
 
