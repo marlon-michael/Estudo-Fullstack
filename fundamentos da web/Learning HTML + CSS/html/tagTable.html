@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="../css/style.css" rel="stylesheet">
+    <title>Tag table</title>
+    <style>a:hover{margin-left: 0;}</style>
+</head>
+<body>
+    <main>
+        <div id="tagTable">
+            <!-- pode ser posto borda usando border="1" -->
+            <table>
+                <caption><h3 class="text-rgb">Table</h3></caption>
+                <thead>
+                    <tr>
+                        <th>X</th>
+                        <th colspan="2">Y</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>a</td>
+                    <td>b</td>
+                    <td><a href="">view</a></td>
+                </tr>
+                <tr>
+                    <td>x</td>
+                    <td>y</td>
+                    <td><a href="">view</a></td>
+                </tr>
+                <tfoot>
+                    <tr class="sum">
+                        <td colspan="3">Final sum</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </main>
+</body>
+<script>
+    color = ["#DFFF00","#9FE2BF","#40E0D0","#6495ED","#CCCCFF"];
+    var c = 0
+    setInterval(function() {
+        for (let i = 0; i < document.getElementsByClassName("text-rgb").length; i++) {
+            document.getElementsByClassName("text-rgb")[i].style.color = color[c]
+        }
+        c++
+        if (c >= color.length){c=0}
+    }, 500);
+</script>
+</html>
