@@ -5,12 +5,12 @@ Ex: C:\Users\user_name\Programs\Git\etc\profile.d
 
 ###########
 
->>> add source comand with a path to alias_loader:
+>>> add source comand with path to alias_loader:
 
 cd ;  # -go to root
 source bash_aliases/.bash_aliases.sh; # -load aliases loader in root folder
 
->>> or like this:
+>>> or save current path, load aliases in root, then return to last saved path:
 
 # LOAD PERSONEL ALIASES
 dir=$(pwd);
