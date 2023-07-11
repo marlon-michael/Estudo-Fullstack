@@ -1,6 +1,6 @@
 
   #####################
-  ###### creation #######
+  ###### creation #####
   #####################
 
   # create, alter, delete
@@ -57,7 +57,7 @@ alter table tarefa modify column id_lista bigint not null;
 alter table item add foreign key (id_franquia) references franquia(id);
 
   ####################
-  ### manipulation ####
+  ### manipulation ###
   ####################
 
   # insert, update, search/select, delete, inner join
