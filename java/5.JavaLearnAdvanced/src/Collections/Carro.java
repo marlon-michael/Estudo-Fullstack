@@ -1,6 +1,5 @@
 package Collections;
 
-import java.util.HashMap;
 
 public class Carro {
     private String modelo;

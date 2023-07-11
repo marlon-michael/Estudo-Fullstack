@@ -1,4 +1,4 @@
-package classes.avaliacao;
+package classes.Avaliacao;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

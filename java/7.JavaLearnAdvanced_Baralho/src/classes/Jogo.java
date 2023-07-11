@@ -8,29 +8,6 @@ public class Jogo {
     private Baralho deck = new Baralho();
     private int playerWins;
 
-    public void firstRound(){
-
-    }
-
-    public void handlePlayerOption(PlayerOption option){
-
-    }
-
-    public void playerWin(){
-
-    }
-
-    private void oneMore(){
-
-    }
-
-    private void stop(){
-
-    }
-
-    private void doubleCard(){
-
-    }
 
     //GETTERS AND SETTERS
     public ArrayList<Carta> getHandPlayer() {

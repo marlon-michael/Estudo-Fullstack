@@ -9,20 +9,6 @@ public class CodingBat {
         System.out.println(letter + " " + str.substring(ind+1, ind+2));
         System.out.println(letter == str.substring(ind+1, ind+2));
 
-
-//        //axyzbb
-//        boolean bol=false;
-//        int tries = 1, i = str.length()/2-2;
-//        while(tries < 3){
-//            if (str.length%2==0 str.substring(i,str.length()-i).contains("xyz")) return true;
-//            if (str.substring(i,str.length()-i).contains("xyz")) return true;
-//            tries++;
-//            i++;
-//        }
-//
-//        return false;
-
-        //out(String.valueOf(count));
     }
 
     public String getSandwich(String str) {

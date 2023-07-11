@@ -1,7 +1,7 @@
 import classes.EMenu;
 import classes.EMenuItem;
 import classes.Loja;
-import classes.avaliacao.Avaliação;
+import classes.Avaliacao.Avaliação;
 import classes.Estante;
 import classes.itens.Item;
 import classes.itens.DVD;

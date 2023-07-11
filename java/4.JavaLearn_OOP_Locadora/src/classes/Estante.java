@@ -15,11 +15,6 @@ public class Estante{
         return this.getItens().stream().filter(
                 i->i.getTitulo().toLowerCase().contains(titulo.toLowerCase())
         ).findFirst().orElse(null);
-
-        /*for (Item item: this.getItens()){
-            if (item.getTitulo().toLowerCase().contains(titulo.toLowerCase())) return item;
-        }
-        return null;*/
     }
 
     public boolean addItem(Item item){

@@ -73,12 +73,4 @@ public class Tarefa {
     public void setChecklistItem(CheckListItem[] checklistItem) {
         this.checklistItem = checklistItem;
     }
-//    public void addChecklist(CheckListItem checklist) {
-//        for (int i = 0; i < this.checklist.length; i++) {
-//            if (this.checklist[i] == null) {
-//                this.checklist[i] = checklist;
-//                return;
-//            }
-//        }
-//    }
 }

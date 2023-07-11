@@ -2,7 +2,7 @@ package classes.itens;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import classes.avaliacao.Avaliação;
+import classes.Avaliacao.Avaliação;
 
 public abstract class Item {
     private String titulo;
@@ -36,13 +36,6 @@ public abstract class Item {
 
     public double getAvaliaçãoTotal(){
         return this.avaliações.stream().mapToDouble(Avaliação::getAvaliação).sum()/getAvaliações().size();
-
-        /*int total = 0;
-        for (Avaliação avaliação: this.getAvaliações()){
-            total += avaliação.getAvaliação();
-        }
-        return total/this.getAvaliações().size();
-         */
     }
 
     public abstract void montarDetalhes(Scanner read);
