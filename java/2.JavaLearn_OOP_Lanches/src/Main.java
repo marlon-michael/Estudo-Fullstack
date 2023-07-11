@@ -1,7 +1,6 @@
 import classes.EMneu;
 import classes.cliente.Cliente;
 import classes.lanches.*;
-import classes.pedidos.Pedido;
 
 import java.util.Scanner;
 
@@ -14,7 +13,7 @@ public class Main {
         System.out.println("Bem vindo a Lanchonete da serragem");
         System.out.print("Escreva seu nome/apelido: ");
         cliente.setNome(read.nextLine());
-        System.out.println("asdasd");
+        System.out.println();
 
         for (int i =0; i < 10; i++){
             cliente.getPedido().addLanche(montarLanche());
@@ -38,7 +37,7 @@ public class Main {
             System.out.println("("+item.getNum()+") - "+item.getNome());
         }
         System.out.print("Faça o pedido: ");
-        EMneu pedidoLanche = (EMneu) read.nextInt();
+        EMneu pedidoLanche = EMneu.values()[read.nextInt()];
 
         switch(pedidoLanche){
             case XSALADA -> lanche = new XSalada();

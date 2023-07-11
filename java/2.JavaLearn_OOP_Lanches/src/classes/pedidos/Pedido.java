@@ -1,8 +1,5 @@
 package classes.pedidos;
-
 import classes.lanches.*;
-
-import java.util.HashMap;
 
 public class Pedido {
     private Lanche[] lanches = new Lanche[10];

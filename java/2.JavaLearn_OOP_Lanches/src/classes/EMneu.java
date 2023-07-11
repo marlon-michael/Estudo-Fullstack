@@ -16,10 +16,6 @@ public enum EMneu {
         this.nome = nome;
     }
 
-    public getByValor(){
-        
-    }
-
     //GETTERS AND SETTERS
     public int getNum() {
         return num;
