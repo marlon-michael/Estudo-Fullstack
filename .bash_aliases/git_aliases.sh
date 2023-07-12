@@ -2,8 +2,7 @@
 #CENTRALIZED BY .bash_aliases FILE
 
 
-
-alias gt='git status';
+alias status='git status';
 alias push='git push';
 
 add() {
@@ -27,16 +26,28 @@ add() {
   git status;
 }
 
-pushm() {
+up() {
   if [ "$1" = "" ]
   then
-    echo -e '\n @ RUNNING: git commit -m "Entra21 Java - 2022"\n';
-    git commit -m "Entra21 Java - 2022";
+    echo -e '\n @ RUNNING: git commit -m "nothing to report"\n';
+    git commit -m "default commit";
   else
     echo -e '\n @ RUNNING: git commit -m: '"$1"'\n';
     git commit -m "$1";
   fi
-  git push;
-  echo ---;
+  _push;
+  echo -----------;
   git status;
+}
+
+_push(){
+  echo -----------;
+  echo "[ENTER] to git push your commit";
+  echo "[n] to skip git push";
+  read option;
+  if [ "$option" = "" ]
+  then
+    echo -e "\n @ RUNNING: git push\n"
+    push;
+  fi
 }

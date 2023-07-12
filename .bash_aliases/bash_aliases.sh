@@ -10,7 +10,7 @@ go(){
     ls;
 }
 
-#LOADING ALIASES
+#LOAD ALIASES
 src bash_aliases/git_aliases.sh;
 src bash_aliases/path_aliases.sh;
 
