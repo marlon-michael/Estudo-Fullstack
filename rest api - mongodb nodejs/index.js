@@ -1,5 +1,6 @@
 const express = require('express')
 const mongo = require('mongoose')
+const routes = require('./routes/routes')
 require('dotenv').config()
 
 
@@ -17,6 +18,7 @@ database.once('connected', () => {
 
 const app = express()
 app.use(express.json())
+app.use('/api', routes)
 app.listen(3000, () => {
     console.log('@ server started at ${3000}')
 })
