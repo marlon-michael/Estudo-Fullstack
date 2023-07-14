@@ -3,14 +3,12 @@
 ### requerimentos
 - MongoDB Comunnity: 6.0.7
 - Node jS: 18:12.1
+    - mongoose: 7.3.4
+    - express: 4.18.2
+    - dotenv: 16.3.1
+    - nodemon: 3.0.1 (opcional)
 
 ### configuração
-- MongoDB
-    - iniciar o mongodb na pasta de dados do projeto
-        ```console
-        mongod --dbpath C:\pasta_do_projeto\dados
-        ```
-
 - Node
     - instalação de bibliotecas
         - mongoose: interação com o mongoDB
@@ -23,4 +21,82 @@
     - configuração das variaveis de ambiente [arquivo .env]
         ```javascript
         DATABASE_URL = mongodb://127.0.0.1:27017/
+        ```
+    
+### desenvolvimento
+- conectando Node com o banco de dados MongoDB
+    - arquivo principal (index.js)
+    ```javascript
+    const mongo = require('mongoose') // importando mongoose
+    require('dotenv').config // importando variaveis de ambiente
+
+    const mongoString = process.env.DATABASE_URL // definindo String URL para conexão com MongoDB
+    const database = mongo.connection // instancia do banco de dados
+    database.on('error', (error) => {
+        console.log(error) // em caso de erro, será informado no console 
+    })
+    database.once('connected', () => {
+        console.log("database connected") // uma vez conectado ao banco de dados, será informado no console
+    })
+    ```
+- expondo API
+    - arquivo principal (index.js)
+    ```javascript
+    const express = require('express') // importa o modulo express
+
+    const app = express() // instancia o express
+    app.use(express.json()) // define JSON como formato para troca de dados
+    app.use('/', routes) // define a entrada da API junto das rotas
+    app.listen(3000, () => {
+        console.log('server started at port [ 3000 ]') // expõe a API na porta 3000
+    })
+    ```
+    - arquivo de rotas (routes/routes.js)
+    ```javascript
+    const express = require('express') // importa mongoose
+    const Model = require('../model/model.js') // importa os modelos utilizados no banco de dados
+    
+    const router = express.Router() // instancia a classe de rotas do express
+
+    router.get('/get/:id', (request, response) => { // retorna dados por id
+        res.send(request.params.id) // retorna id da URL
+    })
+    router.post('/post', (request, response) => { // cria dados
+        res.send(request.body) // retorna corpo da requisição
+    })
+    router.patch('/update/:id', (request, response) => { // atualiza dados por id
+        res.send(request.params.id) // retorna id da URL
+    })
+    router.delete('/delete/:id', (request, response) => { // deleta dados por id
+        res.send(request.params.id) // retorna id da URL
+    })
+
+    module.exports = router // exporta as rotas definidas
+    ```
+    - arquivo de modelos do banco de dados (./models/models.js)
+    ```javascript
+    const mongo = require('mongoose')
+
+    const dataSchema = new mongo.Schema({
+        id: {required: true, type: Number}, 
+        name: { required: true, type: String}
+    })
+    module.exports = mongo.model('Data', dataSchema)
+    ```
+
+### rodando a aplicação
+- MongoDB
+    - iniciar o mongodb na pasta de dados do projeto
+        ```console
+        mongod --dbpath C:\pasta_do_projeto\dados
+        ```
+
+- Node JS
+    - iniciar a aplicação com nodemon
+        ```console
+        npm start
+        ```
+    - iniciar a aplicação com npm
+        ```console
+        npm index.js
         ```
