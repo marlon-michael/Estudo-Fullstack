@@ -98,7 +98,7 @@
             res.status(400).json({message: error.message}) // retorna menssagem de erro em caso de falha na busca
         }
     })
-    router.patch('/update/:id', (req, res) => { // atualiza dados por id
+    router.patch('/update/:id', async (req, res) => { // atualiza dados por id
         try{
             const filter = {_id: req.params.id} // parametro e valor de busca
             const updatedData = req.body // parametros e valores a serem atualizados
@@ -113,7 +113,7 @@
             res.status(400).json({message: error.message})
         }
     })
-    router.delete('/delete/:id', (req, res) => { // deleta dados por id
+    router.delete('/delete/:id', async (req, res) => { // deleta dados por id
         try{
             const data = await Model.findByIdAndDelete(req.params.id) // aguarda a busca e esclusão do objeto pelo banco
             res.status(200).send(`Object [${data.id}] has been deleted`) // retorna menssagem de exclusão
