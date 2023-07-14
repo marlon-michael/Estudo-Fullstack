@@ -13,12 +13,12 @@ database.on('error', (error) => {
 })
 
 database.once('connected', () => {
-    console.log('@ database connected')
+    console.log('>>> database connected')
 })
 
 const app = express()
 app.use(express.json())
-app.use('/api', routes)
+app.use('/', routes)
 app.listen(3000, () => {
-    console.log('@ server started at ${3000}')
+    console.log('>>> server started at port [ 3000 ]')
 })
