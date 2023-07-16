@@ -2,10 +2,11 @@
 #CENTRALIZED BY .bash_aliases FILE
 
 
-alias status='git status';
-alias push='git push';
+alias gs='git status';
+alias gp='git push';
 
-add() {
+# git add
+ga() {
   if [ "$1" = "-r" ]
   then
     echo -e '\n[ @ RUNNING: git restore --staged '"$2"' ]\n'; 
@@ -26,7 +27,8 @@ add() {
   git status;
 }
 
-commit() {
+# git commit
+gc() {
   if [ "$1" = "" ] || [ "$1" = "_" ]
   then
     echo -e '\n[ @ RUNNING: git commit -m "nothing to report" ]\n';
