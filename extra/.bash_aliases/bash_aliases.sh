@@ -2,7 +2,7 @@
 #CENTRALIZED BY .bash_aliases FILE
 
 
-#ROOT ALIASES
+#ALIASES
 alias src='source';
 
 go(){
@@ -10,9 +10,9 @@ go(){
     ls;
 }
 
-#LOAD ALIASES
+#LOAD IN FILE ALIASES
 src bash_aliases/git_aliases.sh;
 src bash_aliases/path_aliases.sh;
 
-echo " -@ ALIASES HEVE BEEN LOADED";
-echo '----------------------------';
+echo ">>> ALIASES HEVE BEEN LOADED <<<";
+echo '--------------------------------';
