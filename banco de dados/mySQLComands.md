@@ -1,22 +1,28 @@
+# SLQ
 
-  #####################
-  ###### creation #####
-  #####################
 
-  # create, alter, delete
+# Data types
+- Numbers: int, big int, double, decimal(6,2) # numeric precision
+- Text: varchar(50) # text and length
+- Binary: bit(1)
+- Time: time
 
- # data types
- # int, big int, decimal /double / decimal(6,2)#numeric precision, varchar(50)#text and length, bit(1), time
+___
 
-create database appdata;
+# Database selections
+```console
+use [database-name];
+```
 
-#delete database, table, column...
-drop database appdata;
-drop table tarefa;
+# Creation
 
-#select database to command
-use appdata;
+### create, alter, delete
+```console
+create database [database-name];
+```
 
+### create table
+```console
 create table tarefa(
 	id bigint not null primary key auto_increment,
 	titulo varchar(50) not null,
@@ -24,7 +30,6 @@ create table tarefa(
 	completa bit(1) not null default(b'0'),
 	id_lista bigint not null
 );
-alter table tarefa add constraint FK_LISTA_TAREFA foreign key (id_lista) references lista(id);
 
 create table lista(
 	id bigint not null primary key auto_increment,
@@ -46,6 +51,12 @@ create table checklist(
 	foreign key (id_checklist_item) references checklist_item(id),
 	primary key (id_tarefa, id_checklist_item)
 );
+```
+
+### alter table
+```console
+#adicionando chave estrangeira de lista na tabela tarefa
+alter table tarefa add constraint FK_LISTA_TAREFA foreign key (id_lista) references lista(id);
 
 #add column to table
 alter table tarefa add column id_lista bigint not null;
@@ -55,28 +66,28 @@ alter table tarefa modify column id_lista bigint not null;
 
 #add foreign key to an column
 alter table item add foreign key (id_franquia) references franquia(id);
+```
 
-  ####################
-  ### manipulation ###
-  ####################
+# Manipulation
 
-  # insert, update, search/select, delete, inner join
+### insert, update, search/select, inner join
 
-
+### insert
+```console
 insert into lista(nome, cap_max) values ('jogatina', 10);
 insert into tarefa(titulo, descricao, id_lista) values ('cyberpunk 2077', 'all afternoon', 1);
+```
 
-
+### update
+```console
 update tarefa set completa = 1 where id = 2;
 update tarefa set titulo = 'ytube The Quarry',descricao = 'MaxMRM' where id = 3;
 #where titulo has Shreck someplace
 update item set id_franquia = 1 where titulo like '%Skreck%';
+```
 
-
-delete from tarefa where id_lista = 2;
-delete from lista where id = 2;
-
-
+### selection
+```console
 select * from tarefa t;
 select * from tarefa where id_lista = 1 and completa = 0;
 select titulo,descricao from tarefa where id_lista = 2;
@@ -116,3 +127,23 @@ select i.* from item i
 inner join genero_item gi on gi.id_item = i.id
 inner join genero g on g.id = gi.id_genero 
 where g.nome = 'Aventura';
+```
+
+# Deletation
+
+### delete database, table, column...
+
+### delete database
+```console
+drop database [database-name];
+```
+
+### delete table
+```console
+drop table [table-name];
+```
+### delete line
+```console
+delete from tarefa where id_lista = 2;
+
+delete from lista where id = 2;
