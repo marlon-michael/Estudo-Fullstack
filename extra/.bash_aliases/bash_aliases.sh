@@ -13,6 +13,7 @@ go(){
 #LOAD IN FILE ALIASES
 src bash_aliases/git_aliases.sh;
 src bash_aliases/path_aliases.sh;
+src bash_aliases/curl.sh
 
 echo ">>> ALIASES HEVE BEEN LOADED <<<";
 echo '--------------------------------';
