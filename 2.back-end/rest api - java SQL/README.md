@@ -12,7 +12,6 @@
         - Spring Web: requisiçoes web
         - Spring Data JPA: mapeamento de entidades
         - MySQL Driver: controlador MySql
-        - Lombok: diminui código utilizando notações
 
 ### configuração e criação
 - mysql
@@ -32,7 +31,7 @@
         - linguagem: Java
         - spring boot version: 2.7.3 (JAVA 8 - 17)
         - java version: 11
-        - dependencias: Spring Web, Spring Data JPA, MySQL Driver, Lombok
+        - dependencias: Spring Web, Spring Data JPA, MySQL Driver
     - configuração do spring boot: (src.main.resources.application.properties)
         ```json
         spring.datasource.url=jdbc:mysql://localhost:3306/[database-name] // string de conexão SQL
@@ -67,8 +66,8 @@
     - inicie o projeto pela classe [project-name] ( src/main/java/com/[project-name]/[project-name]Application.java )
 
 ### requisição: Postman (UI), curl (CLI)
-- fazendo requisição GET em localhost:8080/hello
-    ```json
+- fazendo requisição GET na URL localhost:8080/hello
+    ```html
     Hello Spring
     ```
 
