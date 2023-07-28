@@ -1,4 +1,4 @@
-# Spring boot API | Java + MySQL
+# Spring boot API | Java + MySQL | MVC
 
 
 ### requerimentos
@@ -34,25 +34,29 @@
         - dependencias: Spring Web, Spring Data JPA, MySQL Driver
     - configuração do spring boot: (src.main.resources.application.properties)
         ```json
-        spring.datasource.url=jdbc:mysql://localhost:3306/[database-name] // string de conexão SQL
+        spring.datasource.url=jdbc:mysql://localhost:3306/[database-name] # string de conexão SQL
         spring.datasource.username=[database-username]
         spring.datasource.password=[database-pass]
         spring.datasource.driven-class-name=com.mysql.cj.jdbc.Driver
-        spring.jpa.hibernate.ddl-auto=update // none / update / create / create-drop
+        #// manipulação do banco de dados durante execução do API
+        #// - update: atualiza as tabelas conforme uso
+        #// - create-drop: cria as tabelas e colunas e deleta ao fim da execução
+        #// - create: apenas cria tabelas e colunas
+        spring.jpa.hibernate.ddl-auto=none
         spring.jpa.show-sql=true
         ```
 
 - IntelliJ
     - instalação das dependencias maven
 
-### primeiro controller
+### expondo rotas
 - crie uma novo pacote controller: src/main/java/com/[project]/controller/
 - crie um arquivo HelloController.java: HelloController.java
     ```java
     import org.springframework.web.bind.annotation.GetMapping;
     import org.springframework.web.bind.annotation.RestController;
 
-    @RestController // anotação controller
+    @RestController // anotação para definição do controller
     public class HelloController{
         @GetMapping("/hello") // anotação para exposição da rota com requisição GET
         public String hello(){
@@ -62,8 +66,18 @@
     ```
 
 ### Hello Spring - rodando o projeto
-- Intellij
-    - inicie o projeto pela classe [project-name] ( src/main/java/com/[project-name]/[project-name]Application.java )
+- IntelliJ
+    - inicie o projeto ( src/main/java/com/[project-name]/[project-name]Application.java )
+- terminal
+    - rodando 
+        ```console
+        ./mvnw spring-boot:run
+        ```
+    - fazendo build para arquivo jar
+        ```console
+        ./mvnw clean package
+        java -jar target/[generated-build].jar
+        ```
 
 ### requisição: Postman (UI), curl (CLI)
 - fazendo requisição GET na URL localhost:8080/hello
@@ -71,6 +85,14 @@
     Hello Spring
     ```
 
-
+### models, views e controllers
+- model
+    - entity
+    - DTO (data transfer object): camada de segurança evitando de expor dados da entity ao usuário
+- view
+    - repository
+    - service
+- controller
+    - CRUD completo
 
     
