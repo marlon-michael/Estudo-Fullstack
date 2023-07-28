@@ -1,4 +1,4 @@
-# Primeiros passos
+# Como contruir um web app com React + javascript
 
  ### criando componente
 - crie um arquivo com extensão ".js" ou ".ts"
