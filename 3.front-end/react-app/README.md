@@ -1,28 +1,12 @@
-# Como iniciar um projeto React + typescript com Vite
+# Desenvolvimento Front-end com React
 
-### criando projeto
-- comandos npm
-    ```console
-    npm create vite@lastest
-    ```
-- escolhas
-    - nome do projeto
-    - templates: React, Vue, Svelte, e outros
-    - linguagens: typescript, javascript
-
-### rodando projeto
-- instalando dependencias
-    ```console
-    npm install
-    npm install @types/react @types/react-dom
-    ```
-- rodando
-    ```console
-    npm run dev
-    ```
-
-# Rotas - React Router Dom
-- requisitos
-    ```console
-    npm install react-router-dom
-    ```
+### indices
+- React
+    - [como iniciar um projeto React](/react-app/-INSTALL-RUN.md)
+    - [sintaxe básica React](/react-app/-HOW-CREATE.md)
+---
+### tecnologias e conteudo utilizados
+- React
+    - typescript
+    - rotas - react router dom
+- Vite (construtor de projetos)
