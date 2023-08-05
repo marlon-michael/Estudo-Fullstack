@@ -19,14 +19,15 @@ public class UserController{
         return userService.findAll();
     }
 
-    //@GetMapping("/find/{username}")
-    public UserDTO findByUsername(@PathVariable(name = "username") String username){
+    //@GetMapping("/find/{username}") // path variable: String username
+    public UserDTO findByUsername(String username){
         // requisita o argumento "username" e mapeia para a variavel "username"
         return userService.findByUsername(username);
     }
 
     //@PostMapping("/add")
-    public UserDTO saveUser(@RequestBody UserDTO newUser){
+    // request body: UserDTO newUser
+    public UserDTO saveUser(UserDTO newUser){
         // requisita o corpo de requisição e mapeia para "newUser"
         return userService.saveUser(newUser, null);
     }
