@@ -5,7 +5,7 @@ const Model = require('../model/model.js')
 const router = express.Router()
 
 router.get('/get', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*') // quem pode fazer requisição
+    res.set('Access-Control-Allow-Origin', '*')
     try{
         const users = await Model.find()
         res.status(200).json(users)
@@ -16,7 +16,7 @@ router.get('/get', async (req, res) => {
 })
 
 router.get('/get/:id', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*') // quem pode fazer requisição
+    res.set('Access-Control-Allow-Origin', '*')
     try{
         const user = await Model.findById(req.params.id)
         res.status(200).json(user)
@@ -27,9 +27,8 @@ router.get('/get/:id', async (req, res) => {
 })
 
 router.post('/post', async (req, res) => {
-    // quem pode fazer requisição [* // TODOS; http://000.000.000.000:0000/* // TODOS AS PAGINAS DO IP]
     res.set('Access-Control-Allow-Origin', '*')
-    if (typeof(req.body)=="string") req.body = JSON.parse(req.body) // convertendo String/TEXTO para JSON
+    if (typeof(req.body)=="string") req.body = JSON.parse(req.body)
     const user = new Model({ name: req.body.name })
     try{
         const savingUser = await user.save()
@@ -41,8 +40,8 @@ router.post('/post', async (req, res) => {
 })
 
 router.patch('/patch/:id', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*') // quem pode fazer requisição
-    if (typeof(req.body)=="string") req.body = JSON.parse(req.body) // convertendo String/TEXTO para JSON
+    res.set('Access-Control-Allow-Origin', '*')
+    if (typeof(req.body)=="string") req.body = JSON.parse(req.body)
     try{
         const filter = {_id: req.params.id}
         const updatedUser = req.body
@@ -58,7 +57,7 @@ router.patch('/patch/:id', async (req, res) => {
 })
 
 router.delete('/delete/:id', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*') // quem pode fazer requisição
+    res.set('Access-Control-Allow-Origin', '*')
     try{
         const user = await Model.findByIdAndDelete(req.params.id)
         res.status(200).send(`User [${user.name}] has been deleted`)
