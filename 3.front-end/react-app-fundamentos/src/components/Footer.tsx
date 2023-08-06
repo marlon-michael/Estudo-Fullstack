@@ -1,6 +1,6 @@
 
 
-function Footer(props: any){
+function Footer(){
     return(
         <div className="footer">
             <p>powered with Vite, React, Typescript</p>

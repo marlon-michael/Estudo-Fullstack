@@ -1,11 +1,9 @@
 
 
-function Home({props}: any) {
-	const session = props
-	
+function Home() {
 	return (
 		<div className="body">
-			<h1>Hello {session.isLogged ? "Usuario" : "React"}</h1>
+			<h1>Hello React</h1>
 		</div>
 	)
 }

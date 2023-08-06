@@ -56,17 +56,26 @@
 ---
 ### useEffect - execução de comandos por evento ou tempo determinado
 useEffect pode ser usado para executar um comando um determinado número de vezes
-- one single time using an empty array
+- uma unica vez
 	```javascript
 	useEffect(()=>{
 		//code block
 	}, [])
+	```
+- quando uma variavel for alterada
+	```javascript
+	useEffect(()=>{
+		//code block
+	}, [variavel])
 	```
 ---
 ### lendo texto de inputs
 ```javascript
 const [text, setText] = useState("")
 const changeText = element => setTask(element.target.value)
+```
+```html
+<input onChange={(event)=>setText(event.target.value)} value={text}></input>
 ```
 ---
 ### local storage - banco de dados local
