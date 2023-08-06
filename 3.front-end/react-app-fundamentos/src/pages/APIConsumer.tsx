@@ -2,9 +2,12 @@ import { useState } from "react"
 import { User } from "../types"
 
 
-function APIConsumer ({props}: any) {
+function APIConsumer () {
 
-    const [users, setUsers] = useState<User[]>([])
+    const [userInput, setUserInput] = useState('')
+    const [inputStyles, setInputStyles] = useState('')
+    const [message, setMessage] = useState('')
+    const [users, setUsers] = useState<User[]>([{name:'clique em GET para listar os usuários'}])
 
     const getAll = async () => {
         await fetch('http://127.0.0.1:3000/get')
@@ -16,26 +19,43 @@ function APIConsumer ({props}: any) {
     }
 
     const post = async () => {
+        if (userInput.length == 0) {
+            setInputStyles('error')
+            setMessage('Nome de usúario deve ter ao menos uma letra')
+            return
+        }
+        else {
+            setInputStyles('')
+            setMessage('')
+        }
+
         await fetch('http://127.0.0.1:3000/post',{
-            method: 'POST',
             mode: 'cors',
-            body: JSON.stringify( {name:"juca"} ),
-            headers: new Headers({
-                'accept': 'application/json',
-                'content-type':'text/plain',
-                // 'Access-Control-Allow-Origin': '*',
-            })
+            method: 'POST',
+            body: JSON.stringify( {name:userInput} ),
+            headers: new Headers({'accept': 'application/json','content-type':'text/plain'})
         })
-        .then(res=>res.json())
-        .then(res=>console.log(res))
+        .then(res=> res.status != 200 ? setInputStyles('error') : setInputStyles(''))
         .catch(e=>console.log(e))
     }
 
     return(
         <div className="body">
-            {users.map((user: User) => <p>{user.name}</p>)}
-            <button onClick={getAll}>GET USERS</button>
-            <button onClick={post}>POST USERS</button>
+            <div className="row-div">
+                <div className="left-div">
+                    <div className="usernames-div">
+                        {users.map((user: User, key: number) => <p key={key}> {user.name}</p>)}
+                    </div>
+                    <button onClick={getAll}>GET USERS</button>
+                </div>
+                <div className="right-div">
+                    <div>
+                        <input className={inputStyles} value={userInput} onChange={(e)=>setUserInput(e.target.value)} placeholder="username"></input>
+                        <p>{message}</p>
+                    </div>
+                    <button onClick={post}>POST USER</button>
+                </div>
+            </div>
         </div>
     )
 }
