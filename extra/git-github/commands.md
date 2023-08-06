@@ -2,22 +2,24 @@
 
 Introdução ao Git e Github.
 ------------------------------------
-git init: init git repository
+git init: inicia repositorio git
 
-git clone [link to repository] : bring repository and files to my local repository
+git clone [link to repository] : clona repositorio localmente
 
-git branch : list all branches in repository
+git branch : lista todas as branches do repositorio
 
-git checkout -b [branch/name]: create a new branch
+git checkout -b [branch/name]: cria nova branch
 
-git status : list changes in local repository
+git status : lista modificações na branch
 
-git add [files]: add files to commit
+git add [files]: adiciona arquivos para commit
 
-git add . : add all changed files to commit
+git add -r [files]: remove arquivos do commit
 
-git commit -m "[message]" : comment changes
+git add . : adiciona todos os arquivos para commit
 
-git push : send changes to setted branch in repository
+git commit -m "[message]" : comenta modificações adicionadas
 
-git pull : download update to local repository
+git push : envia modificações para a branch/repositorio
+
+git pull : baixa atualizações/modificações da branch/repositorio
