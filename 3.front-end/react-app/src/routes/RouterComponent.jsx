@@ -8,7 +8,7 @@ import Counter from "../pages/Counter"
 import Home from "../pages/Home"
 
 
-function RouterComponent ({props}: any) {
+function RouterComponent ({props}) {
 	const session = props
 	
 	return (

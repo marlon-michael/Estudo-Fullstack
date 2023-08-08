@@ -3,7 +3,7 @@
 function Footer(){
     return(
         <div className="footer">
-            <p>powered with Vite, React, Typescript</p>
+            <p>powered with Vite, React</p>
         </div>
     )
 }

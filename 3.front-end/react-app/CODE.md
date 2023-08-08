@@ -11,7 +11,7 @@
 - [rotas e navegação entre paginas](#rotas---react-router-dom)
 ---
 ### criando componente
-- crie um arquivo com extensão ".js" ou ".ts"
+- crie um arquivo com extensão ".js" ou ".ts" de acordo com a linguagem selecionada para o projeto
 - estrutura padrão de um componente react
 	```javascript
 	import React from "react";
@@ -149,7 +149,7 @@ const changeText = element => setTask(element.target.value)
 - limitações e poderes
     - navegação só pode ser feita por meio desse componente. portanto para fazer a navegação em cabeçalho ou rodapé o componente precisa estar dentro de BrowserRouter
 - utilização
-    - componente de rotas (/router/Router.tsx)
+    - componente de rotas (/router/Router.jsx)
         ```javascript
         import {Routes, Route, BrowserRouter} from "react-router-dom"
 		import {Header} from "./components/Header"
@@ -168,7 +168,7 @@ const changeText = element => setTask(element.target.value)
 
         export dafault Router
         ```
-    - navegação (Header.tsx) 
+    - navegação (Header.jsx) 
         ```javascript
         import {Navigate} from "react-router-dom"
 
@@ -187,4 +187,34 @@ const changeText = element => setTask(element.target.value)
 ---
 ### consumindo API
 - fetch
+	- GET
+	```javascript
+	// requisição GET
+	const [data, setData] = useState([{}])
+
+	async function getRequest(){
+		await fetch('http://127.0.0.1:3000') // requisição GET
+		.then(response => response.json()) // fazendo o parse da requisição para JSON
+		.then(response => setData(response)) // guardando response
+		.catch(error => console.log(error)) // mostrando erros
+	}
+	```
+	- POST
+	```javascript
+	const [data, setData] = useState({information: true})
+
+	async function postRequest(){
+		await fetch('http://127.0.0.1:3000', {
+			method: 'post', // method: GET, POST, UPDATE, DELETE, ...
+			mode: 'cors', // mode: cors, no-cors, ...
+			body: JSON.stringfy(data), // conversão de JSON para texto 
+			headers: {
+				'Content-Type':'text/plain' // formato de dados em body: Texto
+				// 'Content-Type':'application/json', // formato de dados em body: JSON
+			}
+		})
+		.then(response => response.status != 200 ? console.log(response.json())) // mostra requisição de não retornar OK
+		.catch(error => console.log(error)) // mostra erro na requisição
+	}
+	```
 

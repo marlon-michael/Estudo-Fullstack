@@ -2,8 +2,8 @@
 
 ### indices
 - React
-    - [como iniciar um projeto React](/3.front-end/react-app-fundamentos/CREATE-RUN.md)
-    - [uso e sintaxe React](/3.front-end/react-app-fundamentos/CODE.md)
+    - [como iniciar um projeto React](/3.front-end/react-app/CREATE-RUN.md)
+    - [uso e sintaxe React](/3.front-end/react-app/CODE.md)
 ---
 ### tecnologias e conteudo
 - React

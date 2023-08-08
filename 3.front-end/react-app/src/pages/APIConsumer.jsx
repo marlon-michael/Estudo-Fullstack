@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { User } from "../types"
 
 
 function APIConsumer () {
@@ -7,14 +6,14 @@ function APIConsumer () {
     const [userInput, setUserInput] = useState('')
     const [inputStyles, setInputStyles] = useState('')
     const [message, setMessage] = useState('')
-    const [users, setUsers] = useState<User[]>([{name:'clique em GET para listar os usuários'}])
+    const [users, setUsers] = useState([{name:'clique em GET para listar os usuários'}])
 
     const getAll = async () => {
         await fetch('http://127.0.0.1:3000/get')
         .then(response => response.json())
         .then(data => {
             setUsers([])
-            data.map((user: User)=>setUsers(old=> [...old, user]))
+            data.map((user)=>setUsers(old=> [...old, user]))
         })
     }
 
@@ -44,7 +43,7 @@ function APIConsumer () {
             <div className="row-div">
                 <div className="left-div">
                     <div className="usernames-div">
-                        {users.map((user: User, key: number) => <p key={key}> {user.name}</p>)}
+                        {users.map((user, key) => <p key={key}> {user.name}</p>)}
                     </div>
                     <button onClick={getAll}>GET USERS</button>
                 </div>
