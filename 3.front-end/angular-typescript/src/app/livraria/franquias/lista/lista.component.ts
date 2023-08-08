@@ -14,7 +14,7 @@ export class ListaComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<Franquia[]>("/franquias").subscribe(franquia => this.listaFranquias = franquia);
+    this.http.get<Franquia[]>("/franquias").subscribe((franquia: Franquia[]) => this.listaFranquias = franquia);
   }
 
 }
