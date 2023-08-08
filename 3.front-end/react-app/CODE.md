@@ -9,6 +9,7 @@
 - [passando dados para componentes - props / args](#passando-dados-para-dentro-do-componente)
 - [trocando dados entre componentes (pai e filho)](#trocando-dados-entre-componente-pai-e-filho)
 - [rotas e navegação entre paginas](#rotas---react-router-dom)
+- [consumindo API](#consumindo-api)
 ---
 ### criando componente
 - crie um arquivo com extensão ".js" ou ".ts" de acordo com a linguagem selecionada para o projeto
@@ -199,7 +200,7 @@ const changeText = element => setTask(element.target.value)
 		.catch(error => console.log(error)) // mostrando erros
 	}
 	```
-	- POST
+	- POST, UPDATE
 	```javascript
 	const [data, setData] = useState({information: true})
 
