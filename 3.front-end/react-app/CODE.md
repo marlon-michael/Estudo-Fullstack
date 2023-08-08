@@ -1,4 +1,4 @@
-# Como contruir um web app com React + javascript
+# Como contruir um web app com React
 
 ### indice
 - [criando componente](#criando-componente)
