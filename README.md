@@ -12,24 +12,23 @@
 - modelagem de API
 
 ### Back-end: Java, Node
-- criação de APIs com Express(JS) e Springboot(JAVA)
-- modelagem backend: MMV - Model, Views and Controller
-- modelagem e interação de entidades (tabelas)
+- criação de APIs com Express(NodeJS) e Springboot(JAVA)
+- modelagem: MVC - Model, Views and Controller
 
 ### Front-end: Angular, React
 - rotas e navegação
 - autenticação (andamento)
-- criptografia (andamento)
+- criptografia
 - typescript e javascript
 
 ### Bancos de dados
 - CRUD (create, read, update, delete)
-- SQL: mySQL e SQLite
 - NOSQL: MongoDB
+- SQL: mySQL e SQLite
 
 ### Git
-- manipulação de branches, repositorios, commits
+- uso de branches, repositorios, commits
 ---
 ### cursos e fontes: 
-- Entra21 (2022)
-- estudo proprio e pesquisa
+- Entra 21 (2022)
+- estudo e pesquisa individual
