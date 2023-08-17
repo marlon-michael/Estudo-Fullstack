@@ -1,4 +1,4 @@
-# Conhecimento Full-Stack
+# Desenvolvimento Full-Stack
 
 # Conteudo:
 
@@ -9,7 +9,7 @@
 - orientação a objetos
 - coleções e estrutura de dados
 - criptografia
-- modelagem de API
+- modelagem
 
 ### Back-end: Java, Node
 - criação de APIs com Express(NodeJS) e Springboot(JAVA)
@@ -18,7 +18,6 @@
 ### Front-end: Angular, React
 - rotas e navegação
 - autenticação (andamento)
-- criptografia
 - typescript e javascript
 
 ### Bancos de dados
@@ -27,7 +26,7 @@
 - SQL: mySQL e SQLite
 
 ### Git
-- uso de branches, repositorios, commits
+- ciação, registro de alterações, branches, merge, rebase, repositorio remoto e outros...
 ---
 ### cursos e fontes: 
 - Entra 21 (2022)
