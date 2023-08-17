@@ -4,6 +4,7 @@ Git e Github.
 ------------------------------------
 
 ### criação
+
 git init: inicia repositorio git
 - para sincronização com repositorio online, siga as intruções no site
 ___
