@@ -1,25 +1,23 @@
 # comandos git
 
-Introdução ao Git e Github.
+Git e Github.
 ------------------------------------
 
 ### criação
 git init: inicia repositorio git
 - para sincronização com repositorio online, siga as intruções no site
-
-git clone [link to repository] : clona repositorio localmente
 ___
 ### alterações e versionamento: salvar, cerregar, e identificar
 
 git status : lista modificações na branch
 
-git add [files]: adiciona arquivos para commit
+git add [arquivos]: adiciona arquivos para commit (separados por espaços)
 
-git add -r [files]: remove arquivos do commit
+git add -r [arquivos]: remove arquivos do commit (separados por espaços)
 
 git add . : adiciona todos os arquivos para commit
 
-git commit -m "[message]" : guarda modificações adicionadas
+git commit -m "[menssagem]" : guarda modificações adicionadas
 
 git stash: salva alterações sem fazer um commit
 
@@ -29,7 +27,7 @@ git stash -p: deixa escolher individualmente qual alteração/arquivo salvar
 - [q] cancelar
 - [?] ajuda
 
-git stash branch [branch-name] [stash]: cria branch com base nos stashes
+git stash branch [nome-branch] [stash]: cria branch com base nos stashes
 
 git stash list: lista salvamentos feitos
 
@@ -49,21 +47,33 @@ ___
 
 git branch: lista todas as branches do repositorio
 
-git branch [branch-name]: cria nova branch
+git branch [nome-branch]: cria nova branch
 
-git checkout -b [branch/name]: cria nova branch e move para ela
+git checkout -b [nome-branch]: cria nova branch e move para ela
 
-git ceckout -b [nova/branch] [branch/base]: cria branch com base em outra branch
+git ceckout -b [nova-branch] [branch-base]: cria branch com base em outra branch
 
-git checkout [branch/name]: move para branch
+git checkout [nome-branch]: move para branch
 ___
 ### download e upload ao repositório
 
 git push : envia atualizações para o repositorio
 
+git push [repositorio] [nome-branch]: faz o envio para a branch do repositorio informados
+
+git push [repositorio] --delete [nome-branch]
+
 git pull : baixa atualizações do repositorio
 
-git pull origin [branch/name]: baixa branch do repositorio
+git pull [repositorio] [nome-branch]: baixa branch do repositorio informado
+
+git remote: mostra nome do repositório
+
+git clone [url-repositorio] : clona repositorio localmente
+
+git remote add upstream [url-repositorio-original]: adiciona repositorio remoto
+
+git fetch upstream: baixa repositirio
 ___
 ### merge
 
@@ -75,10 +85,10 @@ merge é uma funcionalidade git para juntarmos as atualizações de duas branche
 - repositorio local
 
     git checkout main  
-    git merge [branch-name]
+    git merge [nome-branch]
 - repositorio remoto
 
-    git push --set-upstream origin [branch-name]
+    git push --set-upstream [repositorio] [nome-branch]
 ___
 ### rebase
 
