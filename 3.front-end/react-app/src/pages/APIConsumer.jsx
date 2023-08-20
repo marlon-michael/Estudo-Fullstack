@@ -5,16 +5,22 @@ function APIConsumer () {
 
     const [userInput, setUserInput] = useState('')
     const [inputStyles, setInputStyles] = useState('')
+    const [usernameDivStyles, setUsernameDivStyles] = useState('')
     const [message, setMessage] = useState('')
     const [users, setUsers] = useState([{name:'clique em GET para listar os usuários'}])
+    const API_URL = 'http://localhost:3000'
 
     const getAll = async () => {
-        await fetch('http://127.0.0.1:3000/get')
-        .then(response => response.json())
+        await fetch(API_URL + '/user/get')
+        .then(res => {
+            res.status != 200 ? setUsernameDivStyles('error') : setUsernameDivStyles('')
+            res.json()
+        })
         .then(data => {
             setUsers([])
             data.map((user)=>setUsers(old=> [...old, user]))
         })
+        .catch(error => console.log(error))
     }
 
     const post = async () => {
@@ -28,21 +34,24 @@ function APIConsumer () {
             setMessage('')
         }
 
-        await fetch('http://127.0.0.1:3000/post',{
+        await fetch(API_URL + '/user/post',{
             mode: 'cors',
             method: 'POST',
             body: JSON.stringify( {name:userInput} ),
-            headers: new Headers({'accept': 'application/json','content-type':'text/plain'})
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
+            }
         })
-        .then(res=> res.status != 200 ? setInputStyles('error') : setInputStyles(''))
-        .catch(e=>console.log(e))
+        .then(res => res.status != 200 ? setInputStyles('error') : setInputStyles(''))
+        .catch(error => console.log(error))
     }
 
     return(
         <div className="body">
             <div className="row-div">
                 <div className="left-div">
-                    <div className="usernames-div">
+                    <div className={"usernames-div " + usernameDivStyles}>
                         {users.map((user, key) => <p key={key}> {user.name}</p>)}
                     </div>
                     <button onClick={getAll}>GET USERS</button>
