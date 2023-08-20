@@ -39,6 +39,8 @@ git commit -m "[menssagem]": guarda modificações adicionadas
 
 git restore [arquivo]: desfaz alterações do arquivo para o ultimo commit
 
+
+
 git reset HEAD^: defazer ultimo commit
 
 git reset HEAD^3: desfazer ultimos 3 commits
