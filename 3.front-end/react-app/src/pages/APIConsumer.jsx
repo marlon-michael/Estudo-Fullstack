@@ -18,7 +18,7 @@ function APIConsumer () {
         })
         .then(data => {
             setUsers([])
-            data.map((user)=>setUsers(old=> [...old, user]))
+            data.map((user) => setUsers(old=> [...old, user]))
         })
         .catch(error => console.log(error))
     }
