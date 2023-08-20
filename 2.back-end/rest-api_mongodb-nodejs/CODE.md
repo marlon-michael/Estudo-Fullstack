@@ -8,7 +8,10 @@
     const mongo = require('mongoose') // importando mongoose
     require('dotenv').config // importando variaveis de ambiente
 
-    const mongoString = process.env.DATABASE_URL // definindo String URL para conexão com MongoDB
+    // define as variaveis de ambiente
+    const MONGO_URL = process.env.DATABASE_URL
+    
+    mongo.connect(MONGO_URL)
     const database = mongo.connection // instancia do banco de dados
     database.on('error', (error) => {
         console.log(error) // em caso de erro, será informado no console 
@@ -34,13 +37,27 @@
 
     const app = express() // instancia o express
 
+    // define as variaveis de ambiente
+    const FRONTEND_URLS = process.env.FRONTEND_URLS
+    const SERVER_PORT = process.env.SERVER_PORT
+
+    app.use((res,req,next) => {
+        // permite que a URL informada acesse a API
+        res.header('Access-Control-Allow-Origin', FRONTEND_URLS)
+        req.header('Access-Control-Allow-Origin', FRONTEND_URLS)
+        // permite que o cabeçalho Content-Type seja usado
+        res.header("Access-Control-Allow-Headers", "Content-Type")
+        req.header("Access-Control-Allow-Headers", "Content-Type")
+        next() // continua fluxo de chamadas
+    })
+
     // USE APENAS UM FORMATO [JSON, TEXT]
     app.use(express.json()) // define JSON como formato para troca de dados
     // app.use(express.text()) // define texto como formato para troca de dados
 
     app.use('/', routes) // define a entrada da API junto das rotas
-    app.listen(3000, () => {
-        console.log('server started at port [ 3000 ]') // expõe a API na porta 3000
+    app.listen(SERVER_PORT, () => {
+        console.log('server started at port [ '+SERVER_PORT+' ]') // expõe a API na porta configurada
     })
     ```
     - arquivo de rotas (routes/routes.js)
@@ -85,7 +102,6 @@
         }
     })
     router.patch('/update/:id', async (req, res) => { // atualiza dados por id
-        res.set('Access-Control-Allow-Origin', '*') // quem pode fazer requisição
         if (typeof(req.body)=="string") req.body = JSON.parse(req.body) // convertendo String/TEXTO para JSON
         try{
             const filter = {_id: req.params.id} // parametro e valor de busca
@@ -102,7 +118,6 @@
         }
     })
     router.delete('/delete/:id', async (req, res) => { // deleta dados por id
-        res.set('Access-Control-Allow-Origin', '*') // quem pode fazer requisição
         try{
             const data = await Model.findByIdAndDelete(req.params.id) // aguarda a busca e esclusão do objeto pelo banco
             res.status(200).send(`Object [${data.id}] has been deleted`) // retorna menssagem de exclusão
@@ -114,10 +129,3 @@
 
     module.exports = router // exporta as rotas definidas
     ```
-    - dicionario
-        ```javascript
-        // parmissão para requisição:
-        // TODOS: *;
-        // TODOS AS PAGINAS DO IP: http://0.0.0.0:0000/* ]
-        res.set('Access-Control-Allow-Origin', '*')
-        ```

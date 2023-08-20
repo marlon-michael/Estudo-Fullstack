@@ -51,19 +51,33 @@
 
 ### expondo rotas
 - crie uma novo pacote controller: src/main/java/com/[project]/controller/
-- crie um arquivo HelloController.java: HelloController.java
-    ```java
-    import org.springframework.web.bind.annotation.GetMapping;
-    import org.springframework.web.bind.annotation.RestController;
+  - crie um arquivo HelloController.java: HelloController.java
+      ```java
+      import org.springframework.web.bind.annotation.GetMapping;
+      import org.springframework.web.bind.annotation.RestController;
 
-    @RestController // anotação para definição do controller
-    public class HelloController{
+      @RestController // anotação para definição do controller
+      public class HelloController{
         @GetMapping("/hello") // anotação para exposição da rota com requisição GET
         public String hello(){
-            return "Hello Spring"
+            return "Hello Spring";
         }
-    }
-    ```
+
+        // permite chamadas por aplicações front-end
+        @Bean // configuração para chamadas CORS)
+        public FilterRegistrationBean corsFilter(){
+            final UrlBasedCorsConfigurationSource src = new UrlBasedCorsConfigurationSource();
+            final CorsConfiguration config = new CorsConfiguration();
+            config.setAllowCredentials(true);
+            config.setAllowedOrigins(Collections.singletonList("http://localhost:5173")); // endereço da aplicação front-end
+            config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept")); // configurações HEADER aceitas
+            config.setAllowedMethods(Arrays.asList("GET", "POST", "UPDATE", "DELETE", "OPTIONS", "PATCH")); // metodos permitidos
+            src.registerCorsConfiguration("/**", config); // rotas que sesão permitidas
+            FilterRegistrationBean registration = new FilterRegistrationBean(new CorsFilter(src));
+            return registration;
+        }
+      }
+      ```
 
 ### Hello Spring - rodando o projeto
 - IntelliJ

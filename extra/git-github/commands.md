@@ -20,6 +20,8 @@ git add . : adiciona todos os arquivos para commit
 
 git commit -m "[menssagem]" : guarda modificações adicionadas
 
+# como listar commits e retornar versão
+
 git stash: salva alterações sem fazer um commit
 
 git stash -p: deixa escolher individualmente qual alteração/arquivo salvar

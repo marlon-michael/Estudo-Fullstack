@@ -19,9 +19,11 @@
         npm install mongoose express nodemon dotenv
         ```
     - configuração das variaveis de ambiente [arquivo .env]
-        ```javascript
-        DATABASE_URL = mongodb://127.0.0.1:27017/nomedobanco
-        ```
+    ```javascript
+    DATABASE_URL = mongodb://127.0.0.1:27017/restapi
+    SERVER_PORT = 3000
+    FRONTEND_URLS = 'http://localhost:5173'
+    ```
 
 ### rodando a aplicação
 - MongoDB
