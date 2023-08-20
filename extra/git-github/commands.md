@@ -35,19 +35,17 @@ git add -r [arquivos]: remove arquivos do commit (separados por espaços)
 
 git add . : adiciona todos os arquivos para commit
 
-git commit -m "[menssagem]": guarda modificações adicionadas
+git commit -m "[menssagem]" : guarda modificações adicionadas
 
-git restore [arquivo]: desfaz alterações do arquivo para o ultimo commit
+git revert [commit]: cria um novo commit no mesmo estado do commit informado
 
+git reset [commit]: deleta alterações e commits feitos após o commit informado
 
+git reset HEAD^: defaz ultimo commit
 
-git reset HEAD^: defazer ultimo commit
-
-git reset HEAD^3: desfazer ultimos 3 commits
+git reset HEAD^3: desfaz ultimos 3 commits
 
 git checkout [codigo-commit]: retorna estado do codigo ao commit informado
-
-git reset --hard [codigo-commit]: retorna ao estado do commit e deleta commits a frente do informado
 
 # como listar stashes e retornar versão
 
