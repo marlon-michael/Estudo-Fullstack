@@ -15,12 +15,12 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/all")
+    @GetMapping("/get")
     public List<User> findAll(){
         return userRepository.findAll();
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/get/{id}")
     public User findByName(@PathVariable Long id){
         if (userRepository.findById(id).isPresent()){
             return userRepository.findById(id).get();
@@ -28,7 +28,7 @@ public class UserController {
         else return null;
     }
 
-    @PostMapping("/add")
+    @PostMapping("/post")
     public User saveUser(@RequestBody User newUser){
         try{
             newUser.setName(newUser.getName().replace("@", " "));
@@ -42,7 +42,7 @@ public class UserController {
 
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/patch/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody User updatedUser){
         try{
             User user = new User();
