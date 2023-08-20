@@ -14,7 +14,7 @@ function APIConsumer () {
         await fetch(API_URL + '/user/get')
         .then(res => {
             res.status != 200 ? setUsernameDivStyles('error') : setUsernameDivStyles('')
-            res.json()
+            return res.json()
         })
         .then(data => {
             setUsers([])
