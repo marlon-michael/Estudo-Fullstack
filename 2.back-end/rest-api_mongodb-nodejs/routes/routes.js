@@ -3,8 +3,11 @@ const Model = require('../model/model.js')
 
 
 const router = express.Router()
+const userRouter = express.Router()
 
-router.get('/user/get', async (req, res) => {
+router.use('/user', userRouter)
+
+userRouter.get('/get', async (req, res) => {
     try{
         const users = await Model.find()
         res.status(200).json(users)
@@ -14,7 +17,7 @@ router.get('/user/get', async (req, res) => {
     }
 })
 
-router.get('/get/:id', async (req, res) => {
+userRouter.get('/get/:id', async (req, res) => {
     try{
         const user = await Model.findById(req.params.id)
         res.status(200).json(user)
@@ -24,7 +27,7 @@ router.get('/get/:id', async (req, res) => {
     }
 })
 
-router.post('/user/post', async (req, res) => {
+userRouter.post('/post', async (req, res) => {
     const user = new Model({ name: req.body.name })
     try{
         const savingUser = await user.save()
@@ -35,7 +38,7 @@ router.post('/user/post', async (req, res) => {
     }
 })
 
-router.patch('/patch/:id', async (req, res) => {
+userRouter.patch('/patch/:id', async (req, res) => {
     try{
         const filter = {_id: req.params.id}
         const updatedUser = req.body
@@ -50,7 +53,7 @@ router.patch('/patch/:id', async (req, res) => {
     }
 })
 
-router.delete('/delete/:id', async (req, res) => {
+userRouter.delete('/delete/:id', async (req, res) => {
     try{
         const user = await Model.findByIdAndDelete(req.params.id)
         res.status(200).send(`User [${user.name}] has been deleted`)
