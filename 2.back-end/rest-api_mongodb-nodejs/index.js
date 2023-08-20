@@ -10,20 +10,12 @@ const SERVER_PORT = process.env.SERVER_PORT
 
 mongo.connect(MONGO_URL)
 const database = mongo.connection
-
-database.on('error', (error) => {
-    console.log(error)
-})
-
-database.once('connected', () => {
-    console.log('>>> database connected')
-})
+database.on('error', error => console.log(error))
+database.once('connected', () => console.log('>>> database connected'))
 
 const app = express()
 app.use((res,req,next) => {
-    res.header('Access-Control-Allow-Origin', FRONTEND_URLS)
     req.header('Access-Control-Allow-Origin', FRONTEND_URLS)
-    res.header("Access-Control-Allow-Headers", "Content-Type")
     req.header("Access-Control-Allow-Headers", "Content-Type")
     next()
 })
