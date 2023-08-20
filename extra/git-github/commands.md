@@ -3,6 +3,13 @@
 Git e Github.
 ------------------------------------
 
+### informações gerais e globais
+
+para se referir a varios arquivos com um mesmo padrão é possivel usar:
+
+- [ *.js ] adiciona todos os arquivos com final .js para commit  
+    git add *.js
+___
 ### criação
 
 git init: inicia repositorio git
@@ -10,7 +17,17 @@ git init: inicia repositorio git
 ___
 ### alterações e versionamento: salvar, cerregar, e identificar
 
-git status : lista modificações na branch
+git status: lista modificações na branch
+
+git log: mostra commits feitos
+
+git show: mostra mudanças no ultimo commit
+
+git show [codigo-commit]: mostra mudanças feitas no commit informado
+
+git diff: mostra todas mudanças não adicionadas a commit
+
+git diff [arquivo]: mostra mudanças feitas no arquivo
 
 git add [arquivos]: adiciona arquivos para commit (separados por espaços)
 
@@ -20,7 +37,11 @@ git add . : adiciona todos os arquivos para commit
 
 git commit -m "[menssagem]" : guarda modificações adicionadas
 
-# como listar commits e retornar versão
+git reset HEAD^: defazer ultimo commit
+
+git reset HEAD^3: desfazer ultimos 3 commits
+
+# como listar stashes e retornar versão
 
 git stash: salva alterações sem fazer um commit
 
