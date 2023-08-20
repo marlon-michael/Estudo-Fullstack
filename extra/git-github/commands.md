@@ -41,6 +41,9 @@ git revert [commit]: cria um novo commit no mesmo estado do commit informado
 
 git reset [commit]: deleta alterações e commits feitos após o commit informado
 
+
+
+
 git reset HEAD^: defaz ultimo commit
 
 git reset HEAD^3: desfaz ultimos 3 commits
