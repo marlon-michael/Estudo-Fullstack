@@ -3,19 +3,18 @@
 Git e Github.
 ------------------------------------
 
-### informações gerais e globais
+### conceitos globais
 
-para se referir a varios arquivos com um mesmo padrão é possivel usar:
-
-- [ *.js ] adiciona todos os arquivos com final .js para commit  
-    git add *.js
+- para se referir a varios arquivos com um mesmo padrão é possivel usar:
+    - [ *.js ] adiciona todos os arquivos com final .js para commit  
+        git add *.js
 ___
-### criação
+### criação e inicialização
 
 git init: inicia repositorio git
 - para sincronização com repositorio online, siga as intruções no site
 ___
-### alterações e versionamento: salvar, cerregar, e identificar
+### alterações e versionamento com commit: salvar, cerregar, e identificar
 
 git status: lista modificações na branch
 
@@ -36,21 +35,20 @@ git add -r [arquivos]: remove arquivos do commit (separados por espaços)
 git add . : adiciona todos os arquivos para commit
 
 git commit -m "[menssagem]" : guarda modificações adicionadas
+___
+### como desfazer alterações ou retornar a uma versão do código
 
 git revert [commit]: cria um novo commit no mesmo estado do commit informado
 
 git reset [commit]: deleta alterações e commits feitos após o commit informado
 
-
-
-
 git reset HEAD^: defaz ultimo commit
 
 git reset HEAD^3: desfaz ultimos 3 commits
 
-git checkout [codigo-commit]: retorna estado do codigo ao commit informado
+git checkout [codigo-commit]: cria uma nova branch no estado do commit informado 
 
-# como listar stashes e retornar versão
+### como listar e retornar versão com stash
 
 git stash: salva alterações sem fazer um commit
 
@@ -96,7 +94,7 @@ git ceckout -b [nova-branch] [branch-base]: cria branch com base em outra branch
 
 git checkout [nome-branch]: move para branch
 ___
-### download e upload ao repositório
+### download e upload ao repositório remoto
 
 git push : envia atualizações para o repositorio
 
