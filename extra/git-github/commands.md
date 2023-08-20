@@ -41,6 +41,8 @@ git reset HEAD^: defazer ultimo commit
 
 git reset HEAD^3: desfazer ultimos 3 commits
 
+git checkout [codigo-commit]: retorna estado do codigo ao commit informado
+
 # como listar stashes e retornar versão
 
 git stash: salva alterações sem fazer um commit
@@ -72,6 +74,14 @@ ___
 git branch: lista todas as branches do repositorio
 
 git branch [nome-branch]: cria nova branch
+
+git push origin [nome-antigo-branch] [novo-nome-branch]: renomear branch remota
+
+git branch -m [nome-antigo-branch] [novo-nome-branch]: renomear branch local
+
+git push origin --delete [nome-branch]: deleta branch remota
+
+git branch -d [nome-branch]: deleta branch local
 
 git checkout -b [nome-branch]: cria nova branch e move para ela
 
