@@ -13,14 +13,21 @@ function APIConsumer () {
     const getAll = async () => {
         await fetch(API_URL + '/user/get')
         .then(res => {
-            res.status != 200 ? setUsernameDivStyles('error') : setUsernameDivStyles('')
+            if (res.status != 200){
+                setInputStyles('error')
+                res.json().then(error => console.log(error))
+            }else{
+                setInputStyles('')
+            }
             return res.json()
         })
         .then(data => {
+            if (data == undefined || data.lenth == 0) return
+            console.log(data)
             setUsers([])
             data.map((user) => setUsers(old=> [...old, user]))
         })
-        .catch(error => console.log(error))
+        .catch(error => console.log(error.message))
     }
 
     const post = async () => {
@@ -43,8 +50,15 @@ function APIConsumer () {
                 'Content-Type':'application/json'
             }
         })
-        .then(res => res.status != 200 ? setInputStyles('error') : setInputStyles(''))
-        .catch(error => console.log(error))
+        .then(res => {
+            if (res.status != 200){
+                setInputStyles('error')
+                res.json().then(error => console.log(error))
+            }else{
+                setInputStyles('')
+            }
+        })
+        .catch(error => console.log(error.message))
     }
 
     return(
