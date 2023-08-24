@@ -8,6 +8,6 @@ const flashCardRouter = require('./flashCardRoutes')
 const router = express.Router()
 router.use('/user', userRouter)
 router.use('/task', taskRouter)
-router.use('/cards', flashCardRouter)
+router.use('/card', flashCardRouter)
 
 module.exports = router
