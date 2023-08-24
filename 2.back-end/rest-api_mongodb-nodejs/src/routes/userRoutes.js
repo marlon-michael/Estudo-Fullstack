@@ -50,8 +50,8 @@ const cript = (pass) => pass // fazer criptografia de senhas em sha256 ou melhor
 const date = (date) => date // encontrar biblioteca de datas
 
 userRouter.post('/post', async (req, res) => {
-    if (!req.body.name) return res.status(400).json({message: 'user cannot be null'})
-    const data = Model({id: req.body.id, name: req.body.name})
+    if (!req.body.name) return res.status(400).json({message: 'usuario não pode ter campos em branco'})
+    const data = userModel({name: req.body.name})
     try{
         const savingData = await data.save()
         res.status(200).json(savingData)
