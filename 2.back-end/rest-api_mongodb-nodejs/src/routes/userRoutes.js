@@ -51,8 +51,8 @@ const date = (date) => date // encontrar biblioteca de datas
 
 userRouter.post('/post', async (req, res) => {
     if (!req.body.name) return res.status(400).json({message: 'usuario não pode ter campos em branco'})
-    const data = userModel({name: req.body.name})
     try{
+        const data = userModel({name: req.body.name})
         const savingData = await data.save()
         res.status(200).json(savingData)
     }
