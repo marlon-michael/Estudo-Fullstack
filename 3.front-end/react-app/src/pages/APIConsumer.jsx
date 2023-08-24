@@ -61,6 +61,25 @@ function APIConsumer () {
         .catch(error => console.log(error.message))
     }
 
+    const [url, setUrl] = useState('http://localhost:3000/user/post')
+    const [method, setMethod] = useState('post')
+    const [headers, setHeaders] = useState('{"Content-Type":"application/json"}')
+    const [body, setBody] = useState('{"name": "username"}')
+    const request = async () => {
+        if (method == 'GET'){
+            await fetch(url)
+            .then(res => res.json())
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
+        }
+        else{
+            await fetch(url, {mode:'cors', method, body, headers: JSON.parse(headers)})
+            .then(res => res.json())
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
+        }
+    }
+
     return(
         <div className="body">
             <div className="row-div">
@@ -77,6 +96,14 @@ function APIConsumer () {
                     </div>
                     <button onClick={post}>POST USER</button>
                 </div>
+            </div>
+            <div className='body' style={{gap: '20px', height: '500px', minHeight: '10px'}}>
+                <input style={{width: "50vw"}} value={url} onChange={(e)=>setUrl(e.target.value)} placeholder='http://website.com/users/get'></input>
+                <input style={{width: "50vw"}} value={method} onChange={(e)=>setMethod(e.target.value)} placeholder='GET/POST'></input>
+                <input style={{width: "50vw"}} value={headers} onChange={(e)=>setHeaders(e.target.value)} placeholder='{"Content-Type":"application/json"}'></input>
+                <textarea style={{width: "50vw", height: '100px'}} rows={"5"} value={body} onChange={(e)=>setBody(e.target.value)} placeholder='{"name": "username"}'></textarea>
+                <button onClick={request}>request</button>
+                <p>as repostas das requisições são logadas pelo console ( Shift + I )</p>
             </div>
         </div>
     )
