@@ -107,7 +107,8 @@ button:hover {
   border-color: #ababab;
 }
 
-input{
+input, textarea{
+  resize:none;
   max-width: 40vw;
   border: #213547;
   font-size: 1em;
@@ -146,7 +147,7 @@ input:hover{
     padding: 0.4em;
     font-size: small;
   }
-  input{
+  input, textarea{
     border-radius: 5px;
     padding: 0.6em;
     font-size: small;
