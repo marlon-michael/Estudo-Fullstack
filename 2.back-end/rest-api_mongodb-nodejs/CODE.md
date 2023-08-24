@@ -31,8 +31,11 @@
     const mongo = require('mongoose')
 
     const dataSchema = new mongo.Schema({
-        id: {required: true, type: Number}, 
-        name: { required: true, type: String}
+        id: {required: true, type: Number, unique: true}, // tipo númerico, unico, obrigatorio
+        name: { required: true, type: String}, // tipo textual obrigatorio,
+        friends: {required: false, type: [String]} // tipo array de strings, não obrigatorio
+        accountType: {required: true, type: String, enum: ['busines','user']} // tipo texto, com valores predefinidos de 'busines' e 'user', obrigatorio
+        deleted: {required: true, type: Boolean, default: false} // tipo boolean, com valor inicial: falso, obrigatorio
     })
     module.exports = mongo.model('Data', dataSchema)
     ```
