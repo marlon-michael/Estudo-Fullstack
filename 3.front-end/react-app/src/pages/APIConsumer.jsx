@@ -64,7 +64,7 @@ function APIConsumer () {
     const [url, setUrl] = useState('http://localhost:3000/user/post')
     const [method, setMethod] = useState('post')
     const [headers, setHeaders] = useState('{"Content-Type":"application/json"}')
-    const [body, setBody] = useState('{"name": "username"}')
+    const [body, setBody] = useState('{\n\n"name": "username"\n\n}')
     const request = async () => {
         if (method == 'GET'){
             await fetch(url)
