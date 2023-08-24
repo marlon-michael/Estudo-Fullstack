@@ -1,14 +1,30 @@
 const express = require('express')
 const userModel = require('../model/userModel.js')
-const counterModel = require('../model/counterModel.js')
 
 
 const userRouter = express.Router()
 
-async function nextSeq(sequenceName){
-    var sequence = await counterModel.findOneAndUpdate({_id: sequenceName}, {$inc:{sequence_value:1}}, {new: true})
-    return sequence.sequence_value
-}
+const limit = 20
+userRouter.get('/page/:page?', async (req, res) => {
+    let page = 1
+    if (req.params.page && req.params.page > 0) page = req.params.page
+    try{
+        const _res = await userModel.find()
+        .limit(limit)
+        .skip((page-1)* limit)
+        .exec()
+
+        const count = await userModel.countDocuments()
+
+        res.status(200).json({
+            res: _res,
+            pageCount: Math.ceil(count / limit),
+            page: page
+        })
+    }catch(error){
+        res.status(400).json({message: error.message})
+    }
+})
 
 userRouter.get('/get', async (req, res) => {
     try{
@@ -34,17 +50,11 @@ const cript = (pass) => pass // fazer criptografia de senhas em sha256 ou melhor
 const date = (date) => date // encontrar biblioteca de datas
 
 userRouter.post('/post', async (req, res) => {
+    if (!req.body.name) return res.status(400).json({message: 'user cannot be null'})
+    const data = Model({id: req.body.id, name: req.body.name})
     try{
-        savingUser = await nextSeq('user_id').then(id => {
-            userModel.insertMany({
-                id: id,
-                name: req.body.name,
-                email: req.body.email,
-                password: cript(req.body.password),
-                bornDate: date(req.body.born_date)
-            })
-        })
-        res.status(200).json(savingUser)
+        const savingData = await data.save()
+        res.status(200).json(savingData)
     }
     catch(error){
         res.status(400).json({message: error.message})
