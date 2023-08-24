@@ -6,8 +6,9 @@ const taskSchema = new mongo.Schema({
     title: {required: true, type: String},
     body: {required: false, type:String},
     priority: {required: true, type: Number},
-    collaborators_id: {required: true, type: Int32Array},
-    isComplete: {required: true, type: Boolean}
+    owner: {required: true, type: String},
+    collaborators_id: {required: false, type: [String]},
+    completed: {required: true, type: Boolean}
 })
 
 module.exports = mongo.model('Task', taskSchema)
