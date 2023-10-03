@@ -20,6 +20,9 @@
 - autenticação (andamento)
 - typescript e javascript
 
+### Mobile: React Native
+- expo (como criar um projeto)
+
 ### Bancos de dados
 - CRUD (create, read, update, delete)
 - NOSQL: MongoDB
