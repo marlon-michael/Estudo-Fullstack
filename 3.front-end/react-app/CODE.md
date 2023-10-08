@@ -4,6 +4,8 @@
 - [criando componente](#criando-componente)
 - [armazenando valores - useState](#usestate-variaveis-arrays-e-objetos---armazenamento-de-valores)
 - [eventos e temporizadores - useEffect](#useeffect---execução-de-comandos-por-evento-ou-tempo-determinado)
+- [informações globais - useContext](#informações-globais---usecontext)
+- [executar alterações de estado por comandos predefinidos](#executar-alterações-de-estado-com-uma-comandos-predefinidos---usereducer)
 - [input](#lendo-texto-de-inputs)
 - [armazenamento de dados local - localStorage / sessionStorage](#local-storage---banco-de-dados-local)
 - [passando dados para componentes - props / args](#passando-dados-para-dentro-do-componente)
@@ -68,6 +70,52 @@ useEffect pode ser usado para executar um comando um determinado número de veze
 	useEffect(()=>{
 		//code block
 	}, [variavel])
+	```
+---
+### informações globais - useContext
+useContext serve para disponibilizar variaveis de forma global na aplicação para casos em que o valor precisa ser utiliado por toda aplicação. Exemplo: tema escuro ou claro
+- instanciar componente provedor de contexto, bem como o contexto a ser disponibilizado
+```javascript
+const myContext = createContext(null)
+const theme = useContext('dark')
+```
+- retornar os componentes que utilizarão o contexto dentro do componente provedor, junto com o contexto passado para a propriedade "value"
+```javascript
+return(
+	<myContext.Provider value={theme}>
+		<h1>{theme}</h1> // mostrara o valor "dark"
+	</myContext.Provider>
+)
+```
+---
+### executar alterações de estado com uma comandos predefinidos - useReducer
+- definir a função de redução, suas entradas e saídas
+	- state: estado atual, definido pelo retorno da função de redução (objeto)
+	- action: ação a ser executada (objeto)
+	```javascript
+	const reducer = (state, action) => {
+	switch (action.type) {
+		case "INCREMENT": // define count + 1, caso action.type == "INCREMENT"
+			return { count: state.count + 1 };
+		case "DECREMENT": // define count - 1, caso action.type == "DECREMENT"
+			return { count: state.count - 1 };
+		default: // define mesmo estado caso action.type não satisfaça nenhuma opção
+			return state;
+	}
+	}
+	```
+- 
+	```javascript
+	// definir a váriavel/objeto de estado, a função o que gerencia, passando a função redutora e o estado inicial
+	const [state, dispatch] = useReducer(reducer, { count: 0 })
+
+	return (
+		<div>
+		<h1>Contador: {state.count}</h1>
+		<button onClick={() => dispatch({ type: "INCREMENT" })}>Incrementar</button>
+		<button onClick={() => dispatch({ type: "DECREMENT" })}>Decrementar</button>
+		</div>
+	)
 	```
 ---
 ### lendo texto de inputs
