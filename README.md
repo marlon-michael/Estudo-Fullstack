@@ -15,16 +15,14 @@
 - criação de APIs com Express(NodeJS) e Springboot(JAVA)
 - modelagem: MVC - Model, Views and Controller
 
-### Front-end: Angular, React
+### Front-end: Angular, React JS, React Native (mobile)
 - rotas e navegação
-- autenticação (andamento)
+- persistência local, sessão
+- autenticação
 - typescript e javascript
 
-### Mobile: React Native
-- expo (como criar um projeto)
-
 ### Bancos de dados
-- CRUD (create, read, update, delete)
+- modelar, criar, alterar, visualizar, deletar dados e tabelas
 - NOSQL: MongoDB
 - SQL: mySQL e SQLite
 
