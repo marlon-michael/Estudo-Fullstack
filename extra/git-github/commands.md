@@ -18,6 +18,7 @@ ___
 
 git config --global http.proxy https://0.0.0.0:0000
 git config --global http.proxy 0.0.0.0:0000
+git config --global http.proxy "" : remover conexão proxy
 ___
 ### alterações e versionamento com commit: salvar, cerregar, e identificar
 
