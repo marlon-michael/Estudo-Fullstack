@@ -12,23 +12,27 @@
 - modelagem
 
 ### Back-end: Java, Node
-- criação de APIs com Express(NodeJS) e Springboot(JAVA)
-- modelagem: MVC - Model, Views and Controller
+- criação de APIs com NodeJS (Express) e Java (Springboot)
+- modelagem: MVC (Model Views Controller)
 
 ### Front-end: Angular, React JS, React Native (mobile)
 - rotas e navegação
-- persistência local, sessão
+- persistência local e sessão
 - autenticação
-- typescript e javascript
+- javascript e typescript
+
+### Mobile: React Native
+- desenvolvimento em tempo real: expo-cli
+- build: eas-cli
 
 ### Bancos de dados
-- modelar, criar, alterar, visualizar, deletar dados e tabelas
+- modelagem, criação, alterações, busca e visualização, deleção dados e tabelas
 - NOSQL: MongoDB
 - SQL: mySQL e SQLite
 
 ### Git
-- ciação, registro de alterações, branches, merge, rebase, repositorio remoto e outros...
+- criação, registro de alterações, branche, merge, rebase, repositorios remotos ...
 ---
 ### cursos e fontes: 
 - Entra 21 (2022)
-- estudo e pesquisa individual
+- estudo proprio e pesquisa
