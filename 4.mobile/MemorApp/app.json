@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.testapp"
+      "package": "com.marlonmichael.memorapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
