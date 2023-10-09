@@ -3,7 +3,7 @@
 Git e Github.
 ------------------------------------
 
-### conceitos globais
+### conceitos universais
 
 - para se referir a varios arquivos com um mesmo padrão é possivel usar:
     - [ *.js ] adiciona todos os arquivos com final .js para commit  
@@ -13,6 +13,11 @@ ___
 
 git init: inicia repositorio git
 - para sincronização com repositorio online, siga as intruções no site
+___
+### configurações
+
+git config --global http.proxy https://0.0.0.0:0000
+git config --global http.proxy 0.0.0.0:0000
 ___
 ### alterações e versionamento com commit: salvar, cerregar, e identificar
 
