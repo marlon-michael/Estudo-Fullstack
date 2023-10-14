@@ -1,6 +1,8 @@
 
 # Como iniciar um novo projeto com React Native + Expo
-- [requerimentos](#requerimentos-e-instalações)
+
+### Indices
+- [requerimentos para começar](#requerimentos-e-instalações)
     - Node JS
     - [Expo - testando a aplicação](#instalando-expo)
     - [eas - build da aplicação](#instalando-eas-globalmente)
@@ -8,7 +10,7 @@
 - [iniciando projeto com npm](#iniciando-projeto-com-npm)
 - [testando aplicativo](#testar-o-apicativo-com-aplicativo-expo)
 
-### requerimentos e instalações
+## requerimentos e instalações
 - #### instalando expo globalmente
     ```console
     npm install -g expo-cli
@@ -17,7 +19,7 @@
     ```console
     npm install -g eas-cli
     ```
-### iniciando projeto com expo
+## iniciando projeto com expo
 - comando para criar projeto
     - templates predefinidos possíveis
         - blank (em branco)
@@ -29,10 +31,14 @@
     - após a criação do projeto entre na pasta criada
 - inicie usando o comando
     ```console
+    npx expo start
+    ```
+    ou (deprecated)
+    ```console
     expo start
     ```
 
-### iniciando projeto com NPM
+## iniciando projeto com NPM
 - use o comando
     ```console
     npx create-expo-app [nome-projeto] 
@@ -46,12 +52,12 @@
     npm run web # para rodar no browser
     ```
 
-### testar o apicativo com aplicativo Expo
+## testar o apicativo com aplicativo Expo
 - instale o aplcativo da Playstore: Expo
 - conecte o aparelho na mesma rede da maquina que roda o projeto
 - escaneie o código QR
 
-### configuração e build do projeto para android com eas
+## configuração e build do projeto para android com eas
 #### configuração
 - em um terminal interativo faça o login por meio do expo ou eas
     ```console
