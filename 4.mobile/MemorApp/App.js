@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { useContext, useState } from 'react'
 import { Animated, Dimensions, SafeAreaView, StyleSheet, View } from 'react-native'
-import storage from '@react-native-async-storage/async-storage'
 import Context from './hook/Context'
 import Navigator from './component/Navigator'
 import Settings from './tab/Settings'
@@ -23,6 +22,8 @@ export default function App() {
     old !== tab && app.tabHistory.push(old)
     return tab
   })
+
+  // TODO: DESACOPLAR COMPONENTES DA TELA DE INICIO PARA COMPONENTES INDIVIDUAIS: side bar e header
 
   return (
     <SafeAreaView style={[style.container, { marginTop: 40 }]}>

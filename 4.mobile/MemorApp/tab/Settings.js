@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { StyleSheet, View } from "react-native"
 import Button from "../component/basic/Button"
 import Title from "../component/basic/text/Title"
