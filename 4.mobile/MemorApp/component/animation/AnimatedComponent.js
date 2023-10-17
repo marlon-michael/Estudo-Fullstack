@@ -39,7 +39,9 @@ export default function AnimatedComponent(props) {
     })
   })
 
+  animationMap.forEach(value => value.value())
   props.animation.map = animationMap
+  mapStyle()
 
   function getAnimation(atribute, stage, duration) {
     let animation = animationMap.get(atribute)
@@ -59,15 +61,18 @@ export default function AnimatedComponent(props) {
     })
   }
 
+  function mapStyle() {
+    animationMap.forEach((value, key) => {
+      props.style.map(style => {
+        style[key] = value.value
+      })
+    })
+  }
+
   return (
     <props.component
       {...props}
-      style={[
-        props.style,
-        animationMap.has('backgroundColor') && { backgroundColor: animationMap.get('backgroundColor').value() },
-        animationMap.has('color') && { color: animationMap.get('color').value() },
-      ]}
-      onPress={props.onPress}
+      opacity={animationMap.has('opacity') ? animationMap.get('opacity').value : 1}
     >{props.children}</props.component>
   )
 }
