@@ -1,25 +1,26 @@
 import { StatusBar } from 'expo-status-bar'
 import { useContext, useState } from 'react'
-import { Dimensions, SafeAreaView, StyleSheet, View } from 'react-native'
+import { Animated, Dimensions, SafeAreaView, StyleSheet, View } from 'react-native'
 import storage from '@react-native-async-storage/async-storage'
 import Context from './hook/Context'
 import Navigator from './component/Navigator'
 import Settings from './tab/Settings'
 import Home from './tab/Home'
-import Button from './component/basic/Button'
 import HelloInput from './tab/HelloInput'
+import AnimatedComponent from './component/animation/AnimatedComponent'
+import Button from './component/basic/Button'
 
 
 
 export default function App() {
   const style = styles()
   const app = useContext(Context)
-  const animation = { map: undefined }
+  const sidaBarAnimation = { map: undefined }
   const [tab, setTab] = useState('home')
   const [, update] = useState(0)
-  app.update = () => update(x => x + 1)
+  app.update = () => update(x => !x)
   app.setTab = (tab) => setTab(old => {
-    app.tabHistory.push(old)
+    old !== tab && app.tabHistory.push(old)
     return tab
   })
 
@@ -29,6 +30,7 @@ export default function App() {
       <View style={style.headerBar}>
         <Button
           onPress={() => {
+            // back to last tab
             app.tabHistory.length && app.setTab(app.tabHistory.pop())
             app.tabHistory.pop()
           }}
@@ -36,13 +38,43 @@ export default function App() {
         <Button onPress={() => app.setTab('home')}>home</Button>
         <Button onPress={() => app.setTab('helloInput')}>hello input</Button>
         <Button onPress={() => app.setTab('settings')}>settings</Button>
+        <Button onPress={() => {
+          sidaBarAnimation.map.get('zIndex').getAnimation(1, 0).start()
+          sidaBarAnimation.map.get('top').getAnimation(1, 500).start()
+          sidaBarAnimation.map.get('opacity').getAnimation(1, 500).start()
+        }}>animation</Button>
       </View>
 
-      <View style={style.sideBar}>
+      <AnimatedComponent
+        component={Animated.View}
+        animation={sidaBarAnimation}
+        style={[style.sideBar, {}]}
+        animations={[{
+          atribute: 'top',
+          inputRange: [0, 1],
+          range: [-Dimensions.get('screen').height, 0]
+        }, {
+          atribute: 'opacity',
+          inputRange: [0, 1],
+          range: [0, 1]
+        }, {
+          atribute: 'zIndex',
+          inputRange: [0, 1],
+          range: [-1, 1]
+        }]}
+      >
         <Button onPress={() => app.setTab('home')}>home</Button>
         <Button onPress={() => app.setTab('helloInput')}>hello input</Button>
         <Button onPress={() => app.setTab('settings')}>settings</Button>
-      </View>
+        <Button onPress={() => {
+          sidaBarAnimation.map.get('top').getAnimation(0, 500).start()
+          sidaBarAnimation.map.get('opacity').getAnimation(0, 500).start(() => {
+            sidaBarAnimation.map.get('zIndex').getAnimation(0, 0).start()
+          })
+        }}>animation</Button>
+
+      </AnimatedComponent>
+
       <View style={style.container}>
 
         <Navigator
@@ -76,12 +108,11 @@ function styles() {
       backgroundColor: app.darkmode ? app.secondaryBackgroundDarkColor : app.secondaryBackgroundLightColor,
     },
     sideBar: {
-      opacity: 0,
-      display: 'none',
       position: 'absolute',
-      top: 0,
+      top: -Dimensions.get('screen').height,
       left: 0,
       width: Dimensions.get('screen').width,
+      height: Dimensions.get('screen').height,
       justifyContent: 'center',
       flexDirection: 'column',
       padding: 50,
