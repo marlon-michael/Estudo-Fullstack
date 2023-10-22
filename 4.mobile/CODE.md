@@ -7,6 +7,7 @@
 - [persistência com react native - Async Storage](#asyncstorage---como-armazenar-valores-em-banco-local)
 - [manipulando arquivos em dispositivos móveis - expo-file-system](#expo-file-system---manipulando-arquivos)
 - [componente de visualização com rolagem - ScrollView](#scroll-view---componentes-de-visualização-com-rolagem)
+- [detectar posição do toque - PanResponder](#panresponder---posição-do-toque-em-tempo-real)
 
 ---
 ## similaridades e diferenças
@@ -233,4 +234,56 @@ fs.StorageAccessFramework.requestDirectoryPermissionsAsync('file://storage/emula
   <View>
 
 <SafeAreaView>
+```
+---
+## PanResponder - posição do toque em tempo real
+```javascript
+import { useState } from 'react';
+import { View, Text, PanResponder } from 'react-native';
+
+export default function App(){
+  const [pos, setPos] = useState([0,0])
+
+  // define eventos quando ocorrer toque ou deslizar
+  const panResponder = PanResponder.create({
+    onStartShouldSetResponder: () => true,
+    onMoveShouldSetPanResponder: (e, gestureState) => {
+      // se não for um evento de deslizar pela tela não executa
+      return !gestureState.dx == 0
+    },
+    onPanResponderMove: (event, gestureState) => {
+      // define a posição do toque na posição atual
+      let { moveX, moveY } = gestureState
+      setPos([ moveX, moveY ])
+    }
+  })
+
+  return(
+    <View 
+    style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+    // define função para mostrar a posição do toque após o usuario tirar a pressão da tela
+    onTouchEnd={(event) => alert(event.nativeEvent.locationX, event.nativeEvent.locationY)}
+    // define os eventos a serem executados no componente
+    {...panResponder.panHandlers}
+    >
+      <View 
+      // define a posição da view na posição do toque ou deslizamento
+      style={{ 
+        left: pos[0] - 100, 
+        top: pos[1] - 100, 
+        height: 200, 
+        width: 200 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        flex: 1, 
+        position: 'absolute', 
+        backgroundColor: 'green', 
+      }}>
+        <Text style={{ fontSize: 30 }} > X: {pos[0].toFixed(0)} </Text>
+        <Text> </Text>
+        <Text style={{ fontSize: 30 }}> Y: {pos[1].toFixed(0)} </Text>
+      </View>
+    </View>
+  )
+}
 ```
