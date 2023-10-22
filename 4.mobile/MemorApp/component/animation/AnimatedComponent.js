@@ -48,7 +48,7 @@ export default function AnimatedComponent(props) {
     return Animated.timing(animation.animatedValue, {
       toValue: stage,
       duration: duration,
-      easing: Easing.linear,
+      easing: Easing.bezier(0.42, 0, 0.58, 1),
       useNativeDriver: false
     })
   }
@@ -63,7 +63,8 @@ export default function AnimatedComponent(props) {
 
   function mapStyle() {
     animationMap.forEach((value, key) => {
-      props.style.map(style => {
+      if (typeof (props.style.map) !== 'function') props.style[key] = value.value
+      else props.style.map(style => {
         style[key] = value.value
       })
     })
