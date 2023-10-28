@@ -17,7 +17,9 @@ ___
 ### configurações
 
 git config --global http.proxy https://0.0.0.0:0000
+
 git config --global http.proxy 0.0.0.0:0000
+
 git config --global http.proxy "" : remover conexão proxy
 ___
 ### alterações e versionamento com commit: salvar, cerregar, e identificar
@@ -125,12 +127,16 @@ ___
 merge é uma funcionalidade git para juntarmos as atualizações de duas branches em uma só
 - merge da main para feature
 
-    git checkout [feature-branch]  
+    git checkout [feature-branch]
+
     git merge main
+
 - repositorio local
 
-    git checkout main  
+    git checkout main
+
     git merge [nome-branch]
+    
 - repositorio remoto
 
     git push --set-upstream [repositorio] [nome-branch]
@@ -141,7 +147,8 @@ rebase é uma funcionalidade git que atualiza a base de uma branch, trazendo sua
 
 - rebase da main para feature
 
-    git checkout [feature-branch]  
+    git checkout [feature-branch]
+
     git rebase main
 ___
 ### ignorar pastas e arquivos em commits
@@ -149,12 +156,15 @@ ___
  - #### o arquivo deve ser nomeado como " .gitignore "
 - os arquivos e pastas a serem ignorados devem ser declarados da seguinte forma:
     - pastas
-        > .pasta/  
+        > .pasta/
+
         > .pasta/subpasta/
     - arquivos
-        > .arquivo  
+        > .arquivo
+
         > .pasta/arquivo
 - ignorar arquivos após o commit
 
-    git rm --cached [nome-arquivo/pasta]  
+    git rm --cached [nome-arquivo/pasta]
+
     git commit -m "arquivo ignorado"
