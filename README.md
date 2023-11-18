@@ -3,36 +3,37 @@
 # Conteudo:
 
 ### Fundamentos
-- entrada e saida de dados
 - variaveis e tipos de dados
-- loops, comparações
+- entrada e saida de dados
+- loops e comparações
 - orientação a objetos
 - coleções e estrutura de dados
 - criptografia
-- modelagem
 
 ### Back-end: Java, Node
 - criação de APIs com NodeJS (Express) e Java (Springboot)
 - modelagem: MVC (Model Views Controller)
 
-### Front-end: Angular, React JS, React Native (mobile)
+### Front-end: Angular + typescript, React JS + javascript
 - rotas e navegação
 - persistência local e sessão
 - autenticação
-- javascript e typescript
 
 ### Mobile: React Native
 - desenvolvimento em tempo real: expo-cli
 - build: eas-cli
 
 ### Bancos de dados
-- modelagem, criação, alterações, busca e visualização, deleção dados e tabelas
+- modelagem, criação, alterações, busca, visualização e ordenação
 - NOSQL: MongoDB
 - SQL: mySQL e SQLite
+- cache: Redis
 
 ### Git
-- criação, registro de alterações, branche, merge, rebase, repositorios remotos ...
+- registro de alterações e recuperação
+- branche, merge, rebase
+- github e repositórios remotos
 ---
 ### cursos e fontes: 
 - Entra 21 (2022)
-- estudo proprio e pesquisa
+- projetos pessoais, em grupo e pesquisa (2020)
