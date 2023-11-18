@@ -20,7 +20,7 @@ function styles() {
   return StyleSheet.create({
     title: {
       fontSize: 50,
-      color: app.darkmode? app.negativeDarkColor : app.negativeLightColor,
+      color: app.darkmode? app.contrastDarkColor : app.contrastLightColor,
       margin: 18
     },
   });

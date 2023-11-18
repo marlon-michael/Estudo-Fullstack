@@ -1,9 +1,9 @@
 import { useContext, useState } from "react"
 import { StyleSheet, View } from "react-native"
-import Title from "../component/basic/text/Title"
-import Input from "../component/basic/Input"
+import Title from "../component/primal/text/Title"
+import Input from "../component/primal/Input"
 import Context from "../hook/Context"
-import Button from "../component/basic/Button"
+import Button from "../component/primal/Button"
 import file from '../hook/File'
 
 
@@ -44,7 +44,7 @@ function styles() {
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: app.darkmode ? app.backgroundDarkColor : app.backgroundLightColor,
+      backgroundColor: app.darkmode ? app.primaryBackgroundDarkColor : app.primaryBackgroundLightColor,
       alignItems: 'center',
       justifyContent: 'center',
     },

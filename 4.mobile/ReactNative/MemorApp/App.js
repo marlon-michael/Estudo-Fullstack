@@ -7,7 +7,7 @@ import Settings from './tab/Settings'
 import Home from './tab/Home'
 import HelloInput from './tab/HelloInput'
 import AnimatedComponent from './component/animation/AnimatedComponent'
-import Button from './component/basic/Button'
+import Button from './component/primal/Button'
 
 
 
@@ -16,8 +16,9 @@ export default function App() {
   const app = useContext(Context)
   const sidaBarAnimation = { map: undefined }
   const [tab, setTab] = useState('home')
-  const [, update] = useState(0)
-  app.update = () => update(x => !x)
+  const [, setUpdate] = useState(0)
+  
+  app.update = () => setUpdate(x => x+1)
   app.setTab = (tab) => setTab(old => {
     old !== tab && app.tabHistory.push(old)
     return tab
@@ -98,7 +99,7 @@ function styles() {
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: app.darkmode ? app.backgroundDarkColor : app.backgroundLightColor,
+      backgroundColor: app.darkmode ? app.primaryBackgroundDarkColor : app.primaryBackgroundLightColor,
       alignItems: 'center',
       justifyContent: 'center',
     },

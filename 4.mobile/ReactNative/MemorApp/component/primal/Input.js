@@ -20,8 +20,8 @@ function styles() {
   const app = useContext(Context)
   return (StyleSheet.create({
     input: {
-      backgroundColor: app.darkmode? app.negativeLightColor : app.negativeDarkColor,
-      color: app.darkmode? app.negativeDarkColor: app.negativeLightColor,
+      backgroundColor: app.darkmode? app.contrastLightColor : app.contrastDarkColor,
+      color: app.darkmode? app.contrastDarkColor: app.contrastLightColor,
       fontSize: 20,
       padding: 10,
       margin: 10,

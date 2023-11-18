@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "0555e7bb-cd72-4265-ab31-626a9f9cb968"
+      }
+    },
+    "android": {
+      "package": "com.marlonmichael.memorapp"
+    }
+  }
+}

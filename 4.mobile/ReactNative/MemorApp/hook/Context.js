@@ -6,23 +6,23 @@ const Context = createContext({
     darkmode: true,
     tabHistory: [],
 
-    primaryDarkColor: '#334',
-    primaryLightColor: '#46b',
+    primaryAccentDarkColor: '#334',
+    primaryAccentLightColor: '#46b',
 
-    secondaryDarkColor: '#223',
-    secondaryLightColor: '#35a',
+    secondaryAccentDarkColor: '#223',
+    secondaryAccentLightColor: '#35a',
 
-    backgroundDarkColor: '#222229',
-    backgroundLightColor: '#fff',
+    primaryBackgroundDarkColor: '#222229',
+    primaryBackgroundLightColor: '#fff',
 
     secondaryBackgroundDarkColor: '#191920',
     secondaryBackgroundLightColor: '#ddd',
 
+    contrastDarkColor: '#eee',
+    contrastLightColor: '#2c2c3a',
+
     statusBarDarkColor: '#16161b',
     statusBarLightColor: '#ccc',
-
-    negativeDarkColor: '#eee',
-    negativeLightColor: '#2c2c3a'
 })
 
 

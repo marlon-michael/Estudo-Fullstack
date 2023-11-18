@@ -1,4 +1,4 @@
-import TextTag from "./basic/text/TextTag"
+import TextTag from "./primal/text/TextTag"
 
 
 

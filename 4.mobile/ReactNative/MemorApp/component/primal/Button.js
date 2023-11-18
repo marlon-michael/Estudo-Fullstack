@@ -22,7 +22,7 @@ function styles() {
   return StyleSheet.create({
     button: {
       fontSize: 20,
-      backgroundColor: app.darkmode ? app.primaryDarkColor : app.primaryLightColor,
+      backgroundColor: app.darkmode ? app.primaryAccentDarkColor : app.primaryAccentLightColor,
       color: 'whitesmoke',
       borderRadius: 7,
       padding: 10,

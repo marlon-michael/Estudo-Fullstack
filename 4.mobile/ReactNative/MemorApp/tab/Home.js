@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { Dimensions, ScrollView, StyleSheet, View } from "react-native"
-import Title from "../component/basic/text/Title"
+import Title from "../component/primal/text/Title"
 import Context from "../hook/Context"
 
 
@@ -23,7 +23,7 @@ function styles() {
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: app.darkmode ? app.backgroundDarkColor : app.backgroundLightColor,
+      backgroundColor: app.darkmode ? app.primaryBackgroundDarkColor : app.primaryBackgroundLightColor,
       alignItems: 'center',
       justifyContent: 'center',
     }

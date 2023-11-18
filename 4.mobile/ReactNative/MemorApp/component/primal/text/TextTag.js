@@ -24,7 +24,7 @@ function styles() {
   return StyleSheet.create({
     text: {
       fontSize: 50,
-      color: app.darkmode ? '#fff' : app.negativeLightColor,
+      color: app.darkmode ? '#fff' : app.contrastLightColor,
       margin: 5
     },
     error: {
