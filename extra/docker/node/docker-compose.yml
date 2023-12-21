@@ -1,0 +1,39 @@
+# versão do docker compose
+version: 3.7
+
+# aplicações
+services:
+  # nome do container
+  node_app:
+    container_name: "node_app"
+    # procura dockerfile no diretorio atual para contruir container
+    build: .
+    # define diretorio principal da aplicação o qual vai executar os comandos descritos
+    working_dir: "user/src/app/"
+    # informa dependencia do container
+    depends_on:
+      - database
+    # reinicia a apicação sempre que parar de funcionar
+    restart: always
+    # expoe porta 3000
+    expose:
+      - 3000
+    # definição de volumes da maquina host (/output_container) para o container docker (/output)
+    volumes:
+      - /output_container:/output
+    # execução dos cantainers
+    command: "node index.js" # comandos para inicializar container
+    # tty:true # comando para manter container em execução em segundo plano
+
+  # nome do container
+  database:
+    # imagem e versão utilizados
+    image: postgres:9.5 
+    # variaveis de ambiente
+    environment:
+      - POSTFRES_DB=my_db
+      - POSTGRES_USER=my_user
+      - POSTGRES_PASSWORD=my_password
+    # mapear portas
+    ports:
+      - "5432:5432"
