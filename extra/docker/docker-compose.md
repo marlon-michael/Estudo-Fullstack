@@ -35,6 +35,7 @@ services:
     container_name: "node_app"
     # procura dockerfile no diretorio atual para contruir container
     build: .
+      #dockerfile: ./frontend/src/app # define caminho em do dockerfile apartir do diretorio do docker-compose
     # define diretorio principal da aplicação o qual vai executar os comandos descritos
     working_dir: "user/src/app/"
     # informa dependencia do container
@@ -45,6 +46,9 @@ services:
     # expoe porta 3000
     expose:
       - 3000
+    # define rede que container vai utilizar
+    networks:
+      - production-network
     # definição de volumes da maquina host (/output_container) para o container docker (/output)
     volumes:
       - /output_container:/output
@@ -64,4 +68,11 @@ services:
     # mapear portas
     ports:
       - "5432:5432"
+    # define rede que container vai utilizar
+    networks:
+      - production-network
+  networks:
+    production-network:
+      driver: bridge
+
 ```
