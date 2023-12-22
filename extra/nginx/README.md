@@ -16,12 +16,22 @@ server{
   listen 80;
   listen [::]:80;
 
-  server_name examplo.localhost; # endereço interceptado
-  root /usr/share/nginx/nosso_app; # endereço do aquivo / pagina web
-  index index.html; # nome do arquivo / pagina web
+  # dominio do site
+  server_name examplo.localhost;
 
+  # endereço da pagina inicial caso não seja informado pelo usuario
+  root /usr/share/nginx/nosso_app;
+
+  # arquivos para pagina inicial caso não seja informado pelo usuario
+  index index.php index.html;
+
+  # parmite envio de arquivos e define limite
+  sendfile on;
+  client_max_body_size 512m
+
+  # redireciona para os arquivos e pastas na ordem declarada: nome (arquivo) -> nome/ (pasta) -> 404 (not found)
   location / {
-    try_fyles $uri $uri/ =404
+    try_fyles $uri $uri/ =404;
   }
 }
 ```
@@ -32,11 +42,15 @@ server{
   listen 80;
   listen [::]:80;
 
-  # endereço interceptado
+  # dominio do site
   server_name app1.localhost;
 
   location / {
-    # endereço redirecionado
+    # permite o envio de headers para o servidor de origem
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+
+    # servidor de origem
     proxy_pass http://localhost:8001;
   }
 }
@@ -45,11 +59,15 @@ server{
   listen 80;
   listen [::]:80;
 
-  # endereço de interceptado
+  # dominio do site
   server_name app2.localhost;
 
   location / {
-    # endereço redirecionado
+    # permite o envio de headers para o servidor de origem
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    
+    # servidor de origem
     proxy_pass http://localhost:8002;
   }
 }
