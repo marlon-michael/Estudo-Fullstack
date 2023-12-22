@@ -11,13 +11,18 @@
 - criptografia
 
 ### Back-end: Java, Node
-- criação de APIs com NodeJS (Express) e Java (Springboot)
-- modelagem: MVC (Model Views Controller)
+- modelagem: 
+  - MVC (Model Views Controller)
+- criação de APIs com 
+  - NodeJS (Express)
+  - Java (Springboot)
 
-### Front-end: Angular + typescript, React JS + javascript
+### Front-end:
 - rotas e navegação
 - persistência local e sessão
 - autenticação
+  - Angular + typescript
+  - React JS + javascript
 
 ### Mobile: React Native
 - desenvolvimento em tempo real: expo-cli
@@ -25,21 +30,23 @@
 
 ### Bancos de dados
 - modelagem, criação, alterações, busca, visualização e ordenação
-- NOSQL: MongoDB
-- SQL: mySQL e SQLite
-- cache: Redis
+  - NOSQL: MongoDB
+  - SQL: mySQL e SQLite
+  - cache: Redis
 
 ### Git
 - registro de alterações e recuperação
 - branche, merge, rebase
 - github e repositórios remotos
 
-### Docker e Docker Compose
-- definição, criação e gerenciamento de containers docker
-- redes, volumes, variaveis de ambiente
-- gerenciamento de multiplos containers docker por meio do orquestrador docker compose
+### Containers: Docker e Docker Compose
+- docker
+  - definição, criação e gerenciamento de containers docker
+  - redes e volumes
+- docker compose
+  - gerenciamento de multiplos containers docker por meio deste orquestrador
 
 ---
-### cursos e fontes: 
+### Cursos e fontes: 
 - Entra 21 (2022)
-- projetos pessoais, em grupo e pesquisa (2020)
+- pesquisa, projetos pessoais e em grupo (desde 2020)
