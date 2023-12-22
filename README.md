@@ -33,6 +33,12 @@
 - registro de alterações e recuperação
 - branche, merge, rebase
 - github e repositórios remotos
+
+### Docker e Docker Compose
+- definição, criação e gerenciamento de containers docker
+- redes, volumes, variaveis de ambiente
+- gerenciamento de multiplos containers docker por meio do orquestrador docker compose
+
 ---
 ### cursos e fontes: 
 - Entra 21 (2022)

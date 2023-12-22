@@ -104,13 +104,6 @@ docker pull NOME_IMAGEM
 docker rmi ID-NOME_IMAGEM
 ```
 
-## liberar espaço
-
-- limpar containers parados e imagens não utilizadas
-```console
-docker system prune
-```
-
 ## volumes
 
 - definir volumes
@@ -162,6 +155,13 @@ docker run --network NOME_REDE NOME_CONTAINER --network-alias NOME_ALIAS
 - passar variaveis de ambiente por argumento
 ```console
 docker run -e NOME_VARIAVEL=VALOR_VARIAVEL NOME_CONTAINER
+```
+
+## liberar espaço
+
+- limpar containers parados e imagens não utilizadas
+```console
+docker system prune
 ```
 
 ## definir imagem
