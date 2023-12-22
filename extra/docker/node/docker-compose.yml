@@ -8,12 +8,13 @@ services:
     container_name: "node_app"
     # procura dockerfile no diretorio atual para contruir container
     build: .
-      #dockerfile: ./frontend/src/app # define caminho em do dockerfile apartir do diretorio do docker-compose
+      #dockerfile: ./frontend/src/app # define caminho em do dockerfile
+      #context: . # procura o dockerfile apartir do diretorio atual
     # define diretorio principal da aplicação o qual vai executar os comandos descritos
     working_dir: "user/src/app/"
     # informa dependencia do container
     depends_on:
-      - database
+      - "database"
     # reinicia a apicação sempre que parar de funcionar
     restart: always
     # expoe porta 3000
@@ -27,7 +28,7 @@ services:
       - /output_container:/output
     # execução dos cantainers
     command: "node index.js" # comandos para inicializar container
-    # tty:true # comando para manter container em execução em segundo plano
+    # tty:true # comando para inicializar container em execução em segundo plano
 
   # nome do container
   database:
@@ -44,6 +45,8 @@ services:
     # define rede que container vai utilizar
     networks:
       - production-network
+
   networks:
     production-network:
+      # define modo de rede para modo ponte
       driver: bridge
