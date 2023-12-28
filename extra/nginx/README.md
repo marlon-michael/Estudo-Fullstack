@@ -11,6 +11,9 @@ service
 ```
 
 ## servidor web
+- utilizando os diretórios
+  - /var/www/html ou /usr/share/nginx/html para as paginas
+  - /etc/nginx/sites-enabled/ ou /etc/nginx/conf.d/ para os arquivos de configuração
 ```console
 server{
   listen 80;
@@ -37,6 +40,9 @@ server{
 ```
 
 ## proxy reverso
+ utilizando os diretórios
+  - /var/www/html ou /usr/share/nginx/html para as paginas
+  - /etc/nginx/sites-enabled/ ou /etc/nginx/conf.d/ para os arquivos de configuração
 ```console
 server{
   listen 80;
@@ -74,6 +80,9 @@ server{
 ```
 
 ## balanceamento de carga
+ utilizando os diretórios
+  - /var/www/html ou /usr/share/nginx/html para as paginas
+  - /etc/nginx/sites-enabled/ ou /etc/nginx/conf.d/ para os arquivos de configuração
 ```console
 # endereços alvos para rebalanceamento
 upstream backend {
