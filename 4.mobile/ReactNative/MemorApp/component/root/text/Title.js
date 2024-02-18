@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { StyleSheet, Text } from "react-native";
-import Context from "../../../hook/Context";
+import themeContext from "../../../hook/context/themeContext";
 
 export default function Title(props) {
-  const style = styles()
+  const style = getStyle()
 
   return (
     <Text
@@ -15,12 +15,12 @@ export default function Title(props) {
 
 
 
-function styles() {
-  const app = useContext(Context)
+function getStyle() {
+  const theme = useContext(themeContext)
   return StyleSheet.create({
     title: {
       fontSize: 50,
-      color: app.darkmode? app.contrastDarkColor : app.contrastLightColor,
+      color: theme.darkmode? theme.fontDarkColor : theme.fontColor,
       margin: 18
     },
   });

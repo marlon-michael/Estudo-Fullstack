@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { StyleSheet, Text } from "react-native";
-import Context from "../../../hook/Context";
+import themeContext from "../../../hook/Context/themeContext";
 
 export default function SubTitle(props) {
-  const style = styles()
+  const style = getStyle()
 
   return (
     < Text
@@ -15,12 +15,12 @@ export default function SubTitle(props) {
 
 
 
-function styles() {
-  const app = useContext(Context)
+function getStyle() {
+  const theme = useContext(themeContext)
   return StyleSheet.create({
     subtitle: {
       fontSize: 30,
-      color: app.darkmode ? app.negativeDarkColor : app.negativeLightColor,
+      color: theme.darkmode ? theme.fontDarkColor : theme.fontColor,
     },
   });
 }

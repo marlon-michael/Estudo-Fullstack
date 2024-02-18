@@ -1,7 +1,6 @@
 import { Animated, Easing } from "react-native"
 
-// ANIMATED COMPONENT SAMPLE
-
+// ANIMATED COMPONENT USE SAMPLE
 /*
 <AnimatedComponent
   component={Animated.Text}
@@ -69,6 +68,11 @@ export default function AnimatedComponent(props) {
       })
     })
   }
+
+  while (props.pending?.animation.length > 0) {
+    props.pending.animation.pop()(props.animation)
+  }
+  props.pending.animation = []
 
   return (
     <props.component
