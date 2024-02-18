@@ -1,37 +1,38 @@
 import { useContext } from "react"
 import { StyleSheet, View } from "react-native"
-import Button from "../component/primal/Button"
-import Title from "../component/primal/text/Title"
-import Context from "../hook/Context"
-
+import Button from "../component/root/Button"
+import Title from "../component/root/text/Title"
+import Label from "../component/root/text/Label"
+import applicationContext from "../hook/context/applicationContext"
+import themeContext from "../hook/context/themeContext"
+import * as fs from 'expo-file-system'
 
 
 export default function Settings() {
-  const style = styles()
-  const app = useContext(Context)
+  const style = getStyle()
+  const theme = useContext(themeContext)
+  const aplication = useContext(applicationContext)
 
-
-  toggleDarkMode = () => {
-    app.darkmode = !app.darkmode
-    app.update()
+  toggleDarkMode = async () => {
+    theme.darkmode = !theme.darkmode
+    await fs.writeAsStringAsync(fs.documentDirectory + 'settings', JSON.stringify(theme))
+    aplication.update()
   }
 
   return (
     <View style={style.container}>
-      <Title> {app.theme} </Title>
-      <Button onPress={() => toggleDarkMode()}>toggle darkmode</Button>
+      <Title> {theme.darkmode} </Title>
+      <Button onPress={() => toggleDarkMode()}><Label contrast>toggle darkmode</Label></Button>
     </View>
   )
 }
 
-
-
-function styles() {
-  const app = useContext(Context)
+function getStyle() {
+  const theme = useContext(themeContext)
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: app.darkmode ? app.primaryBackgroundDarkColor : app.primaryBackgroundLightColor,
+      backgroundColor: theme.darkmode ? theme.backgroundDarkColor : theme.backgroundColor,
       alignItems: 'center',
       justifyContent: 'center',
     }
