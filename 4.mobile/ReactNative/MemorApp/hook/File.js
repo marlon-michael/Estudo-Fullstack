@@ -22,8 +22,11 @@ async function load(filename) {
         return alert('no permission garanted')
       }
       return await fs.StorageAccessFramework.readDirectoryAsync(permission.directoryUri, { encoding: fs.EncodingType.UTF8 })
-        .then(files => files.map(file => file.search(filename) + 1 && fs.readAsStringAsync(file)
-          .then(value => value))[0])
+        .then(files => files.map(
+          file => file.search(filename) >= 0 && fs.readAsStringAsync(file)
+            .then(value => value)
+        ).filter(x => x != false)[0]
+        )
     })
 }
 
