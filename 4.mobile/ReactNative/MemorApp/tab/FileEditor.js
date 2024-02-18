@@ -35,6 +35,7 @@ export default function Editor() {
         onChangeText={setInput}
         value={input}
         placeholder="type here"
+        lines={10}
       />
       <View style={style.inLine}>
         <Button style={{ height: 40 }} onPress={() => saveInput()}><Label contrast>save</Label></Button>
