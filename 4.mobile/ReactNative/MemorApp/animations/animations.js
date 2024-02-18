@@ -2,10 +2,10 @@ import { Dimensions } from 'react-native'
 
 
 export const pending = { animation: [] }
-export const sidabarAnimation = { map: undefined }
+export const menuAnimation = { map: undefined }
 export const modalAnimation = { map: undefined }
 
-export const sidebarAnimationList = [{
+export const menuAnimationList = [{
   atribute: 'top',
   inputRange: [0, 1],
   range: [-Dimensions.get('screen').height, 0]
