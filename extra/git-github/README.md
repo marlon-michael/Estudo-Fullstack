@@ -20,7 +20,7 @@ git config --global http.proxy http://0.0.0.0:0000
 
 # usuario e senha
 # quando tem-se caracter especial, troca-se o caracter especial por sua forma de percent enconde
-# ex: ? -> %3F , @ -> %40
+# ex: (?) > (%3F) , (@) > (%40)
 git config --global http.proxy http://xxx:xxx@proxy.com.br:3128
 
 git config --global https.proxy http://0.0.0.0:0000
