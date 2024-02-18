@@ -3,7 +3,7 @@ import Button from "./root/Button"
 import applicationContext from "../hook/context/applicationContext"
 import themeContext from "../hook/context/themeContext"
 import { useContext } from 'react'
-import { openMenu, sidabarAnimation } from '../animations/animations'
+import { openMenu, menuAnimation } from '../animations/animations'
 
 
 export default function NavBar(props) {
@@ -35,8 +35,8 @@ export default function NavBar(props) {
       }}>
         <Image style={style.icon} source={require('../assets/icons/settings.png')} />
       </Button>
-      <Button style={{backgroundColor: ''}} onPress={() => {
-        openMenu(sidabarAnimation)
+      <Button style={{backgroundColor: 0}} onPress={() => {
+        openMenu(menuAnimation)
       }}>
         <Image style={style.icon} source={require('../assets/icons/menu.png')} />
       </Button>
