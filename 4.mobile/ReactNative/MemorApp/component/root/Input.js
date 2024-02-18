@@ -10,7 +10,8 @@ export default function Input(props) {
     <TextInput
       style={style.input}
       placeholderTextColor={'grey'}
-      numberOfLines={5}
+      numberOfLines={props.lines ?? 1}
+      multiline={props.lines ? true : false}
       {...props}
     />
   )
