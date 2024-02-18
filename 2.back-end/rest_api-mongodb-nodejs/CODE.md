@@ -2,19 +2,19 @@
 
 ## indices
 - [variaveis de ambiente](#variaveis-de-ambiente)
-- [conexão com MongoDB](#conectando-node-com-o-banco-de-dados-mongodb)  
-- [expondo API](#expondo-api)
+- [expondo API - express](#expondo-api)
 - [rotas e REST (CRUD)](#rotas-da-api-rest-crud)
-- [paginação](#paginação-das-requisições)
-- [contador/auto incrementador](#contador-auto-incrementador)
-- [definindo acesso externo a API](#acesso-cors)
+- [definindo acesso a API - CORS](#acesso-cors)
 - [autenticação JWT](#autenticação-jwt)
-- [fazendo download de arquivos](#download-de-arquivos)
+- [download de arquivos](#download-de-arquivos)
 - [redirecionamento entre paginas](#redirecionar-a-outra-pagina)
 - [reinderizando paginas dinamicas](#reinderizando-paginas-dinamicas)
 - [reinderizando paginas html](#reinderização-de-paginas-html)
 - [manipulação de arquivos](#manipulação-de-arquivos)
-- [diretorios, caminhos e compatibilidade](#diretorios-e-caminhos)
+- [caminhos e diretorios compativeis entre plataformas](#diretorios-e-caminhos)
+- [conexão com MongoDB](#conectando-node-com-o-banco-de-dados-mongodb) 
+- [paginação](#paginação-das-requisições)
+- [mongodb - contador, auto incrementador](#contador-auto-incrementador)
 
 
 ### variaveis de ambiente
@@ -25,14 +25,14 @@ require('dotenv').config() // importando variaveis de ambiente
 
 // define as variaveis de ambiente
 const MONGO_URL = process.env.DATABASE_URL
-const FRONTEND_URLS = process.env.FRONTEND_URLS
+const FRONTEND_URL = process.env.FRONTEND_URL
 const SERVER_PORT = process.env.SERVER_PORT
 ```
 - arquivo de variaveis de ambiente (.env)
     - não se esqueça de adicinar o arquivo .env em .gitignore para não compartilhar chaves privadas
 ```json
 DATABASE_URL = mongodb://127.0.0.1:27017/restapi
-FRONTEND_URLS = 'http://localhost:5173'
+FRONTEND_URL = 'http://localhost:5173'
 SERVER_PORT = 3000
 ```
 
@@ -263,13 +263,13 @@ module.exports = {
 - permitindo acesso de aplicações externas (index.js)
 ```javascript
 // define as variaveis de ambiente
-const FRONTEND_URLS = process.env.FRONTEND_URLS
+const FRONTEND_URL = process.env.FRONTEND_URL
 
 // deve ser definida antes da exposição da API
 app.use((res,req,next) => {
-// permite que a URL informada acesse a API
-res.header('Access-Control-Allow-Origin', FRONTEND_URLS)
-req.header('Access-Control-Allow-Origin', FRONTEND_URLS)
+// permite que o endereço informado acesse a API
+res.header('Access-Control-Allow-Origin', FRONTEND_URL)
+req.header('Access-Control-Allow-Origin', FRONTEND_URL)
 // permite que o cabeçalho Content-Type seja usado
 res.header("Access-Control-Allow-Headers", "Content-Type")
 req.header("Access-Control-Allow-Headers", "Content-Type")
