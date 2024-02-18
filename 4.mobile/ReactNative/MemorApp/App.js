@@ -1,113 +1,113 @@
+import { Animated, Dimensions, Image, SafeAreaView, StyleSheet, View } from 'react-native'
+import { useContext, useEffect, useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { useContext, useState } from 'react'
-import { Animated, Dimensions, SafeAreaView, StyleSheet, View } from 'react-native'
-import Context from './hook/Context'
-import Navigator from './component/Navigator'
+import themeContext from './hook/context/themeContext'
+import applicationContext from './hook/context/applicationContext'
+import Navigator from './component/root/Navigator'
+import AnimatedComponent from './component/root/AnimatedComponent'
+import Button from './component/root/Button'
 import Settings from './tab/Settings'
 import Home from './tab/Home'
-import HelloInput from './tab/HelloInput'
-import AnimatedComponent from './component/animation/AnimatedComponent'
-import Button from './component/primal/Button'
+import Editor from './tab/FileEditor'
+import Label from './component/root/text/Label'
+import * as fs from 'expo-file-system'
+import { sidebarAnimationList, closeMenu, pending, sidabarAnimation } from './animations/animations'
+import NavBar from './component/NavBar'
 
 
 
 export default function App() {
-  const style = styles()
-  const app = useContext(Context)
-  const sidaBarAnimation = { map: undefined }
-  const [tab, setTab] = useState('home')
-  const [, setUpdate] = useState(0)
-  
-  app.update = () => setUpdate(x => x+1)
-  app.setTab = (tab) => setTab(old => {
-    old !== tab && app.tabHistory.push(old)
-    return tab
-  })
+  const style = getStyle()
+  const application = useContext(applicationContext)
+  const theme = useContext(themeContext)
+  // const sidaBarAnimation = { map: undefined }
+  const [changes, setChanges] = useState(0)
 
-  // TODO: DESACOPLAR COMPONENTES DA TELA DE INICIO PARA COMPONENTES INDIVIDUAIS: side bar e header
+  useEffect(() => {
+    fs.readAsStringAsync(fs.documentDirectory + 'settings')
+      .then(document => {
+        const settings = JSON.parse(document)
+        theme.darkmode = settings.darkmode
+        application.update()
+      }
+      )
+  }, [])
+
+  if (changes !== 0) setChanges(0)
+  application.update = () => setChanges(changes => changes + 1)
+  application.setTab = (tab) => {
+    application.currentTab !== tab && application.tabHistory.push(application.currentTab)
+    application.currentTab = tab
+    application.update()
+    return tab
+  }
 
   return (
     <SafeAreaView style={[style.container, { marginTop: 40 }]}>
-      <StatusBar translucent={true} backgroundColor={app.darkmode ? app.statusBarDarkColor : app.statusBarLightColor} />
-      <View style={style.headerBar}>
-        <Button
-          onPress={() => {
-            // back to last tab
-            app.tabHistory.length && app.setTab(app.tabHistory.pop())
-            app.tabHistory.pop()
-          }}
-        >👈</Button>
-        <Button onPress={() => app.setTab('home')}>home</Button>
-        <Button onPress={() => app.setTab('helloInput')}>hello input</Button>
-        <Button onPress={() => app.setTab('settings')}>settings</Button>
-        <Button onPress={() => {
-          sidaBarAnimation.map.get('zIndex').getAnimation(1, 0).start()
-          sidaBarAnimation.map.get('top').getAnimation(1, 500).start()
-          sidaBarAnimation.map.get('opacity').getAnimation(1, 500).start()
-        }}>animation</Button>
-      </View>
-
+      <StatusBar translucent={true} backgroundColor={theme.darkmode ? theme.statusBarDarkColor : theme.statusBarColor} />
       <AnimatedComponent
+        pending={pending}
         component={Animated.View}
-        animation={sidaBarAnimation}
+        animation={sidabarAnimation}
         style={[style.sideBar, {}]}
-        animations={[{
-          atribute: 'top',
-          inputRange: [0, 1],
-          range: [-Dimensions.get('screen').height, 0]
-        }, {
-          atribute: 'opacity',
-          inputRange: [0, 1],
-          range: [0, 1]
-        }, {
-          atribute: 'zIndex',
-          inputRange: [0, 1],
-          range: [-1, 1]
-        }]}
+        animations={sidebarAnimationList}
       >
-        <Button onPress={() => app.setTab('home')}>home</Button>
-        <Button onPress={() => app.setTab('helloInput')}>hello input</Button>
-        <Button onPress={() => app.setTab('settings')}>settings</Button>
         <Button onPress={() => {
-          sidaBarAnimation.map.get('top').getAnimation(0, 500).start()
-          sidaBarAnimation.map.get('opacity').getAnimation(0, 500).start(() => {
-            sidaBarAnimation.map.get('zIndex').getAnimation(0, 0).start()
-          })
-        }}>animation</Button>
-
+          closeMenu(sidabarAnimation)
+          if (application.currentTab != 'home') {
+            pending.animation.push(closeMenu)
+            application.setTab('home')
+          }
+        }}>
+          <Image style={style.icon} source={require('./assets/icons/home.png')} />
+          <Label contrast>home</Label>
+        </Button>
+        <Button onPress={() => {
+          closeMenu(sidabarAnimation)
+          if (application.currentTab != 'helloInput') {
+            pending.animation.push(closeMenu)
+            application.setTab('helloInput')
+          }
+        }}>
+          <Image style={style.icon} source={require('./assets/icons/document.png')} />
+          <Label contrast>text editor</Label></Button>
+        <Button onPress={() => {
+          closeMenu(sidabarAnimation)
+          if (application.currentTab != 'settings') {
+            pending.animation.push(closeMenu)
+            application.setTab('settings')
+          }
+        }}>
+          <Image style={style.icon} source={require('./assets/icons/settings.png')} />
+          <Label contrast>settings</Label></Button>
       </AnimatedComponent>
 
       <View style={style.container}>
-
         <Navigator
-          activeTab={tab}
+          activeTab={application.currentTab}
           tabs={{
             'home': <Home />,
             'settings': <Settings />,
-            'helloInput': <HelloInput />
+            'helloInput': <Editor />
           }}
         />
-
       </View>
+
+      <NavBar />
+
     </SafeAreaView>
   )
 }
 
 
-function styles() {
-  const app = useContext(Context)
+function getStyle() {
+  const theme = useContext(themeContext)
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: app.darkmode ? app.primaryBackgroundDarkColor : app.primaryBackgroundLightColor,
+      backgroundColor: theme.darkmode ? theme.backgroundDarkColor : theme.backgroundColor,
       alignItems: 'center',
       justifyContent: 'center',
-    },
-    headerBar: {
-      width: Dimensions.get('screen').width,
-      justifyContent: 'center',
-      flexDirection: 'row',
-      backgroundColor: app.darkmode ? app.secondaryBackgroundDarkColor : app.secondaryBackgroundLightColor,
     },
     sideBar: {
       position: 'absolute',
@@ -118,7 +118,11 @@ function styles() {
       justifyContent: 'center',
       flexDirection: 'column',
       padding: 50,
-      backgroundColor: app.darkmode ? app.secondaryBackgroundDarkColor : app.secondaryBackgroundLightColor,
+      backgroundColor: theme.darkmode ? theme.lessBackgroundDarkColor : theme.lessBackgroundColor,
+    },
+    icon: {
+      width: 40,
+      height: 40
     }
   })
 }
