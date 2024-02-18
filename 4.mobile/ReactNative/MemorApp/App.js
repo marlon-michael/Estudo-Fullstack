@@ -1,18 +1,15 @@
-import { Animated, Dimensions, Image, SafeAreaView, StyleSheet, View } from 'react-native'
+import * as fs from 'expo-file-system'
+import { Dimensions, Image, SafeAreaView, StyleSheet, View } from 'react-native'
 import { useContext, useEffect, useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import themeContext from './hook/context/themeContext'
 import applicationContext from './hook/context/applicationContext'
 import Navigator from './component/root/Navigator'
-import AnimatedComponent from './component/root/AnimatedComponent'
-import Button from './component/root/Button'
 import Settings from './tab/Settings'
 import Home from './tab/Home'
 import Editor from './tab/FileEditor'
-import Label from './component/root/text/Label'
-import * as fs from 'expo-file-system'
-import { sidebarAnimationList, closeMenu, pending, sidabarAnimation } from './animations/animations'
 import NavBar from './component/NavBar'
+import Menu from './component/Menu'
 
 
 
@@ -45,43 +42,7 @@ export default function App() {
   return (
     <SafeAreaView style={[style.container, { marginTop: 40 }]}>
       <StatusBar translucent={true} backgroundColor={theme.darkmode ? theme.statusBarDarkColor : theme.statusBarColor} />
-      <AnimatedComponent
-        pending={pending}
-        component={Animated.View}
-        animation={sidabarAnimation}
-        style={[style.sideBar, {}]}
-        animations={sidebarAnimationList}
-      >
-        <Button onPress={() => {
-          closeMenu(sidabarAnimation)
-          if (application.currentTab != 'home') {
-            pending.animation.push(closeMenu)
-            application.setTab('home')
-          }
-        }}>
-          <Image style={style.icon} source={require('./assets/icons/home.png')} />
-          <Label contrast>home</Label>
-        </Button>
-        <Button onPress={() => {
-          closeMenu(sidabarAnimation)
-          if (application.currentTab != 'helloInput') {
-            pending.animation.push(closeMenu)
-            application.setTab('helloInput')
-          }
-        }}>
-          <Image style={style.icon} source={require('./assets/icons/document.png')} />
-          <Label contrast>text editor</Label></Button>
-        <Button onPress={() => {
-          closeMenu(sidabarAnimation)
-          if (application.currentTab != 'settings') {
-            pending.animation.push(closeMenu)
-            application.setTab('settings')
-          }
-        }}>
-          <Image style={style.icon} source={require('./assets/icons/settings.png')} />
-          <Label contrast>settings</Label></Button>
-      </AnimatedComponent>
-
+      <Menu />
       <View style={style.container}>
         <Navigator
           activeTab={application.currentTab}
@@ -92,9 +53,7 @@ export default function App() {
           }}
         />
       </View>
-
       <NavBar />
-
     </SafeAreaView>
   )
 }
