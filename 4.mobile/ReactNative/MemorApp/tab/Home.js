@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <View style={style.container}>
-      <Title>home</Title>
+      <Title>😶‍🌫️ home</Title>
     </View>
   )
 }
