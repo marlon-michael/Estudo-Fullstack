@@ -46,6 +46,11 @@
 - docker compose
   - gerenciamento de multiplos containers docker por meio deste orquestrador
 
+### Nginx
+- balanceamento de carga
+- redirecionamento de requisição
+- exposição de paginas web
+
 ---
 ### Cursos e fontes: 
 - Entra 21 (2022)
