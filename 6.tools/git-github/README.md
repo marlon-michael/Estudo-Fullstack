@@ -16,10 +16,17 @@ git init: inicia repositorio git
 ___
 ### configurações
 
+#### autenticação
+
+git remote set-url origin https://<TOKEN>@github.com/<username>/<repository>.git
+git config --global credential.helper '!f() { sleep 1; echo "username=git token=xxxxxxxxxxxxxx"; }; f'
+
+#### proxy
+
 git config --global http.proxy http://0.0.0.0:0000
 
 # usuario e senha
-# quando tem-se caracter especial, troca-se o caracter especial por sua forma de percent enconde
+# quando tem-se caracter especial, troca-se o caracter especial por sua forma percent enconde
 # ex: (?) > (%3F) , (@) > (%40)
 git config --global http.proxy http://xxx:xxx@proxy.com.br:3128
 
