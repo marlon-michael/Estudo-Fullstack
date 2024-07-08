@@ -26,6 +26,23 @@
         create database [database-name];
         ```
 - java - spring
+    - maven com proxy (<diretório maven>/settings.xml)
+        ```html
+        ...
+        <proxies>
+            <proxy>
+                <id>nome-do-proxy</id>
+                <active>true</active>
+                <protocol>https</protocol>
+                <host>proxy.xx.com</host>
+                <port>3128</port>
+                <username>000000</username>
+                <password>xxxxx</password>
+                <nonProxyHosts>localhost</nonProxyHosts>
+            </proxy>
+        </proxies>
+        ...
+        ```
     - definições do projeto utilizando o spring initalizr
         - gerenciador de dependencias: Maven
         - linguagem: Java
@@ -45,9 +62,27 @@
         spring.jpa.hibernate.ddl-auto=none
         spring.jpa.show-sql=true
         ```
+    - arquivo pom.xml
+        ```html
+        ...
+        <artifactId>rabbitmq</artifactId>
+        <!-- DEIXE PACKAGING COMENTADO NO LINUX | UTILIZE PACKAGING POM NO WINDOWS -->
+        <packaging>pom</packaging>
+        <version>0.0.1-SNAPSHOT</version>
+        ...
+        ```
+        - dependencias
+            - spring-boot-starter-amqp (interface de menssageria)
+            - spring-boot-starter-web (bibliotecas web)
+            - lombok (utilidades) 
+        - plugins
+            - spring-boot-maven-plugin
 
 - IntelliJ
     - instalação das dependencias maven
+    ```console
+    mvn clean install
+    ```
 
 ### expondo rotas
 - crie uma novo pacote controller: src/main/java/com/[project]/controller/
