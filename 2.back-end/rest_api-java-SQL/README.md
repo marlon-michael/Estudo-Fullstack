@@ -1,7 +1,7 @@
 # Spring boot API | Java + MySQL | MVC
 
 
-### requerimentos
+### Requerimentos
 (verificar compatibiidade entre versões)
 - IntelliJ IDEA Community (IDE)
 - MySql
@@ -13,7 +13,7 @@
         - Spring Data JPA: mapeamento de entidades
         - MySQL Driver: controlador MySql
 
-### configuração e criação
+### Configuração e criação
 - mysql
     - instalação e definição das váriaveis de ambiente
     - rodando mysql
@@ -84,7 +84,7 @@
     mvn clean install
     ```
 
-### expondo rotas
+### Expondo rotas
 - crie uma novo pacote controller: src/main/java/com/[project]/controller/
   - crie um arquivo HelloController.java: HelloController.java
       ```java
@@ -128,13 +128,13 @@
         java -jar target/[generated-build].jar
         ```
 
-### requisição: Postman (UI), curl (CLI)
+### Requisição http: Postman (UI), curl (CLI)
 - fazendo requisição GET na URL localhost:8080/hello
     ```html
     Hello Spring
     ```
 
-### models, views e controllers
+### Model, view e controller
 - model
     - entity
     - DTO (data transfer object): camada de segurança evitando de expor dados da entity ao usuário
