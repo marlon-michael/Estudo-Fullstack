@@ -2,7 +2,13 @@
 # INSTRUÇÕES
 
 - encontre a pasta de scripts da inicialização do git bash
-> Ex: C:\Users\user_name\Programs\Git\etc\profile.d
+
+    Ex: 
+
+    > C:\Users\{seu-usuario}\Programs\Git\etc\profile.d
+    
+    > /home/{seu-usuario}/.bashrc
+
 
 - insira os scripts na pasta (profile.d)
 
