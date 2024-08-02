@@ -3,7 +3,6 @@ package com.restapi.view.reposotiry;
 import com.restapi.model.entity.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 
@@ -11,7 +10,6 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
 
     List<User> findAll();
-    User findByName(String name);
-
+    List<User> findByName(String name);
 
 }
