@@ -16,6 +16,8 @@
 - criação de APIs com 
   - NodeJS (Express)
   - Java (Springboot)
+  - Testes (starter-test)
+  - Filas (RabbitMQ)
 
 ### Front-end:
 - rotas e navegação
@@ -25,6 +27,9 @@
   - React JS + javascript
 
 ### Mobile: React Native
+- React Core
+- Animations
+- File Management (expo-file-system)
 - desenvolvimento em tempo real: expo-cli
 - build: eas-cli
 
