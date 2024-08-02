@@ -1,5 +1,13 @@
 # Spring boot API | Java + MySQL | MVC
 
+- [Requerimentos e Dependencias](#requerimentos)
+- [Configuração](#configuração-e-criação)
+- [Estrutura de arquivos](#model-view-e-controller)
+- [Rotas](#expondo-rotas)
+- [Rodando o projeto](#hello-spring---rodando-o-projeto)
+- [Teste manual](#requisição-http-postman-ui-curl-cli)
+- [Testes automatizados](#requerimentos)
+
 
 ### Requerimentos
 (verificar compatibiidade entre versões)
@@ -84,6 +92,16 @@
     mvn clean install
     ```
 
+### Model, view e controller
+- model
+    - entity
+    - DTO (data transfer object): camada de segurança evitando de expor dados da entity ao usuário
+- view
+    - repository
+    - service
+- controller
+    - CRUD completo
+
 ### Expondo rotas
 - crie uma novo pacote controller: src/main/java/com/[project]/controller/
   - crie um arquivo HelloController.java: HelloController.java
@@ -134,14 +152,91 @@
     Hello Spring
     ```
 
-### Model, view e controller
-- model
-    - entity
-    - DTO (data transfer object): camada de segurança evitando de expor dados da entity ao usuário
-- view
-    - repository
-    - service
-- controller
-    - CRUD completo
+### Testes automatizados nativo Springboot
 
-    
+#### Testes utilizando MySQL
+
+- requisitos (pom.xml)
+    ```html
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+    ```
+- propriedades
+    ```
+    # CRIA E DELETA BASE DE TESTES DURANTE EXECUÇÃO
+    spring.jpa.hibernate.ddl-auto=create-drop
+    # BASE DE DADOS SEPARADA
+    spring.datasource.url=jdbc:mysql://localhost:3306/rest_api_test
+    spring.datasource.username=root
+    spring.datasource.password=root
+    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+    spring.jpa.show-sql=true
+    ```
+#### Testes unitários
+```java
+package com.restapi.view.repository;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.Test;
+import com.restapi.model.entity.User;
+import com.restapi.view.reposotiry.UserRepository;
+
+// Anotações necessárias para testes com MySQL
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public UserRepositoryTest {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Test
+    public void createUser(){
+        // SALVANDO USUARIO
+        User savingUser = new User();
+        String username = "Marlon Michael";
+        savingUser.setName(username);
+        userRepository.save(savingUser);
+        // BUSCANDO USUARIO
+        User user = userRepository.findByName(username);
+        // VERIFICANDO SE VALORES SÃO OS ESPERADOS
+        assertNotNull(user);
+        assertEquals(username, user.getName());
+        assertEquals(1, user.size());
+    }
+}
+```
+
+#### Testes de Integração
+```java
+package com.restapi.controller;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import com.restapi.model.entity.User;
+
+@SpringBootTest(webEnvironment = SprinbBootTest.WebEnvironment.RANDOM_PORT)
+public UserControllerTest {
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @Test
+    public postUser(){
+        String username = "Marlon";
+        Long id = 1L;
+        User newUser = new User();
+        newUser.setName(username);
+        // requisição POST, com corpo de newUser e retorno do tipo User
+        User user = restTemplate.postForObjetc("/user/post", newUser, User.class);
+        assertNotNull(user);
+        assertEquals(username, user.getName());
+        assertEquals(id, user.getId());
+    }
+}
+```
