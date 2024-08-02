@@ -1,4 +1,4 @@
-package com.restapi.view.service;
+package com.restapi.view.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
@@ -12,7 +12,7 @@ import com.restapi.view.reposotiry.UserRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class UserServiceTest {
+public class UserRepositoryTest {
 
   @Autowired
   private UserRepository userRepository;
