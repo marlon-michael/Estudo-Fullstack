@@ -9,15 +9,17 @@
 - orientação a objetos
 - coleções e estrutura de dados
 - criptografia
+- testes
+- filas
 
 ### Back-end: Java, Node
 - modelagem: 
   - MVC (Model Views Controller)
-- criação de APIs com 
+- criação de APIs REST 
   - NodeJS (Express)
   - Java (Springboot)
-  - Testes (starter-test)
-  - Filas (RabbitMQ)
+- Testes (starter-test)
+- Filas (RabbitMQ)
 
 ### Front-end:
 - rotas e navegação
@@ -30,8 +32,9 @@
 - React Core
 - Animations
 - File Management (expo-file-system)
-- desenvolvimento em tempo real: expo-cli
-- build: eas-cli
+- ferramentas
+  - desenvolvimento em tempo real: expo-cli
+  - build: eas-cli
 
 ### Bancos de dados
 - modelagem, criação, alterações, busca, visualização e ordenação
@@ -56,7 +59,10 @@
 - redirecionamento de requisição
 - exposição de paginas web
 
+### RabbitMQ
+- gerenciamento de filas
+
 ---
 ### Cursos e fontes: 
 - Entra 21 (2022)
-- pesquisa, projetos pessoais e em grupo (desde 2020)
+- experiência em pesquisa e projetos (desde 2020)
