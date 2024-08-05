@@ -32,7 +32,6 @@ public class RabbitMQ {
         return new DirectExchange(EXCHANGE_NAME);
     }
     
-    // private final DirectExchange directExchange2;
     public static final String ROUTE_KEY = "nome.da.chave";
     public static final String QUEUE_NAME = "fila.um";
     
