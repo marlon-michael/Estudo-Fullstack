@@ -72,17 +72,20 @@
         ```
     - arquivo pom.xml
         ```html
-        ...
+        <!-- REINICIE O PROJETO PARA AS ALTERAÇÕES TEREM EFEITO -->
+        [...]
         <artifactId>rabbitmq</artifactId>
-        <!-- DEIXE PACKAGING COMENTADO NO LINUX | UTILIZE PACKAGING POM NO WINDOWS -->
+        <!-- PODE CAUSAR ERROR DE ACORDO COM O SISTEMA OPERACIONAL
+        - pom 
+        - jar (para utilizar como um jar executável) -->
         <packaging>pom</packaging>
         <version>0.0.1-SNAPSHOT</version>
-        ...
+        [...]
         ```
         - dependencias
             - spring-boot-starter-amqp (interface de menssageria)
             - spring-boot-starter-web (bibliotecas web)
-            - lombok (utilidades) 
+            - lombok (utilidades para desenvolvimento) 
         - plugins
             - spring-boot-maven-plugin
 
