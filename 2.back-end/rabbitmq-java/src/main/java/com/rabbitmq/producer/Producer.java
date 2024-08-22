@@ -4,8 +4,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 import lombok.RequiredArgsConstructor;
 
-import static com.rabbitmq.config.RabbitMQ.EXCHANGE_NAME;
-import static com.rabbitmq.config.RabbitMQ.ROUTE_KEY;
+import static com.rabbitmq.config.ProducerConfig.EXCHANGE_NAME;
+import static com.rabbitmq.config.ProducerConfig.ROUTE_KEY;
 
 
 @Component
