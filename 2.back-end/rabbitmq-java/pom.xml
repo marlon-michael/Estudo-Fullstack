@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- REINICIE O PROJETO PARA AS ALTERAÇÕES TEREM EFEITO -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -10,9 +13,11 @@
 	</parent>
 	<groupId>com.rabbitmq</groupId>
 	<artifactId>rabbitmq</artifactId>
-	<!-- DEIXE COMENTADO NO LINUX | UTILIZE PACKAGING POM NO WINDOWS -->
-	<!-- <packaging>pom</packaging>  -->
-	<version>0.0.1-SNAPSHOT</version>
+	<!-- PACKAGING
+	- pom 
+	- jar (para utilizar como um jar executável)  -->
+	<packaging>jar</packaging> 
+	<version>0.0.1</version>
 	<name>rabbitmq</name>
 	<description>Rabbit MQ sample</description>
 	<url/>
@@ -59,6 +64,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>my-app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -73,7 +79,7 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
+			</plugin>	
 		</plugins>
 	</build>
 
