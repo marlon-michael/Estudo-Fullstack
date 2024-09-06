@@ -6,7 +6,7 @@
 - [Rotas](#expondo-rotas)
 - [Rodando o projeto](#hello-spring---rodando-o-projeto)
 - [Teste manual](#requisição-http-postman-ui-curl-cli)
-- [Testes automatizados](#requerimentos)
+- [Testes automatizados](#testes-automatizados-nativo-springboot)
 
 
 ### Requerimentos
@@ -159,6 +159,10 @@
 
 #### Testes utilizando MySQL
 
+- Os arquivos de teste devem ser criados seguindo a estrutura principal do projeto.
+    - como exemplo de uma estrutura testada <b>src/main/com/exemplo/service/Service.java</b> os testes devem ser criados como <b>src/tests/exemplo/service/ServiceTest.java</b>
+
+
 - requisitos (pom.xml)
     ```html
     <dependency>
@@ -178,7 +182,7 @@
     spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
     spring.jpa.show-sql=true
     ```
-#### Testes unitários
+#### Testes unitários utilizando banco de dados
 ```java
 package com.restapi.view.repository;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -210,6 +214,58 @@ public UserRepositoryTest {
         assertEquals(username, user.getName());
         assertEquals(1, user.size());
     }
+}
+```
+
+#### Testes unitários com Mockito
+- Mocks são dados padronizados de retorno. Deixando o foco dos testes para um unico objeto uma vez que retornam exatamente os dados necessários para o funcionamento da classe sem necessidade nem nenhum processamento.
+
+```java
+import com.restapi.model.entity.User;
+import com.restapi.view.reposotiry.UserRepository;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+public class ServiceTest(){
+    @InjectMocks // objeto que será testado
+    private ServiceClass serviceClass;
+
+    @Mock // classe que irá retornar valores padronizados
+    private RepositoryClass repositoryClass;
+
+    User user;
+	@BeforeEach
+	public void setUp(){
+		user = new User("Nome", "Sobrenome");
+	}
+
+    @Test
+    public shouldFindUserByName(){
+        when(repositoryClass.findByName("Nome")).thenReturn(user); // definição do retorno padrão
+        User actualUser = repositoryClass.findByName("Nome");
+
+        assertNotNull(actualUser);
+        assertEquals(user.getName(), actualUser.getName());
+        assertEquals(user.getLastName(), actualUser.getLastName());
+        verify(userRepository).findByName(name); // verifica metodo foi executado
+		verifyNoMoreInteractions(userRepository); // verifica se houve mais alguma interação
+    }
+
+    @Test
+	public void emptyNameThrowsError(){ // manipulação de erros
+		Exception error = assertThrows(Exception.class, ()-> userService.save(null));
+
+		assertEquals(error.getMessage(), "Novo usuário deve ser enviado no corpo da requsição");
+		assertEquals(error.getCause(), null);
+	}
 }
 ```
 
