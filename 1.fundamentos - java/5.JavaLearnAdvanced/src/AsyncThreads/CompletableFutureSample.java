@@ -74,8 +74,9 @@ public class CompletableFutureSample {
 
         // my own Completable
         MyCompletable myCompletable = new MyCompletable();
+        myCompletable.run();
         System.out.println("minha completable");
-        System.out.println(myCompletable.run().get());
+        System.out.println(myCompletable.get());
     }
 
 
@@ -84,7 +85,7 @@ public class CompletableFutureSample {
 class MyCompletable {
     public CompletableFuture completableFuture;
 
-    public MyCompletable run() {
+    public void run() {
         this.completableFuture = CompletableFuture.supplyAsync(() -> {
             System.out.println("inicio minha completable");
             try {
@@ -94,7 +95,6 @@ class MyCompletable {
             }
             return "retorno da minha completable";
         });
-        return this;
     }
 
     public Object get() {
