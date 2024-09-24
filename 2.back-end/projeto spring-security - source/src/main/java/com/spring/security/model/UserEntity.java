@@ -1,6 +1,12 @@
-package com.example.demo;
+package com.spring.security.model;
 
-import javax.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "usuario")
@@ -15,6 +21,12 @@ public class UserEntity {
 
     @Column(name = "pass", nullable = false)
     private String password;
+
+    public UserEntity (){};
+    public UserEntity (String newLogin, String newPassword){
+        this.login = newLogin;
+        this.password = newPassword;
+    }
 
     public Long getId() {
         return id;
