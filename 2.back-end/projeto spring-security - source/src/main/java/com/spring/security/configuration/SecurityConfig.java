@@ -4,71 +4,49 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
+@EnableMethodSecurity // permite a configuração de autenticação em cada metodo utilizando @PreAuthorize("hasAuthority('USER')")
 public class SecurityConfig {
 
+    // Encriptador de senha
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable()) // desabilita proteção CSRF
             .httpBasic(withDefaults())
             .authorizeHttpRequests(req -> req
-                    // .antMatchers("/usuario/all").hasRole("ADMIN")
-                    .anyRequest().permitAll() // solicita autenticação para qualquer rota
+                .requestMatchers(HttpMethod.POST, "/usuario").permitAll() // permite usuarios deslogados acessarem POST de /usuario
+                .requestMatchers(HttpMethod.GET, "/usuario/init").permitAll() // permite usuarios deslogados acessarem POST de /usuario
+                .requestMatchers(HttpMethod.GET, "/usuario/all").hasAuthority("ADMIN") // permite que usuarios com cargo de ADMIN acessem
+                .anyRequest().authenticated() // solicita autenticação para qualquer rota
             );
         return http.build();
     }
 
     // Autenticação em memória
-    @Bean
-    public UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
-        userDetailsManager.createUser(User.builder()
-            .username("admin")
-            .password(passwordEncoder().encode("admin"))
-            .roles("ADMIN") // nível de acesso
-            .build());
-        return userDetailsManager;
-    }
-
-    // Encriptador de senha
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    // Não pode haver nenhum elemento de implementação de autenticação em banco de dados para funcionar
+    // @Bean
+    // public UserDetailsService userDetailsService() {
+    //     InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
+    //     userDetailsManager.createUser(User.builder()
+    //         .username("admin")
+    //         .password(passwordEncoder().encode("admin"))
+    //         .roles("ADMIN") // nível de acesso / cargo
+    //         .authorities(new SimpleGrantedAuthority("ADMIN"))
+    //         .build());
+    //     return userDetailsManager;
+    // }
 
 }
-
-// @Configuration
-// public class WebSecurityConfig {
-
-// @Override
-// protected void configure(HttpSecurity http) throws Exception {
-// http
-// .csrf().disable() // desabilita proteção CSRF
-// .httpBasic()
-// .and().authorizeHttpRequests(req -> req
-// // .antMatchers("/usuario/all").hasRole("ADMIN")
-// .anyRequest().permitAll() // solicita autenticação para qualquer rota
-// );
-// }
-
-// @Override
-// protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-// auth
-// .inMemoryAuthentication()
-// .withUser("admin")
-// .password("admin")
-// .roles("ADMIN");
-// }
-
-// }

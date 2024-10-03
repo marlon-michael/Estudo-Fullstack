@@ -1,14 +1,16 @@
 package com.spring.security.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.spring.security.model.MyUserPrincipal;
 import com.spring.security.model.UserEntity;
 
+import jakarta.transaction.Transactional;
+
+@Transactional
 @Service
 public class MyUserDetailService implements UserDetailsService {
 
@@ -17,12 +19,10 @@ public class MyUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        UserEntity user = userRepository.findByLogin(username);
+        UserEntity user = userRepository.findByUsername(username);
         if (user == null) {
-            System.out.println("não encontrado");
             throw new UsernameNotFoundException(username);
-        }
-        System.out.println("encontrado");
-        return new MyUserPrincipal(user);
+        };
+        return new User(user.getUsername(), user.getPassword(), user.getAuthorities());
     }
 }

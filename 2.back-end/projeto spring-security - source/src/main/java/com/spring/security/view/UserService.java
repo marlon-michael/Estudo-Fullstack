@@ -8,20 +8,24 @@ import org.springframework.stereotype.Service;
 import com.spring.security.model.UserEntity;
 
 @Service
-public class UsuarioService {
+public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserEntity> getAllUsuarios(){
+    public List<UserEntity> getAllUsers(){
         return userRepository.findAll();
     }
 
-    public UserEntity getUsuarioByUsername(String username){
-        return userRepository.findByLogin(username);
+    public UserEntity getUserByUsername(String username){
+        return userRepository.findByUsername(username);
     }
     
-    public UserEntity addUsuario(UserEntity user){
+    public UserEntity addUser(UserEntity user){
         userRepository.save(user);
         return user;
+    }
+
+    public void removeUsers(){
+        userRepository.deleteAll();
     }
 }

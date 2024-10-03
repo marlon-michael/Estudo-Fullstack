@@ -9,6 +9,6 @@ import com.spring.security.model.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-    public UserEntity findByLogin(String login);
+    public UserEntity findByUsername(String username);
     public List<UserEntity> findAll();
 }
