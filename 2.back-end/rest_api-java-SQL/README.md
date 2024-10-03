@@ -7,7 +7,35 @@
 - [Rodando o projeto](#hello-spring---rodando-o-projeto)
 - [Teste manual](#requisição-http-postman-ui-curl-cli)
 - [Testes automatizados](#testes-automatizados-nativo-springboot)
+- [Inicialização do banco de dados e tabelas](#)
 
+### Migrations (flyway)
+- Manipulação do banco de dados, tabelas e dados na primeira inicialização do sistema.
+
+#### Requerimentos
+- pom.xml
+```xml
+<dependency>  <!-- Inicialização do banco de dados e tabelas -->
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-core</artifactId>
+</dependency>
+
+<dependency>  <!-- Inicialização do banco de dados e tabelas -->
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-mysql</artifactId>
+</dependency>
+```
+#### Configurações Flyway
+- padrão de nomenclatura dos arquivos sql
+    - ```V{numero}_{função do código}.sql```
+- [...]/resources/db.migration/V1_create_database.sql;
+```sql
+create database {nome_do_banco};
+```
+- [...]/resources/db.migration/V2_{função_do_sql}.sql;
+```sql
+create database {nome_do_banco};
+```
 
 ### Requerimentos
 (verificar compatibiidade entre versões)
