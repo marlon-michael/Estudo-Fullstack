@@ -2,47 +2,22 @@
 
 - [Requerimentos e Dependencias](#requerimentos)
 - [Configuração](#configuração-e-criação)
+- [Variaveis de ambiente do projeto](#variaveis-em-applicationproperties)
 - [Estrutura de arquivos](#model-view-e-controller)
 - [Rotas](#expondo-rotas)
 - [Rodando o projeto](#hello-spring---rodando-o-projeto)
-- [Teste manual](#requisição-http-postman-ui-curl-cli)
+- [Requisição manual](#requisição-http-postman-ui-curl-cli)
+- [Comunicação com APIs externas](#openfeign)
+- [Inicialização do banco de dados e tabelas](#migrations-flyway)
 - [Testes automatizados](#testes-automatizados-nativo-springboot)
-- [Inicialização do banco de dados e tabelas](#)
-
-### Migrations (flyway)
-- Manipulação do banco de dados, tabelas e dados na primeira inicialização do sistema.
-
-#### Requerimentos
-- pom.xml
-```xml
-<dependency>  <!-- Inicialização do banco de dados e tabelas -->
-    <groupId>org.flywaydb</groupId>
-    <artifactId>flyway-core</artifactId>
-</dependency>
-
-<dependency>  <!-- Inicialização do banco de dados e tabelas -->
-    <groupId>org.flywaydb</groupId>
-    <artifactId>flyway-mysql</artifactId>
-</dependency>
-```
-#### Configurações Flyway
-- padrão de nomenclatura dos arquivos sql
-    - ```V{numero}_{função do código}.sql```
-- [...]/resources/db.migration/V1_create_database.sql;
-```sql
-create database {nome_do_banco};
-```
-- [...]/resources/db.migration/V2_{função_do_sql}.sql;
-```sql
-create database {nome_do_banco};
-```
+- [Tratamento de geração de erros personalizados](#erros-personalizados)
 
 ### Requerimentos
 (verificar compatibiidade entre versões)
 - IntelliJ IDEA Community (IDE)
 - MySql
-- Java (14.0.2)
-    - Spring boot (2.7.3)
+- Java (22)
+    - Spring boot (3.3.4)
     - Maven: gerenciador de dependencias
         #### dependencias
         - Spring Web: requisiçoes web
@@ -82,8 +57,8 @@ create database {nome_do_banco};
     - definições do projeto utilizando o spring initalizr
         - gerenciador de dependencias: Maven
         - linguagem: Java
-        - spring boot version: 2.7.3 (JAVA 8 - 17)
-        - java version: 11
+        - spring boot version: 3.3.4 (JAVA 22)
+        - java version: 22
         - dependencias: Spring Web, Spring Data JPA, MySQL Driver
     - configuração do spring boot: (src.main.resources.application.properties)
         ```json
@@ -122,6 +97,21 @@ create database {nome_do_banco};
     ```console
     mvn clean install
     ```
+
+### Variaveis em application.properties
+- [...]/application.properties
+```
+minha.variavel.nome.prjeto=Nome do Projeto
+minha.variavel.versao=1.0
+```
+- [...]/MainClass.java
+```java
+public class MainClass{
+    String nomeProjeto = "${minha.variavel.nome.prjeto}";
+    String versaoProjeto = "${minha.variavel.versao}";
+    System.out.println("Projeto "+nomeProjeto+" na versão "+versaoProjeto);
+}
+```
 
 ### Model, view e controller
 - model
@@ -182,6 +172,83 @@ create database {nome_do_banco};
     ```html
     Hello Spring
     ```
+
+### OpenFeign
+
+#### Dependencias
+- [...]/pom.xml
+```html
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-openfeign</artifactId>
+    <version>4.1.3</version> <!-- compativel com spring 3.3.4 -->
+</dependency>
+```
+
+#### Mapeamento dos valores retornados pela API
+- com/restapi/view/model/AuthorizationResponse.java
+```java
+public record AuthorizationResponse(boolean authorized){}
+```
+
+- com/restapi/view/client/AuthorizationClient.java
+```java
+@FeignClient(
+    name="AuthorizationClient",
+    url="https://SUA_URL.com"
+)
+public interface AuthorizationClient{
+    @GetMapping
+    public ResponseEntity<AuthorizationResponse> isAuthorized();
+}
+```
+
+- com/restapi/view/service/AuthorizationService.java
+```java
+@Service
+public class AuthorizationService{
+    @Autowired
+    private AuthorizationClient authorizationClient;
+
+    public boolean isAuthorized(){
+        ResponseEntity<AuthorizationResponse> response = authorizationClient.isAuthorized();
+        if (response.getStatusCode().value() != 200) return false;
+        return response.getBody().authorized();
+    }
+}
+```
+
+### Migrations (flyway)
+- Manipulação do banco de dados, tabelas e dados na primeira inicialização do sistema.
+
+#### Requerimentos
+- pom.xml
+```xml
+<dependency>  <!-- Inicialização do banco de dados e tabelas -->
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-core</artifactId>
+</dependency>
+
+<dependency>  <!-- Inicialização do banco de dados e tabelas -->
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-mysql</artifactId>
+</dependency>
+```
+#### Configurações Flyway
+- /application.properties
+```html
+spring.flyway.url=jdbc:mysql://localhost:3306/rest_api?createDatabaseIfNotExist=true
+spring.flyway.user=root
+spring.flyway.password=root
+spring.flyway.locations=classpath:db/migration
+```
+- padrão de nomenclatura dos arquivos sql
+    - ```V{numero}_{função do código}.sql```
+- [...]/resources/db.migration/V1_create_database.sql;
+- [...]/resources/db.migration/V2_{função_do_sql}.sql;
+```sql
+create database {nome_do_banco};
+```
 
 ### Testes automatizados nativo Springboot
 
@@ -324,6 +391,40 @@ public UserControllerTest {
         assertNotNull(user);
         assertEquals(username, user.getName());
         assertEquals(id, user.getId());
+    }
+}
+```
+
+### Erros personalizados
+
+#### Criação de erros personalizados
+- com/restapi/exception/UserNotFoundException.java
+```java
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+public class UserNotFoundException extends RuntimeException{
+    public String msg;
+
+    public ResponseEntity<Object> toResponse(){
+        return new ResponseEntity<>("Usuario não encontrado "+msg, HttpStatus.NOT_FOUND);
+    }
+}
+```
+
+### Tratamento de erros
+- com/restapi/exception/ErrorHandler.java
+```java
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.http.ResponseEntity;
+
+@RestControllerAdvice
+public class ErrorHandler{
+    // Tipo de exceção que será tratada pelo metodo
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<Object> userNotFoundExceptionHandler(UserNotFoundException error){
+        return error.toResponse();
     }
 }
 ```
