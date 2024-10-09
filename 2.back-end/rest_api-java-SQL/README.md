@@ -72,6 +72,7 @@
         #// - create: apenas cria tabelas e colunas
         spring.jpa.hibernate.ddl-auto=none
         spring.jpa.show-sql=true
+        server.port=8080 # porta em que será levantada a aplicação
         ```
     - arquivo pom.xml
         ```html
