@@ -3,6 +3,8 @@ package com.restapi.view.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.restapi.exception.UserNotFoundException;
 import com.restapi.model.entity.User;
 import com.restapi.view.reposotiry.UserRepository;
 
@@ -17,7 +19,10 @@ public class UserService {
     }
 
     public List<User> findByName(String name){
-        return userRepository.findByName(name);
+        List<User> user = userRepository.findByName(name);
+        // // Exception handled by UserHandlerException
+        if (user.size() == 0) throw new UserNotFoundException(": Usuario '"+name+"' não foi encontrado");
+        return user;
     }
 
     public void save(User newUser) throws Exception {
