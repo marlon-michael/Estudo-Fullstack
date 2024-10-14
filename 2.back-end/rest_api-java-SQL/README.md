@@ -2,6 +2,7 @@
 
 - [Requerimentos e Dependencias](#requerimentos)
 - [Configuração](#configuração-e-criação)
+- [Pré-configuração antes da inicialização da apilcação Spring](#commandlinerunner)
 - [Variaveis de ambiente do projeto](#variaveis-em-applicationproperties)
 - [Estrutura de arquivos](#model-view-e-controller)
 - [Rotas](#expondo-rotas)
@@ -98,6 +99,27 @@
     ```console
     mvn clean install
     ```
+
+### CommandLineRunner
+- Quando é necessário executar configuração/trechos de código antes da execução da aplicação Spring
+
+- [...]/config/DataLoader.java
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public DataLoader implements CommandLineRunner{
+    @Autowired
+    private SomeRepository someRepository;
+
+    @Override
+    public void run(String... args){
+        someRepository.save("alguma coisa");
+    }
+}
+```
 
 ### Variaveis em application.properties
 - [...]/application.properties
