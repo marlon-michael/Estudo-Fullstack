@@ -2,7 +2,7 @@
 
 - [Requerimentos e Dependencias](#requerimentos)
 - [Configuração](#configuração-e-criação)
-- [Pré-configuração antes da inicialização da apilcação Spring](#commandlinerunner)
+- [Configuração antes da inicialização da apilcação Spring](#commandlinerunner)
 - [Variaveis de ambiente do projeto](#variaveis-em-applicationproperties)
 - [Estrutura de arquivos](#model-view-e-controller)
 - [Rotas](#expondo-rotas)
