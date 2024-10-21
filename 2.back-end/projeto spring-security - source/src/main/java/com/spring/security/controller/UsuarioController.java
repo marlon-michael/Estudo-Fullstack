@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.security.configuration.TokenService;
 import com.spring.security.model.RoleEntity;
 import com.spring.security.model.RoleNameEnum;
 import com.spring.security.model.UserEntity;
@@ -26,6 +28,36 @@ import com.spring.security.view.UserService;
 public class UsuarioController {
     @Autowired
     private UserService usuarioService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private TokenService tokenService;
+
+    @GetMapping("/login")
+    public String login(@RequestParam String username, @RequestParam String password) {
+        UserEntity user = usuarioService.getUserByUsername(username);
+        if (user == null) return null;
+        if (passwordEncoder.matches(password, user.getPassword())){
+            return tokenService.generateToken(user);
+        }
+        return null;
+    }
+
+    @GetMapping("/register")
+    public String register(@RequestParam String username, @RequestParam String password) {
+        UserEntity user = usuarioService.getUserByUsername(username);
+        if (user == null) {
+            user = new UserEntity();
+            user.setUsername(username);
+            user.setPassword(passwordEncoder.encode(password));
+            List<RoleEntity> roles = new ArrayList<>();
+            roles.add(roleRepository.findByName(RoleNameEnum.USER));
+            user.setRoles(roles);
+            usuarioService.addUser(user);
+            return tokenService.generateToken(user);
+        }
+        return null;
+    }
     
     @GetMapping("/all")
     public List<UserEntity> getAllUsuarios() {
@@ -66,6 +98,9 @@ public class UsuarioController {
         roles = new ArrayList<>();
         roles.add(roleRepository.findByName(RoleNameEnum.USER));
         userRepository.save(new UserEntity("user", new BCryptPasswordEncoder().encode("user"), roles));
+        roles = new ArrayList<>();
+        roles.add(roleRepository.findByName(RoleNameEnum.USER));
+        userRepository.save(new UserEntity("user2", new BCryptPasswordEncoder().encode("user"), roles));
     }
     
     
