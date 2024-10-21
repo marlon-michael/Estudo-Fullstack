@@ -10,6 +10,14 @@
     - [configuração](#entidade-user)
     - [user detail sarvice](#implementação-de-userdetailservice)
     ---
+- [Autenticação com JWT Token](#autenticação-jwt---tokens)
+    - [Dependencias JWT](#dependencias-jwt)
+    - [Configuração da chave privada](#configuração-da-chave-do-token-jwt)
+    - [Configuração do Token](#configuração-da-autenticação-jwt)
+    - [Filtro de autenticação JWT](#filtro-de-autenticação-jwt)
+    - [Configuração da autenticação](#configuração-da-autenticação-jwt)
+    - [Registro e login com token](#registro-e-login-jwt)
+
 - [Cargos e autoridades](#cargos-e-autoridade)
     - [enum de cargos](#enum-de-cargo)
     - [entidade de cargo](#entidade-de-cargo)
@@ -50,7 +58,7 @@
 ### Primeiros passos
 
 - #### Configuração inicial
-    - com/spring/security/configuration/SecurityConfig.java
+    - .../configuration/SecurityConfig.java
     ```java
     import static org.springframework.security.config.Customizer.withDefaults;
     import org.springframework.context.annotation.Bean;
@@ -89,7 +97,7 @@
 ### Autenticação em memória
 
 - #### Configuração em memoria
-    - com/spring/security/configuration/SecurityConfig.java
+    - .../configuration/SecurityConfig.java
     ```java
     import org.springframework.security.provisioning.InMemoryUserDetailsManager;
     import org.springframework.security.core.userdetails.UserDetailsService;
@@ -119,7 +127,7 @@
 ### Autenticação por Entidade
 
 - #### Entidade User
-    - com/spring/security/model/UserEntity.java
+    - .../model/UserEntity.java
     ```java
     import java.util.Collection;
     import java.util.List;
@@ -172,7 +180,7 @@
     ```
 
 - #### implementação de UserDetailService
-    - com/spring/security/view/MyUserDetailService.java
+    - .../view/MyUserDetailService.java
     ```java
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.security.core.userdetails.User;
@@ -196,10 +204,179 @@
     }
     ```
 
+### Autenticação JWT - Tokens
+- #### Dependencias JWT
+    - pom.xml
+    ```xml
+    <dependency> <!-- Codificação e decodificação com JWT -->
+        <groupId>com.auth0</groupId>
+        <artifactId>java-jwt</artifactId>
+        <version>4.4.0</version>
+    </dependency>
+    ```
+
+- #### Configuração da chave do token JWT
+    - .../resources/application.properties
+    ```xml
+    jwt.token.secret=meu-token-secreto <!-- chave privada para autenticação e verificação dos tokens -->
+    ```
+
+- #### Configuração JWT
+    - .../configuration/TokenService.java
+    ```java
+    import java.time.Instant;
+    import java.time.LocalDateTime;
+    import java.time.ZoneOffset;
+    import org.springframework.beans.factory.annotation.Value;
+    import org.springframework.stereotype.Service;
+    import com.auth0.jwt.JWT;
+    import com.auth0.jwt.algorithms.Algorithm;
+    import com.spring.security.model.UserEntity;
+
+    @Service
+    public class TokenService{
+        // Busca chave secreta de application.properties
+        @Value("${jwt.token.secret}")
+        private String secret;
+
+        public String generateToken(UserEntity user){
+            try{
+                // cria algoritmo de codificação usando chave secreta
+                Algorithm algorithm = Algorithm.HMAC256(secret);
+                return JWT.create()
+                    .withIssuer("jwt-auth") // defini titulo do token
+                    .withSubject(user.getUsername()) // define corpo
+                    .withExpiresAt(generateExpirationDate()) // define data de expiração (2h)
+                    .sign(algorithm); // assina token usando algoritimo com chave secreta
+            }catch(Exception error){
+                return null;
+            }
+        }
+
+        public String validateToken(String token){
+            try{
+                Algorithm algorithm = Algorithm.HMAC256(secret);
+                return JWT.require()
+                    .withIssuer("jwt-auth") // verifica titulo do token
+                    .build() // decodifica token
+                    .verify(token) // verifica autenticidade to token
+                    .getSubject() // busca o corpo do token (username)
+            }catch(Exception error){
+                return null;
+            }
+        }
+
+        // Retorna data e hora atual acrescido de duas horas
+        public Instant generateExpirationDate(){
+            return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
+        }
+    }
+    ```
+
+- #### Filtro de autenticação JWT
+    - .../configuration/SecurityFilter.java
+    ```java
+    import java.io.IOException;
+    import java.util.Collection;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+    import org.springframework.security.core.GrantedAuthority;
+    import org.springframework.security.core.context.SecurityContextHolder;
+    import org.springframework.stereotype.Component;
+    import org.springframework.web.filter.OncePerRequestFilter;
+    import com.spring.security.model.UserEntity;
+    import com.spring.security.view.UserRepository;
+    import jakarta.servlet.FilterChain;
+    import jakarta.servlet.ServletException;
+    import jakarta.servlet.http.HttpServletRequest;
+    import jakarta.servlet.http.HttpServletResponse;
+
+    @Component
+    // entendendo componente executado uma vez por requisição
+    public SecurityFilter extends OncePerRequestFilter{
+        @Autowired
+        TokenService tokenService;
+        @Autowired
+        UserRepository userRepository;
+
+        @Override
+        // resolvendo requisição
+        public void doFilterInternal(HttpServerletRequest request, HttpServerletReponse response, FilterChain filterChain) throws ServletException, IOException {
+            String token = recoverToken(request); // recupera token do header
+            String username = tokenService.validateToken(token); // valida token
+            if (username != null){
+                UserEntity user = userRepository.findUserByUsername(username);
+                if (user == null) throw UserNotFoundException("Usuario não encontrado");
+                Collection<? extends GrantedAuthority> authorities = user.getAuthorities(); // define as autoritedes do usuario
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, null, authorities); // // autentica novo usuario
+                SecurityContextHolder.getContext.setAuthentication(auth); // aduciona usuario ao contexto da aplicação
+            }
+            filterChain.doFilter(response, request); // segue com a requisição
+        }
+
+        private recoverToken(HttpServerletRequest request){
+            String token = request.getHeader("Authorization"); // recupera token d e autorização do header
+            if (token == null) return null;
+            return token.replace("Bearer ", ""); // retorna apenas o token jwt
+        }
+    }
+    ```
+
+- #### Configuração da autenticação JWT
+    - .../configuration/SecurityConfig.java
+    ```java
+    import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+    import org.springframework.security.config.http.SessionCreationPolicy;
+    import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+    @Configuration
+    @EnableWebSecurity
+    public class SecurityConfig
+    @Autowired
+    SecurityFilter filter;
+
+    [...]
+    
+    public SecurityFilterChain filterChain(HttpSecurity http){
+        http
+            // Desabilita gerenciamento de sessão no servidor
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            // Adiciona filtro a requisição
+            .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
+            .authorizeHttpRequests(req -> req
+                .requestMatchers(HttpMethod.GET, "/usuario/register").permitAll() // permite usuarios deslogados se registrarem
+                .requestMatchers(HttpMethod.GET, "/usuario/login").permitAll() // permite usuarios deslogados fazerem login
+                .anyRequest().authenticated() // solicita autenticação para qualquer rota
+            );
+        return http.build();
+    }
+    ```
+
+- #### Registro e Login JWT
+    - .../controller/UsuarioController.java
+    ```java
+    [...]
+    @PostMapping("/login")
+    public String registerUser(@RequestBody UserEntity newUser){
+        UserEntity user = userService.findByUsername(newUser.getUsername());
+        if (user != null) return null;
+        userService.save(newUser);
+        return tokenService.generateToken(newUser); // retorna token do usuario
+    }
+
+    @PostMapping("/register")
+    public String loginUser(@RequestBody UserEntity loggingUser){
+        UserEntity user = userService.findByUsername(loggingUser.getUsername());
+        if (user == null) return null;
+        return tokenService.generateToken(loggingUser); // retorna token do usuario
+    }
+    [...]
+    ```
+
 ### Cargos e Autoridade
 
 - #### Enum de cargo
-    - com/spring/security/model/RoleNameEnum.java
+    - .../model/RoleNameEnum.java
     ```java
     public enum RoleNameEnum{
         ADMIN,
@@ -208,7 +385,7 @@
     ```
 
 - #### Entidade de Cargo
-    - com/spring/security/model/RoleEntity.java
+    - .../model/RoleEntity.java
     ```java
     import org.springframework.security.core.GrantedAuthority;
     import jakarta.persistence.Column;
@@ -240,7 +417,7 @@
     ```
 
 - #### Entidade de Usuario com cargo
-    - com/spring/security/model/UserEntity.java
+    - .../model/UserEntity.java
     ```java
     import jakarta.persistence.JoinColumn;
     import jakarta.persistence.JoinTable;
@@ -268,7 +445,7 @@
 ### Rotas e autenticação
 
 - #### Controllers
-    - com/spring/security/controller/UserController.java
+    - .../controller/UserController.java
     ```java
     @RestController
     @RequestMapping("/user")
