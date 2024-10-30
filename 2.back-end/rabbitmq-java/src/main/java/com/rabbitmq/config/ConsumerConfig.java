@@ -12,7 +12,7 @@ public class ConsumerConfig {
     public static final String QUEUE_NAME = "fila.um"; // nome da fila
 
     @Bean
-    public RabbitListenerContainerFactory rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
+    public RabbitListenerContainerFactory<?> rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
         DirectRabbitListenerContainerFactory factory = new DirectRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setAcknowledgeMode(AcknowledgeMode.AUTO); // define como lidar com a confirmação de recebimento das menssagens
