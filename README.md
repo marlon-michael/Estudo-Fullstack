@@ -42,6 +42,8 @@
   - SQL: MySQL e SQLite
   - cache: Redis
 
+# DevOps e Ferramentas
+
 ### Git
 - registro de alterações e recuperação
 - branche, merge, rebase
