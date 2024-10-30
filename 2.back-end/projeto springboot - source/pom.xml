@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.entra21</groupId>
 	<artifactId>spring-project</artifactId>
+	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-project</name>
 	<description>First spring project</description>
