@@ -9,8 +9,9 @@
 - orientação a objetos
 - coleções e estrutura de dados
 - criptografia
-- testes
-- filas
+- testes (starter-test)
+- filas (RabbitMQ)
+- autenticação e autorização (SpringSecurity) + JWT
 
 ### Back-end: Java, Node
 - modelagem: 
@@ -18,8 +19,7 @@
 - criação de APIs REST 
   - NodeJS (Express)
   - Java (Springboot)
-- Testes (starter-test)
-- Filas (RabbitMQ)
+- API websocket - comunicação em tempo real
 
 ### Front-end:
 - rotas e navegação
@@ -29,9 +29,9 @@
   - React JS + javascript
 
 ### Mobile: React Native
-- React Core
-- Animations
-- File Management (expo-file-system)
+- react core
+- animações
+- gerenciamento de arquivos (expo-file-system)
 - ferramentas
   - desenvolvimento em tempo real: expo-cli
   - build: eas-cli
@@ -39,7 +39,7 @@
 ### Bancos de dados
 - modelagem, criação, alterações, busca, visualização e ordenação
   - NOSQL: MongoDB
-  - SQL: mySQL e SQLite
+  - SQL: MySQL e SQLite
   - cache: Redis
 
 ### Git
@@ -65,4 +65,4 @@
 ---
 ### Cursos e fontes: 
 - Entra 21 (2022)
-- experiência em pesquisa e projetos (desde 2020)
+- Pesquisa e projetos (desde 2020)
