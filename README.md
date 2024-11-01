@@ -9,9 +9,9 @@
 - orientação a objetos
 - coleções e estrutura de dados
 - criptografia
-- testes (starter-test)
-- filas (RabbitMQ)
-- autenticação e autorização (SpringSecurity) + JWT
+- testes
+- filas
+- autenticação por sessão e token
 
 ### Back-end: Java, Node
 - modelagem: 
@@ -20,6 +20,13 @@
   - NodeJS (Express)
   - Java (Springboot)
 - API websocket - comunicação em tempo real
+  - Java (Springboot) + StompJs
+- testes 
+  - starter-test (Springboot)
+- filas
+  - RabbitMQ  (Springboot)
+- autenticação e autorização 
+  - SpringSecurity + JWT
 
 ### Front-end:
 - rotas e navegação
@@ -42,27 +49,24 @@
   - SQL: MySQL e SQLite
   - cache: Redis
 
-# DevOps e Ferramentas
+# Ferramentas e DevOps
 
-### Git
+### Git - Versionamento
 - registro de alterações e recuperação
 - branche, merge, rebase
 - github e repositórios remotos
 
-### Containers: Docker e Docker Compose
+### Docker e Docker Compose - Containers
 - docker
   - definição, criação e gerenciamento de containers docker
   - redes e volumes
 - docker compose
   - gerenciamento de multiplos containers docker por meio deste orquestrador
 
-### Nginx
+### Nginx - Balanceamento de carga e proxy reverso
 - balanceamento de carga
 - redirecionamento de requisição
 - exposição de paginas web
-
-### RabbitMQ
-- gerenciamento de filas
 
 ---
 ### Cursos e fontes: 
