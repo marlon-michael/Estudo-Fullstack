@@ -11,6 +11,7 @@
 - criptografia
 - testes
 - filas
+- autenticação por sessão e token
 
 ### Back-end: Java, Node
 - modelagem: 
@@ -18,8 +19,14 @@
 - criação de APIs REST 
   - NodeJS (Express)
   - Java (Springboot)
-- Testes (starter-test)
-- Filas (RabbitMQ)
+- API websocket - comunicação em tempo real
+  - Java (Springboot) + StompJs
+- testes 
+  - starter-test (Springboot)
+- filas
+  - RabbitMQ  (Springboot)
+- autenticação e autorização 
+  - SpringSecurity + JWT
 
 ### Front-end:
 - rotas e navegação
@@ -29,9 +36,9 @@
   - React JS + javascript
 
 ### Mobile: React Native
-- React Core
-- Animations
-- File Management (expo-file-system)
+- react core
+- animações
+- gerenciamento de arquivos (expo-file-system)
 - ferramentas
   - desenvolvimento em tempo real: expo-cli
   - build: eas-cli
@@ -39,30 +46,29 @@
 ### Bancos de dados
 - modelagem, criação, alterações, busca, visualização e ordenação
   - NOSQL: MongoDB
-  - SQL: mySQL e SQLite
+  - SQL: MySQL e SQLite
   - cache: Redis
 
-### Git
+# Ferramentas e DevOps
+
+### Git - Versionamento
 - registro de alterações e recuperação
 - branche, merge, rebase
 - github e repositórios remotos
 
-### Containers: Docker e Docker Compose
+### Docker e Docker Compose - Containers
 - docker
   - definição, criação e gerenciamento de containers docker
   - redes e volumes
 - docker compose
   - gerenciamento de multiplos containers docker por meio deste orquestrador
 
-### Nginx
+### Nginx - Balanceamento de carga e proxy reverso
 - balanceamento de carga
 - redirecionamento de requisição
 - exposição de paginas web
 
-### RabbitMQ
-- gerenciamento de filas
-
 ---
 ### Cursos e fontes: 
 - Entra 21 (2022)
-- experiência em pesquisa e projetos (desde 2020)
+- Pesquisa e projetos (desde 2020)

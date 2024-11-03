@@ -1,10 +1,14 @@
 package com.entra21.springproject.model.entity;
 
-import lombok.Data;
 
 import javax.persistence.*;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.time.LocalTime;
 
+@EqualsAndHashCode(callSuper = false)
 @Data
 @Entity
 @Table(name = "dvd")

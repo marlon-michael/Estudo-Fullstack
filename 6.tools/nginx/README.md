@@ -20,7 +20,7 @@ server{
   listen [::]:80;
 
   # dominio do site
-  server_name examplo.localhost;
+  server_name exemplo.localhost;
 
   # endereço da pagina inicial caso não seja informado pelo usuario
   root /usr/share/nginx/nosso_app;

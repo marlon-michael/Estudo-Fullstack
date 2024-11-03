@@ -41,7 +41,7 @@ public class UserControllerTest {
     newUser.setName(username);
     id = userRepository.save(newUser).getId();
 
-    User user = restTemplate.getForObject("/user/get/"+id, User.class);
+    User user = restTemplate.getForObject("/user/get/"+username, User.class);
     
     assertNotNull(user);
     assertEquals(username, user.getName());

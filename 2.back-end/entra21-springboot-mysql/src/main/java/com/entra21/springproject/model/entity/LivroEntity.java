@@ -1,9 +1,11 @@
 package com.entra21.springproject.model.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
+@EqualsAndHashCode(callSuper = false)
 @Data
 @Entity
 @Table(name = "livro")

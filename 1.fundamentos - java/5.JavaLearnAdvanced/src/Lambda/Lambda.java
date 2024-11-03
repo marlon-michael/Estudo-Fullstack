@@ -1,29 +1,27 @@
 package Lambda;
 
-import java.util.ArrayList; // import the ArrayList class
-import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class Lambda {
-    public static void main(String args[]) {
-        ArrayList<String> test = new ArrayList<>();
-        test.add("asd");
-        test.add("ert");
-        test.add("wgad");
-        test.add("zxcv");
+    
+    // lambdas devem possuir uma interface para que possa ser atribuidas a uma variavel
+    interface SumLambda {
+        int sum(int n1, int n2);
+    }
+    public static void main(String[] args) {
+        // atribuição de uma lambda a uma váriavel com tipo InnerLambda (interface)
+        SumLambda sumLambda = (n1, n2) -> n1 + n2;
+        System.out.println(sumLambda.sum(7, 3));
 
-        //convert to collection
-        System.out.println(test.stream().filter(a -> a.contains("a")).collect(Collectors.toList()));
-
-        //return first value
-        String s = String.valueOf(test.stream().filter(a -> a.contains("a")).findFirst());
-        System.out.println(s);
-
-        //store returned values
-        ArrayList<String> f = new ArrayList<>();
-        test.stream().filter(a -> a.contains("a")).forEach(f::add);
-        System.out.println(f);
-
-        //print returned values
-        test.stream().filter(a -> a.contains("a")).forEach(System.out::print);
+        ArrayList list = new ArrayList<String>();
+        ArrayList upperList = new ArrayList<String>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        // adiciona elementos em upper case para nova lista utilizando
+        list.forEach(element -> upperList.add(element.toString().toUpperCase()));
+        // passa a função println como argumento, para que cada elemento sirva de argumento para a função em questão
+        list.forEach(System.out::println); // method reference
+        System.out.println(upperList.toString());
     }
 }
