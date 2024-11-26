@@ -9,6 +9,7 @@
 - [Rodando o projeto](#hello-spring---rodando-o-projeto)
 - [Requisição manual](#requisição-http-postman-ui-curl-cli)
 - [Comunicação com APIs externas](#openfeign)
+- [Otimização de performance com Virtual Threads](#virtual-threads)
 - [Inicialização do banco de dados e tabelas](#migrations-flyway)
 - [Testes automatizados](#testes-automatizados-nativo-springboot)
 - [Tratamento de geração de erros personalizados](#erros-personalizados)
@@ -239,6 +240,15 @@ public class AuthorizationService{
         return response.getBody().authorized();
     }
 }
+```
+
+### Virtual Threads
+- Otimiza o desempenho da aplicação utilizando de threads virtuais lançadas no Java 21, Impedindo o bloqueio de threads e atrasos de respostas.
+
+- [...]/resources/aplicattion.properties
+```html
+server.tomcat.threads.max=4 # número de threads
+spring.threads.virtual.enebled=true # habilita o uso de threads virtuais
 ```
 
 ### Migrations (flyway)
