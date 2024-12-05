@@ -1,28 +1,18 @@
 # Criação do projeto Angular com typescript
 
-### requerimentos
+## Requerimentos
 - NodeJS
+- Angular 18+
 
-### criando e configurando o app
-- instalando angular globalmente ( -g )
-```console
-npm install -g @angular/cli
-```
-- criando a estrutura do projeto
-    - criar projeto
+## Criando e configurando o app
+- ### instalando angular globalmente
     ```console
-    ng new minha-aplicação
+    npm install -g @angular/cli
     ```
-    - criando componente
+
+- ### rodando aplicação
     ```console
-    ng generate component inicio
+    ng serve
+    # ou pelo alias
+    npm start
     ```
-    ou
-    ```console
-    ng g c inicio
-    ```
-    
-- rodando aplicação
-```console
-ng serve
-```
