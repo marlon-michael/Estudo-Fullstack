@@ -19,45 +19,6 @@
 
 ---
 
-- ### Pipes
-    - pipes são estruturas que recebem um dado de outro elemento e o transforma de forma facilitada
-
-    ### gerando um pipe
-    ```console
-    ng generate pipe {nome-do-pipe}
-    # ou no formato abreviado
-    ng g p {nome-do-pipe}
-    ```
-
-    ---
-    ```javascript
-    import { Pipe, PipeTransform } from '@angular/core';
-
-    @Pipe({
-        name: 'addPeriod'  
-    })
-    export class AddPeriodPipe implements PipeTransform {
-    transform(value: string, args?: string): string{
-        var newValue = ""
-        let options = <any>{
-            "exclamation": "!",
-            "default": "."
-        }
-        newValue = value.concat(options[args??"default"])
-        return newValue;
-    }
-    }
-    ```
-
-    - #### utilizando pipes
-    ```javascript
-    @Component({
-        imports: [addPeriod],
-        template: '<p>{{MyString() | addPeriod:"exclamation"}}</p>'
-    })
-    ```
-
-
 ## Estrutura do projeto Angular
 
 - ### Components
@@ -124,6 +85,44 @@
             this.service.getResponse()
         }
     }
+    ```
+
+- ### Pipes
+    - pipes são estruturas que recebem um dado de outro elemento e o transforma de forma facilitada
+
+    ### gerando um pipe
+    ```console
+    ng generate pipe {nome-do-pipe}
+    # ou no formato abreviado
+    ng g p {nome-do-pipe}
+    ```
+
+    ---
+    ```javascript
+    import { Pipe, PipeTransform } from '@angular/core';
+
+    @Pipe({
+        name: 'addPeriod'  
+    })
+    export class AddPeriodPipe implements PipeTransform {
+    transform(value: string, args?: string): string{
+        var newValue = ""
+        let options = <any>{
+            "exclamation": "!",
+            "default": "."
+        }
+        newValue = value.concat(options[args??"default"])
+        return newValue;
+    }
+    }
+    ```
+
+    - #### utilizando pipes
+    ```javascript
+    @Component({
+        imports: [addPeriod],
+        template: '<p>{{MyString() | addPeriod:"exclamation"}}</p>'
+    })
     ```
 
 - ### Diretctives
