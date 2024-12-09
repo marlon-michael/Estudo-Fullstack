@@ -137,6 +137,8 @@
 
     ---
     ```javascript
+    import {ElementRef, Directive} from '@angular/core';
+
     @Directive({
         selector: '[changeColorNegativeValue]', // 
         standalone: true
