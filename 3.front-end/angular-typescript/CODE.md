@@ -5,6 +5,20 @@ typescript é uma linguagem fortemente tipada que é compilada para javascript c
 
 ### como usar typescript
 
+- operadores
+```javascript
+let OBJ = {item: undefined}
+let A = 1;
+let B = 0;
+let C;
+
+B = <number><unknown>"10" // casting de <string> para <number>
+C = A??B; // A é undefined/null ? então B
+C = A||B;  // A contem valor não falso (0, "", null) ? senão retorna B
+console.log(C);
+console.log(OBJ?.item) // OBJ pode ser undefined, mas queremos acessa-lo mesmo assim
+```
+
 - tipagem dinamica
 ```javascript
 let variavel = 1 // inicializado variavel númerica
