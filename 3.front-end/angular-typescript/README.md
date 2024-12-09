@@ -4,19 +4,59 @@
  - [Como iniciar o projeto](/3.front-end/angular-typescript/CREATE-RUN.md)
  - [Sintaxe typescript](/3.front-end/angular-typescript/CODE.md)
  - [Componentes](#components)
-
  - [Serviços](#services)
  - [Diretivas](#diretctives)
+ - [Pipes](#pipes)
+ - [Decoradores](#decorators)
  - [Definição de variaveis](#definição-de-variaveis)
- - [Rotas](#rotas)
  - [Loops e Condicionais](#loops-e-condifionais-no-template)
- - [Requisições Http](#requisições-http)
+ - [Rotas](#rotas)
  - [Eventos](#eventos)
     - [Eventos de teclado](#eventos-de-teclado)
     - [Eventos para componente pai](#emitindo-eventos-para-componente-pai)
     - [Eventos por serviço](#emitindo-eventos-para-componentes-através-de-serviços)
+ - [Requisições Http](#requisições-http)
 
 ---
+
+- ### Pipes
+    - pipes são estruturas que recebem um dado de outro elemento e o transforma de forma facilitada
+
+    ### gerando um pipe
+    ```console
+    ng generate pipe {nome-do-pipe}
+    # ou no formato abreviado
+    ng g p {nome-do-pipe}
+    ```
+
+    ---
+    ```javascript
+    import { Pipe, PipeTransform } from '@angular/core';
+
+    @Pipe({
+        name: 'addPeriod'  
+    })
+    export class AddPeriodPipe implements PipeTransform {
+    transform(value: string, args?: string): string{
+        var newValue = ""
+        let options = <any>{
+            "exclamation": "!",
+            "default": "."
+        }
+        newValue = value.concat(options[args??"default"])
+        return newValue;
+    }
+    }
+    ```
+
+    - #### utilizando pipes
+    ```javascript
+    @Component({
+        imports: [addPeriod],
+        template: '<p>{{MyString() | addPeriod:"exclamation"}}</p>'
+    })
+    ```
+
 
 ## Estrutura do projeto Angular
 
@@ -131,6 +171,30 @@
     <li changeColorNegativeValue [isNegative]="item().value">
         <p>item().value</p>
     </li>
+    ```
+
+- ### Decorators
+    - Decoradores são itens que englobam outra estrutura como classes, metodos ou variaveis. Podendo manipular seus valores e seus comportamentos
+    
+    - Capturando os argumentos do construtor da classe
+    ```javascript
+    // Criando um decorator para interceptação de argumentos
+    function log(target:any, name:any, descriptor: any):any{
+        console.log(target, name, descriptor.value);
+        descriptor.value = function(...args:any){
+            console.log(args);
+        }
+        return descriptor
+    }
+
+    class Math{
+        @log // utilização do Decorador desenvolvido
+        static sum(n1: number, n2:number){
+            return n1 + n2;
+        }
+    }
+
+    Math.sum(1,2)
     ```
 
 ## Sintaxe Angular
