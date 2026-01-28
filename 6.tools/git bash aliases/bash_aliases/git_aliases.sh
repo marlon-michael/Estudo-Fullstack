@@ -73,7 +73,7 @@ gc \$1 \$2
 	local initCommand=()
 	local endingCommand=()
 	for arg in "$@"; do
-        if [[ "$arg" = *"-"* ]]
+        if [[ "$arg" = "-"* ]]
         then
         	if [[ "$arg" = "-p" ]]
         	then
